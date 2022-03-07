@@ -13,6 +13,7 @@ const CreateNewCourse = async (req, res) => {
     Author,
     Requirements,
     Category,
+    Video,
     roleId,
   } = req.body;
   const query = `INSERT INTO course (Title,Description,Price,Language,Schedule,Author,Requirements,Category,roleId) VALUES (?,?,?,?,?,?,?,?,?)
@@ -26,6 +27,7 @@ const CreateNewCourse = async (req, res) => {
     Author,
     Requirements,
     Category,
+    Video,
     roleId,
   ];
   connection.query(query, data, (err, result) => {
@@ -86,6 +88,37 @@ const GetCourseByCategory = (req, res) => {
   });
 };
 
+//====================================================//GetCourseByTitle
+
+const GetCourseByTitle = (req, res) => {
+  const Title = req.body.Title;
+  const Category = req.body.Category;
+  let data = [];
+  let query = ``;
+  if (Category) {
+    query = `SELECT * FROM course where is_deleted=0 and Title REGEXP ? and Category= ? `;
+    data = [Title, Category];
+  } else {
+    query = `SELECT * FROM course where is_deleted=0 and Title REGEXP ? `;
+    data = [Title];
+  }
+  connection.query(query, data, (err, result) => {
+    if (err) {
+      return res.status(500).json({
+        success: false,
+        massage: "server error",
+        err: err,
+      });
+    }
+    // result are the data returned by mysql server
+    return res.status(200).json({
+      success: true,
+      massage: `All the ${Title} Courses`,
+      results: result,
+    });
+  });
+};
+
 //====================================================//DeleteCourseById
 
 const DeleteCourseById = (req, res) => {
@@ -112,5 +145,6 @@ module.exports = {
   CreateNewCourse,
   GetAllCourses,
   GetCourseByCategory,
+  GetCourseByTitle,
   DeleteCourseById,
 };
