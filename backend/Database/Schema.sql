@@ -17,6 +17,13 @@ Create Table role(
     is_deleted TINYINT Default 0
 );
 
+-- ====================================================//Insert data Role Table
+
+Insert into role (Name) Value ('Admin');
+Insert into role (Name) Value ("Teacher");
+Insert into role (Name) Value ("Student");
+
+
 -- ====================================================//Create Admin Table
 
 Create Table admin(
@@ -31,6 +38,11 @@ Create Table admin(
      FOREIGN Key(roleId) REFERENCES Role(id) ON DELETE CASCADE ON UPDATE CASCADE
 
 );
+
+
+-- ====================================================//Insert data Admin Table
+
+Insert into admin (firstName, lastName, phone, email, password, roleId) Values ('Omar'," Kata'a ",'1000','Omar@Gmail.com','$2b$10$SuQ4yZuFdnYjCVvaZPjZkeHNqMiVmk.RIe6PEjFrER78HawdV9WSS',1);
 
 -- ====================================================//Create Teacher Table
  
@@ -48,6 +60,15 @@ Create Table teacher(
 
 );
 
+
+-- ====================================================//Insert data Teacher Table
+
+Insert into teacher (firstName, lastName, phone, email, password, roleId) Values ('Ghaidaa','Sleeman','0001','Ghaidaa@Gmail.com','$2b$10$SuQ4yZuFdnYjCVvaZPjZkeHNqMiVmk.RIe6PEjFrER78HawdV9WSS',2);
+Insert into teacher (firstName, lastName, phone, email, password, roleId) Values ('Bayan','Safadi','0002','Bayan@Gmail.com','$2b$10$SuQ4yZuFdnYjCVvaZPjZkeHNqMiVmk.RIe6PEjFrER78HawdV9WSS',2);
+Insert into teacher (firstName, lastName, phone, email, password, roleId) Values ('mai','Yusuf','0003','mai@Gmail.com','$2b$10$SuQ4yZuFdnYjCVvaZPjZkeHNqMiVmk.RIe6PEjFrER78HawdV9WSS',2);
+
+
+
 -- ====================================================//Create Course Table
 
 
@@ -61,13 +82,29 @@ Create Table course(
     Author varchar(255),
     Requirements varchar(255),
     Category varchar(255),
-    Video varchar(255)
+    Video varchar(255),
     is_deleted TINYINT Default 0,
     roleId int not null,
     FOREIGN Key(roleId) REFERENCES Role(id) ON DELETE CASCADE ON UPDATE CASCADE
 
 
 );
+
+
+-- ====================================================//Insert data Course Table
+
+Insert into course (Title,Description,Price,language,Schedule,Author,Requirements,Category,Video,roleId) Values("Javascript","Dom&Jquery","50$","English","7-11 PM","Dainile The'","Knowing basic concept","software","https://youtu.be/gT0Lh1eYk78",2);
+Insert into course (Title,Description,Price,language,Schedule,Author,Requirements,Category,Video,roleId) Values("Tenses","ELEMENT","50$","Espanish","7-11 PM","james Khose'"," basic concept","Language","https://youtu.be/9JSANnwYpBY",2);
+Insert into course (Title,Description,Price,language,Schedule,Author,Requirements,Category,Video,roleId) Values("Newton Second low","physics concepts","50$","Arabic","7-11 PM","Ghaidaa Sleeman"," basic concept","sciences","https://youtu.be/miA_Jfin2Qg",2);
+Insert into course (Title,Description,Price,language,Schedule,Author,Requirements,Category,Video,roleId) Values("Javascript","Dom&Jquery","50$","English","7-11 PM","Dainile The'","Knowing basic concept","software","https://youtu.be/gT0Lh1eYk78",2);
+Insert into course (Title,Description,Price,language,Schedule,Author,Requirements,Category,Video,roleId) Values("Tenses","ELEMENT","50$","Espanish","7-11 PM","james Khose'"," basic concept","Language","https://youtu.be/9JSANnwYpBY",2);
+Insert into course (Title,Description,Price,language,Schedule,Author,Requirements,Category,Video,roleId) Values("Newton Second low","physics concepts","50$","Arabic","7-11 PM","Ghaidaa Sleeman"," basic concept","sciences","https://youtu.be/miA_Jfin2Qg",2);
+Insert into course (Title,Description,Price,language,Schedule,Author,Requirements,Category,Video,roleId) Values("Javascript","Dom&Jquery","50$","English","7-11 PM","Dainile The'","Knowing basic concept","software","https://youtu.be/gT0Lh1eYk78",2);
+Insert into course (Title,Description,Price,language,Schedule,Author,Requirements,Category,Video,roleId) Values("Tenses","ELEMENT","50$","Espanish","7-11 PM","james Khose'"," basic concept","Language","https://youtu.be/9JSANnwYpBY",2);
+Insert into course (Title,Description,Price,language,Schedule,Author,Requirements,Category,Video,roleId) Values("Newton Second low","physics concepts","50$","Arabic","7-11 PM","Ghaidaa Sleeman"," basic concept","sciences","https://youtu.be/miA_Jfin2Qg",2);
+
+
+
 
 -- ====================================================//Create Course Table
 
@@ -85,3 +122,11 @@ Create Table Student(
     FOREIGN Key(roleId) REFERENCES Role(id) ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN Key(courseId ) REFERENCES course(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
+
+
+-- ====================================================//Insert data Teacher Table
+
+Insert into Student (firstName, lastName, phone, email, password, roleId) Values ('Zakaria','Humaide','1001','Zakaria@Gmail.com','$2b$10$SuQ4yZuFdnYjCVvaZPjZkeHNqMiVmk.RIe6PEjFrER78HawdV9WSS',3);
+Insert into Student (firstName, lastName, phone, email, password, roleId) Values ('Osama','Ajoury','1002','Osama@Gmail.com','$2b$10$SuQ4yZuFdnYjCVvaZPjZkeHNqMiVmk.RIe6PEjFrER78HawdV9WSS',3);
+Insert into Student (firstName, lastName, phone, email, password, roleId) Values ('Amer','Abbadi','1003','Amer@Gmail.com','$2b$10$SuQ4yZuFdnYjCVvaZPjZkeHNqMiVmk.RIe6PEjFrER78HawdV9WSS',2);
+
