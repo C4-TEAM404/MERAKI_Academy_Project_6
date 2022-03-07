@@ -66,4 +66,31 @@ const GetStudentById = async (req, res) => {
   });
 };
 
-module.exports = { CreateNewStudent, GetAllStudents, GetStudentById };
+//====================================================//DeleteStudentById
+
+const DeleteStudentById = (req, res) => {
+  const id = req.params.id;
+  const query = `UPDATE student SET is_deleted=1  WHERE id=?`;
+  const data = [id];
+  connection.query(query, data, (err, result) => {
+    if (!err) {
+      return res.status(200).json({
+        success: true,
+        message: `Succeeded to delete student with id => ${id}`,
+        result: result,
+      });
+    } else {
+      return res.status(404).json({
+        success: false,
+        message: `The student => ${id} is not found`,
+      });
+    }
+  });
+};
+
+module.exports = {
+  CreateNewStudent,
+  GetAllStudents,
+  GetStudentById,
+  DeleteStudentById,
+};

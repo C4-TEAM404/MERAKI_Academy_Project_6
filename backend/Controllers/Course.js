@@ -45,7 +45,7 @@ const CreateNewCourse = async (req, res) => {
 };
 //====================================================//GetAllCourses
 const GetAllCourses = (req, res) => {
-  const query = `SELECT course.Title,course.Description,course.Description,course.Price,course.language,course.Schedule,course.Author,course.Requirements,course.Category FROM course where is_deleted=0`;
+  const query = `SELECT * FROM course where is_deleted=0`;
 
   connection.query(query, (err, result) => {
     if (err) {
@@ -67,7 +67,7 @@ const GetAllCourses = (req, res) => {
 //====================================================//GetCourseByCategory
 const GetCourseByCategory = (req, res) => {
   const Category = req.body.Category;
-  const query = `SELECT course.Title,course.Description,course.Description,course.Price,course.language,course.Schedule,course.Author,course.Requirements,course.Category FROM course where is_deleted=0 and category=? `;
+  const query = `SELECT * FROM course where is_deleted=0 and category=? `;
   const data = [Category];
   connection.query(query, data, (err, result) => {
     if (err) {
@@ -86,4 +86,31 @@ const GetCourseByCategory = (req, res) => {
   });
 };
 
-module.exports = { CreateNewCourse, GetAllCourses, GetCourseByCategory };
+//====================================================//DeleteCourseById
+
+const DeleteCourseById = (req, res) => {
+  const id = req.params.id;
+  const query = `UPDATE course SET is_deleted=1  WHERE id=?`;
+  const data = [id];
+  connection.query(query, data, (err, result) => {
+    if (!err) {
+      return res.status(200).json({
+        success: true,
+        message: `Succeeded to delete course with id => ${id}`,
+        result: result,
+      });
+    } else {
+      return res.status(404).json({
+        success: false,
+        message: `The course => ${id} is not found`,
+      });
+    }
+  });
+};
+
+module.exports = {
+  CreateNewCourse,
+  GetAllCourses,
+  GetCourseByCategory,
+  DeleteCourseById,
+};
