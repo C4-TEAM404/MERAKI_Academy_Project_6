@@ -53,8 +53,8 @@ Create Table teacher(
     phone varchar(255) unique,
     email varchar(255) unique,
     password varchar(255),
-    is_deleted TINYINT Default 0,
     profileImage varchar(255),
+    is_deleted TINYINT Default 0,
     roleId int not null,
     FOREIGN Key(roleId) REFERENCES Role(id) ON DELETE CASCADE ON UPDATE CASCADE
 
@@ -64,9 +64,9 @@ Create Table teacher(
 
 -- ====================================================//Insert data Teacher Table
 
-Insert into teacher (firstName, lastName, phone, email, password, roleId) Values ('Ghaidaa','Sleeman','0001','Ghaidaa@Gmail.com','$2b$10$SuQ4yZuFdnYjCVvaZPjZkeHNqMiVmk.RIe6PEjFrER78HawdV9WSS',2);
-Insert into teacher (firstName, lastName, phone, email, password, roleId) Values ('Bayan','Safadi','0002','Bayan@Gmail.com','$2b$10$SuQ4yZuFdnYjCVvaZPjZkeHNqMiVmk.RIe6PEjFrER78HawdV9WSS',2);
-Insert into teacher (firstName, lastName, phone, email, password, roleId) Values ('mai','Yusuf','0003','mai@Gmail.com','$2b$10$SuQ4yZuFdnYjCVvaZPjZkeHNqMiVmk.RIe6PEjFrER78HawdV9WSS',2);
+Insert into teacher (firstName, lastName, phone, email, password,profileImage,roleId) Values ('Ghaidaa','Sleeman','0001','Ghaidaa@Gmail.com','$2b$10$SuQ4yZuFdnYjCVvaZPjZkeHNqMiVmk.RIe6PEjFrER78HawdV9WSS',"https://cdn4.vectorstock.com/i/1000x1000/35/53/person-icon-female-user-profile-avatar-vector-18833553.jpg",2);
+Insert into teacher (firstName, lastName, phone, email, password,profileImage,roleId) Values ('Bayan','Safadi','0002','Bayan@Gmail.com','$2b$10$SuQ4yZuFdnYjCVvaZPjZkeHNqMiVmk.RIe6PEjFrER78HawdV9WSS',"https://cdn4.vectorstock.com/i/1000x1000/35/53/person-icon-female-user-profile-avatar-vector-18833553.jpg",2);
+Insert into teacher (firstName, lastName, phone, email, password,profileImage,roleId) Values ('mai','Yusuf','0003','mai@Gmail.com','$2b$10$SuQ4yZuFdnYjCVvaZPjZkeHNqMiVmk.RIe6PEjFrER78HawdV9WSS',"https://cdn4.vectorstock.com/i/1000x1000/35/53/person-icon-female-user-profile-avatar-vector-18833553.jpg",2);
 
 
 
