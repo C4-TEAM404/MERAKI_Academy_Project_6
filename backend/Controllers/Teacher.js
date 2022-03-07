@@ -87,9 +87,48 @@ const DeleteTeacherById = (req, res) => {
   });
 };
 
+//====================================================//UpdateTeacherById
+
+const UpdateTeacherById = (req, res) => {
+  userId = req.token.userId;
+  const { firstName, lastName, phone, email, password } = req.body;
+  const query = `SELECT password FROM teacher WHERE id= ?`;
+  const data = [userId];
+  connection.query(query, data, async (err, result) => {
+    if (!err) {
+      const CheckPassword = await bcrypt.compare(password, result[0].password);
+      if (CheckPassword) {
+        const query = `UPDATE teacher SET firstName=?, lastName=? , phone=?, email=? WHERE id= ?`;
+        const data = [firstName, lastName, phone, email, userId];
+        connection.query(query, data, (err, result) => {
+          if (!err) {
+            return res.status(201).json({
+              success: true,
+              massage: `Teacher updated`,
+              results: result,
+            });
+          } else {
+            return res.status(500).json({
+              success: false,
+              massage: "Server Error",
+              err: err,
+            });
+          }
+        });
+      } else {
+        return res.status(404).json({
+          success: false,
+          message: "Your Password is Wrong",
+        });
+      }
+    }
+  });
+};
+
 module.exports = {
   CreateNewTeacher,
   GetAllTeacher,
   GetTeacherById,
   DeleteTeacherById,
+  UpdateTeacherById,
 };
