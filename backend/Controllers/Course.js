@@ -1,8 +1,8 @@
 //====================================================//Require
 const connection = require("../database/db");
 const bcrypt = require("bcrypt");
-//====================================================//CreateNewCourse
 
+//====================================================//CreateNewCourse
 const CreateNewCourse = async (req, res) => {
   let {
     Title,
@@ -45,4 +45,24 @@ const CreateNewCourse = async (req, res) => {
     }
   });
 };
-module.exports = { CreateNewCourse };
+//====================================================//GetAllCourses
+const GetAllCourses = (req, res) => {
+  const query = `SELECT course.Title,course.Description,course.Description,course.Price,course.language,course.Schedule,course.Author,course.Requirements,course.Category FROM course where is_deleted=0`;
+  connection.query(query, (err, result) => {
+    if (err) {
+      return res.status(500).json({
+        success: false,
+        massage: "server error",
+        err: err,
+      });
+    }
+    // result are the data returned by mysql server
+    return res.status(200).json({
+      success: true,
+      massage: "All the Courses",
+      results: result,
+    });
+  });
+};
+
+module.exports = { CreateNewCourse, GetAllCourses };
