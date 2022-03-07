@@ -13,11 +13,13 @@ const teacherRouter = require("./Routes/Teacher");
 const studentRouter = require("./Routes/Student");
 const courseRouter = require("./Routes/Course");
 const roleRouter = require("./Routes/Role");
+const LoginRouter = require("./Routes/Login");
 //====================================================// Routes Middleware
 app.use("/teacher", teacherRouter);
 app.use("/student", studentRouter);
 app.use("/course", courseRouter);
 app.use("/role", roleRouter);
+app.use("/login", LoginRouter);
 
 //====================================================// Handles any other endpoints [unassigned - endpoints]
 app.use("*", (req, res) => res.status(404).json("NO content at this path"));
