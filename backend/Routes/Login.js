@@ -9,6 +9,6 @@ const {
   AdminLogin,
 } = require("../controllers/Login");
 
-LoginRouter.get("/", StudentLogin, TeacherLogin, AdminLogin);
+LoginRouter.post("/", StudentLogin, TeacherLogin, AdminLogin);
 
 module.exports = LoginRouter;

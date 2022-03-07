@@ -36,7 +36,6 @@ const StudentLogin = (req, res, next) => {
           message: `Login Successfully`,
           token: token,
           userId: result,
-          profileImage: result[0].profileImage,
           role: result[0].roleId,
         });
       } catch (error) {
