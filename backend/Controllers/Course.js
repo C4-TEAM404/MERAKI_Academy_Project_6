@@ -141,10 +141,54 @@ const DeleteCourseById = (req, res) => {
   });
 };
 
+//====================================================//UpdateCourseById
+
+const UpdateCourseById = (req, res) => {
+  const id = req.params.id;
+  const {
+    Title,
+    Description,
+    Price,
+    Language,
+    Schedule,
+    Requirements,
+    Category,
+    Video,
+  } = req.body;
+
+  const data = [
+    Title,
+    Description,
+    Price,
+    Language,
+    Schedule,
+    Requirements,
+    Category,
+    Video,
+    id,
+  ];
+  const query = `UPDATE course SET Title=?, Description=?,Price=?,Language=?,Schedule=?,Requirements=?,Category=?,Video=?  WHERE id=?`;
+  connection.query(query, data, (err, result) => {
+    if (!err) {
+      return res.status(200).json({
+        success: true,
+        message: `Succeeded to updated course with id => ${id}`,
+        result: result,
+      });
+    } else {
+      return res.status(404).json({
+        success: false,
+        message: `The course => ${id} is not found`,
+      });
+    }
+  });
+};
+
 module.exports = {
   CreateNewCourse,
   GetAllCourses,
   GetCourseByCategory,
   GetCourseByTitle,
   DeleteCourseById,
+  UpdateCourseById,
 };
