@@ -64,7 +64,7 @@ const GetAllCourses = (req, res) => {
   });
 };
 
-//====================================================//GetAllCourses
+//====================================================//GetCourseByCategory
 const GetCourseByCategory = (req, res) => {
   const Category = req.body.Category;
   const query = `SELECT course.Title,course.Description,course.Description,course.Price,course.language,course.Schedule,course.Author,course.Requirements,course.Category FROM course where is_deleted=0 and category=? `;
