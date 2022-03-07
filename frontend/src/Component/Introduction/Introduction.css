@@ -1,0 +1,24 @@
+.introMainDiv {
+  min-height: 100vh;
+}
+
+.Part1 {
+  min-height: 100vh;
+  background-color: green;
+}
+.Part2 {
+  min-height: 100vh;
+  background-color: red;
+}
+.Part3 {
+  min-height: 100vh;
+  background-color: yellow;
+}
+.Part4 {
+  min-height: 100vh;
+  background-color: pink;
+}
+.Part5 {
+  min-height: 100vh;
+  background-color: blue;
+}
