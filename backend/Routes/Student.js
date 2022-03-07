@@ -3,8 +3,8 @@ const express = require("express");
 const studentRouter = express.Router();
 
 //====================================================//Require Functions
-const { TestFunction } = require("../controllers/Student");
+const { CreateNewStudent } = require("../controllers/Student");
 
-studentRouter.get("/", TestFunction);
+studentRouter.post("/new", CreateNewStudent);
 //====================================================// module.exports
 module.exports = studentRouter;

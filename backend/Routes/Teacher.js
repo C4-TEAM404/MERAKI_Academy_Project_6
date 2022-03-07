@@ -3,9 +3,9 @@ const express = require("express");
 const teacherRouter = express.Router();
 
 //====================================================//Require Functions
-const { TestFunction } = require("../controllers/Teacher");
+const { CreateNewTeacher } = require("../controllers/Teacher");
 
-teacherRouter.get("/", TestFunction);
+teacherRouter.post("/new", CreateNewTeacher);
 
 //====================================================// module.exports
 module.exports = teacherRouter;
