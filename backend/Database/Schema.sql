@@ -14,7 +14,7 @@ Use HEX;
 Create Table role(
     id int not null AUTO_INCREMENT primary key,
     Name varchar(255),
-    isDeleted TINYINT Default 0
+    is_deleted TINYINT Default 0
 );
 
 -- ====================================================//Create Admin Table
@@ -27,6 +27,7 @@ Create Table admin(
      email varchar(255),
      password varchar(255),
      roleId int not null,
+     is_deleted TINYINT Default 0,
      FOREIGN Key(roleId) REFERENCES Role(id) ON DELETE CASCADE ON UPDATE CASCADE
 
 );
@@ -40,7 +41,7 @@ Create Table teacher(
     phone varchar(255) unique,
     email varchar(255) unique,
     password varchar(255),
-    isDeleted TINYINT Default 0,
+    is_deleted TINYINT Default 0,
     roleId int not null,
     FOREIGN Key(roleId) REFERENCES Role(id) ON DELETE CASCADE ON UPDATE CASCADE
 
@@ -60,7 +61,7 @@ Create Table course(
     Author varchar(255),
     Requirements varchar(255),
     Category varchar(255),
-    isDeleted TINYINT Default 0,
+    is_deleted TINYINT Default 0,
     roleId int not null,
     FOREIGN Key(roleId) REFERENCES Role(id) ON DELETE CASCADE ON UPDATE CASCADE
 
@@ -78,7 +79,7 @@ Create Table Student(
     email varchar(255) unique,
     courseId  int,
     password varchar(255),
-    isDeleted TINYINT Default 0,
+    is_deleted TINYINT Default 0,
     roleId int not null,
     FOREIGN Key(roleId) REFERENCES Role(id) ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN Key(courseId ) REFERENCES course(id) ON DELETE CASCADE ON UPDATE CASCADE
