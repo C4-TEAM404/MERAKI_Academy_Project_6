@@ -2,7 +2,6 @@
 const connection = require("../database/db");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const e = require("express");
 
 //====================================================//Student Login Function
 const StudentLogin = (req, res, next) => {
