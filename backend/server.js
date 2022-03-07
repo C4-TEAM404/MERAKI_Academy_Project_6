@@ -9,12 +9,14 @@ app.use(cors());
 const connection = require("./database/db");
 
 //====================================================// Import Routers
+const adminRouter = require("./Routes/Admin");
 const teacherRouter = require("./Routes/Teacher");
 const studentRouter = require("./Routes/Student");
 const courseRouter = require("./Routes/Course");
 const roleRouter = require("./Routes/Role");
 const LoginRouter = require("./Routes/Login");
 //====================================================// Routes Middleware
+app.use("/admin", adminRouter);
 app.use("/teacher", teacherRouter);
 app.use("/student", studentRouter);
 app.use("/course", courseRouter);
