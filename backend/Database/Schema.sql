@@ -73,6 +73,7 @@ Insert into teacher (firstName, lastName, phone, email, password, roleId) Values
 
 
 Create Table course(
+    
     id int not null auto_increment primary key,
     Title varchar(255),
     Description varchar(255),
@@ -89,7 +90,6 @@ Create Table course(
 
 
 );
-
 
 -- ====================================================//Insert data Course Table
 
@@ -130,3 +130,26 @@ Insert into Student (firstName, lastName, phone, email, password, roleId) Values
 Insert into Student (firstName, lastName, phone, email, password, roleId) Values ('Osama','Ajoury','1002','Osama@Gmail.com','$2b$10$SuQ4yZuFdnYjCVvaZPjZkeHNqMiVmk.RIe6PEjFrER78HawdV9WSS',3);
 Insert into Student (firstName, lastName, phone, email, password, roleId) Values ('Amer','Abbadi','1003','Amer@Gmail.com','$2b$10$SuQ4yZuFdnYjCVvaZPjZkeHNqMiVmk.RIe6PEjFrER78HawdV9WSS',2);
 
+-- ====================================================//Create User-Course Table
+
+
+Create Table user_courses(
+
+    id int not null auto_increment primary key,
+    studentId int,
+    courseId int,
+    is_deleted TINYINT Default 0,
+    FOREIGN Key(studentId) REFERENCES Student(id) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN Key(courseId) REFERENCES course(id) ON DELETE CASCADE ON UPDATE CASCADE
+
+);
+
+-- ====================================================//Insert data user_courses Table
+
+
+Insert into user_courses (studentId,courseId) Values (1,1);
+Insert into user_courses (studentId,courseId) Values (1,2);
+Insert into user_courses (studentId,courseId) Values (1,3);
+Insert into user_courses (studentId,courseId) Values (2,1);
+Insert into user_courses (studentId,courseId) Values (2,2);
+Insert into user_courses (studentId,courseId) Values (2,3);
