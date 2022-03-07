@@ -4,13 +4,10 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 //CSS File
-import "./Header.css";
+import "./Footer.css";
 
+const Footer = () => {
+  return <div className="FooterMainDiv">Footer</div>;
+};
 
-const Header = () => {
-  return (
-    <div>Header</div>
-  )
-}
-
-export default Header
+export default Footer;
