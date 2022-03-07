@@ -12,11 +12,13 @@ const connection = require("./database/db");
 const teacherRouter = require("./Routes/Teacher");
 const studentRouter = require("./Routes/Student");
 const courseRouter = require("./Routes/Course");
-
+const roleRouter = require("./Routes/Role");
 //====================================================// Routes Middleware
 app.use("/teacher", teacherRouter);
 app.use("/student", studentRouter);
 app.use("/course", courseRouter);
+app.use("/role", roleRouter);
+
 //====================================================// Handles any other endpoints [unassigned - endpoints]
 app.use("*", (req, res) => res.status(404).json("NO content at this path"));
 
