@@ -13,6 +13,7 @@ const CreateNewCourse = async (req, res) => {
     Author,
     Requirements,
     Category,
+    Video,
     roleId,
   } = req.body;
   const query = `INSERT INTO course (Title,Description,Price,Language,Schedule,Author,Requirements,Category,roleId) VALUES (?,?,?,?,?,?,?,?,?)
@@ -26,6 +27,7 @@ const CreateNewCourse = async (req, res) => {
     Author,
     Requirements,
     Category,
+    Video,
     roleId,
   ];
   connection.query(query, data, (err, result) => {
