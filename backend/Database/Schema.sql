@@ -42,7 +42,7 @@ Create Table admin(
 
 -- ====================================================//Insert data Admin Table
 
-Insert into admin ()
+Insert into admin (firstName, lastName, phone, email, password, roleId) Values ('Omar'," Kata'a ",'1000','Omar@Gmail.com','$2b$10$SuQ4yZuFdnYjCVvaZPjZkeHNqMiVmk.RIe6PEjFrER78HawdV9WSS',1);
 
 -- ====================================================//Create Teacher Table
  
@@ -122,3 +122,11 @@ Create Table Student(
     FOREIGN Key(roleId) REFERENCES Role(id) ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN Key(courseId ) REFERENCES course(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
+
+
+-- ====================================================//Insert data Teacher Table
+
+Insert into Student (firstName, lastName, phone, email, password, roleId) Values ('Zakaria','Humaide','1001','Zakaria@Gmail.com','$2b$10$SuQ4yZuFdnYjCVvaZPjZkeHNqMiVmk.RIe6PEjFrER78HawdV9WSS',3);
+Insert into Student (firstName, lastName, phone, email, password, roleId) Values ('Osama','Ajoury','1002','Osama@Gmail.com','$2b$10$SuQ4yZuFdnYjCVvaZPjZkeHNqMiVmk.RIe6PEjFrER78HawdV9WSS',3);
+Insert into Student (firstName, lastName, phone, email, password, roleId) Values ('Amer','Abbadi','1003','Amer@Gmail.com','$2b$10$SuQ4yZuFdnYjCVvaZPjZkeHNqMiVmk.RIe6PEjFrER78HawdV9WSS',2);
+
