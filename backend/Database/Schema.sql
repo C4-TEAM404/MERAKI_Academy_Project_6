@@ -54,6 +54,7 @@ Create Table teacher(
     email varchar(255) unique,
     password varchar(255),
     is_deleted TINYINT Default 0,
+    profileImage varchar(255),
     roleId int not null,
     FOREIGN Key(roleId) REFERENCES Role(id) ON DELETE CASCADE ON UPDATE CASCADE
 
@@ -117,6 +118,7 @@ Create Table Student(
     email varchar(255) unique,
     courseId  int,
     password varchar(255),
+    profileImage varchar(255),
     is_deleted TINYINT Default 0,
     roleId int not null,
     FOREIGN Key(roleId) REFERENCES Role(id) ON DELETE CASCADE ON UPDATE CASCADE,
