@@ -7,6 +7,7 @@ import axios from "axios";
 import "./Introduction.css";
 
 const Introduction = () => {
+
   return (
     <div className="introMainDiv">
       <div className="Part1">Part1</div>
@@ -16,6 +17,7 @@ const Introduction = () => {
       <div className="Part5">Part5</div>
     </div>
   );
+
 };
 
 export default Introduction;
