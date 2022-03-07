@@ -67,3 +67,19 @@ Create Table course(
 
 );
 
+-- ====================================================//Create Course Table
+
+ 
+Create Table Student(
+    id int not null auto_increment primary key,
+    firstName varchar(255),
+    lastName varchar(255),
+    phone varchar(255),
+    email varchar(255),
+    courseId  int,
+    password varchar(255),
+    isDeleted TINYINT Default 0,
+    roleId int not null,
+    FOREIGN Key(roleId) REFERENCES Role(id) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN Key(courseId ) REFERENCES course(id) ON DELETE CASCADE ON UPDATE CASCADE
+);
