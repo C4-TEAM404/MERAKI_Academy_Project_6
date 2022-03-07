@@ -24,5 +24,46 @@ const CreateNewStudent = async (req, res) => {
     }
   });
 };
+//====================================================//GetAllStudents
+const GetAllStudents = async (req, res) => {
+  const query = `SELECT * FROM student Where is_deleted=0`;
+  connection.query(query, (err, result) => {
+    if (!err) {
+      return res.status(200).json({
+        success: true,
+        massage: `All the Students`,
+        results: result,
+      });
+    } else {
+      return res.status(500).json({
+        success: false,
+        massage: "server error",
+        err: err,
+      });
+    }
+  });
+};
+//====================================================//GetStudentById
 
-module.exports = { CreateNewStudent };
+const GetStudentById = async (req, res) => {
+  const id = req.body.id;
+  const query = `SELECT * FROM student Where id=? AND is_deleted=0`;
+  const data = [id];
+  connection.query(query, data, (err, result) => {
+    if (!err) {
+      return res.status(200).json({
+        success: true,
+        massage: `Student information`,
+        results: result,
+      });
+    } else {
+      return res.status(500).json({
+        success: false,
+        massage: "server error",
+        err: err,
+      });
+    }
+  });
+};
+
+module.exports = { CreateNewStudent, GetAllStudents, GetStudentById };
