@@ -3,12 +3,14 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import { UserContext } from "../../App";
 
 //CSS File
 import "./Register_Student.css";
 
 const Register_Student = () => {
+  const history = useNavigate();
   //====================================================//useState
 
   const [firstName, setFirstName] = useState("");
@@ -152,6 +154,11 @@ const Register_Student = () => {
                 className="profileImage_input"
                 onChange={loading}
               />
+            </div>
+            <div className="linkto_teacher_register">
+              <Link to="/registerteacher" alt="Register_Teacher">
+                Register as a Teacher
+              </Link>
             </div>
             <div className="submit_button_div">
               <button className="submit_button">Register</button>
