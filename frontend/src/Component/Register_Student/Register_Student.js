@@ -68,7 +68,7 @@ const Register_Student = () => {
         email,
         password,
         profileImage,
-        roleId: 2,
+        roleId: 3,
       });
 
       console.log(res);
