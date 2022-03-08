@@ -89,6 +89,16 @@ h1 {
   min-height: 100vh;
   background-color: red;
   scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.Popular_card {
+  display: flex;
+  flex-direction: row;
+  width: 80%;
 }
 .Part3 {
   min-height: 100vh;

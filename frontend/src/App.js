@@ -6,7 +6,6 @@ import Register from "./Component/Register/Register";
 import Header from "./Component/Header/Header";
 import Footer from "./Component/Footer/Footer";
 import Introduction from "./Component/Introduction/Introduction";
-export const UserContext = createContext();
 
 function App() {
   const [login, setLogin] = useState({});
