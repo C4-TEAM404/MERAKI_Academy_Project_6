@@ -4,8 +4,9 @@ import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import Login from "./Component/Login/Login";
 import Register from "./Component/Register/Register";
 import Header from "./Component/Header/Header";
-import Footer from "../src/Component/Footer/Footer";
-import Introduction from "../src/Component/Introduction/Introduction";
+import Footer from "./Component/Footer/Footer";
+import Introduction from "./Component/Introduction/Introduction";
+export const UserContext = createContext();
 
 function App() {
   const [login, setLogin] = useState({});
