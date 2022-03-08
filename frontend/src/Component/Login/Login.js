@@ -50,7 +50,7 @@ const Login = () => {
       setLogin(result);
       history("/register");
     } catch (err) {
-      console.log(err);
+      throw new Error(err);
     }
   };
   //====================================================//Return
