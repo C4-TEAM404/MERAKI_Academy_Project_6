@@ -2,14 +2,12 @@
 import React, { useState, useEffect } from "react";
 
 import { Link } from "react-router-dom";
-=======
 
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 //CSS File
 import "./Header.css";
-
 
 const Header = () => {
   return (
@@ -49,13 +47,3 @@ const Header = () => {
 };
 
 export default Header;
-=======
-
-const Header = () => {
-  return (
-    <div>Header</div>
-  )
-}
-
-export default Header
-

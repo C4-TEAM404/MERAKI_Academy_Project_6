@@ -1,10 +1,11 @@
 .HeaderMainDiv {
-  height: 15vh;
+  height: 12vh;
   width: 100%;
   background-color: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  scroll-snap-align: start;
 }
 
 .Logo {
