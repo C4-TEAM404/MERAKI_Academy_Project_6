@@ -1,17 +1,15 @@
 //====================================================//Require
+
 import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { UserContext } from "../../App";
 
 //CSS File
-import "./Register.css";
+import "./Register_Teacher.css";
 
-const Register = () => {
-  const { login } = useContext(UserContext);
-  console.log(login);
-
-  return <div>Register</div>;
+const Register_Teacher = () => {
+  return <div>Register_Teacher</div>;
 };
 
-export default Register;
+export default Register_Teacher;
