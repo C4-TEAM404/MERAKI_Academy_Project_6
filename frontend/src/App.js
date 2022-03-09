@@ -8,6 +8,7 @@ import Footer from "./Component/Footer/Footer";
 import Introduction from "./Component/Introduction/Introduction";
 import Register_Teacher from "./Component/Register_Teacher/Register_Teacher";
 
+
 function App() {
   const [login, setLogin] = useState({});
   return (
