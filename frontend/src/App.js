@@ -5,10 +5,8 @@ import Login from "./Component/Login/Login";
 import Register_Student from "./Component/Register_Student/Register_Student";
 import Header from "./Component/Header/Header";
 import Footer from "./Component/Footer/Footer";
-import Introduction from "./Component/Introduction/Introduction";
 import Register_Teacher from "./Component/Register_Teacher/Register_Teacher";
-
-
+import Home from "./Component/Home/Home";
 function App() {
   const [login, setLogin] = useState({});
   return (
@@ -19,7 +17,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register_Student />} />
           <Route path="/registerteacher" element={<Register_Teacher />} />
-          <Route path="/" element={<Introduction />} />
+          <Route path="/Home" element={<Home />} />
         </Routes>
         <Footer />
       </UserContext.Provider>
