@@ -63,7 +63,7 @@ const GetAllCourses = (req, res) => {
     return res.status(200).json({
       success: true,
       massage: `All the Courses `,
-      results: result,
+      result: result,
     });
   });
 };

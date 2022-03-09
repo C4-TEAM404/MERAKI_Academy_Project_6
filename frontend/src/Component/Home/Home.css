@@ -1,5 +1,7 @@
 .introMainDiv {
   min-height: 100vh;
+  overflow-y: none;
+  scroll-snap-type: none;
 }
 
 .Part1 {
@@ -30,7 +32,7 @@
   margin-left: 50px;
   text-align: left;
   margin-top: -15vh;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
 }
 h1 {
   text-align: left;
@@ -60,6 +62,7 @@ h1 {
   outline: none;
   color: white;
   transition: 0.3s;
+  letter-spacing: 1px;
 }
 .Part1Btn1:hover {
   cursor: pointer;
@@ -83,6 +86,7 @@ h1 {
   color: white;
   background: none;
   transition: 0.3s;
+  letter-spacing: 1px;
 }
 
 .Part2 {
