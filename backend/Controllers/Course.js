@@ -92,6 +92,7 @@ const GetCourseByCategory = (req, res) => {
 //====================================================//GetCourseById
 const GetCourseById = (req, res) => {
   const id = req.params.id;
+  console.log(id);
   const query = `SELECT * FROM course where is_deleted=0 and id=? `;
   const data = [id];
   connection.query(query, data, (err, result) => {
