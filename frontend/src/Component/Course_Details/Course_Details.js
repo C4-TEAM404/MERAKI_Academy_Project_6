@@ -28,47 +28,28 @@ const Course_Details = () => {
   useEffect(async () => {
     try {
       const res = await axios.get(
-        `http:localhost:5000/course/getByid/:${courseId}`
+        `http://localhost:5000/course/getByid/${courseId}`
       );
       console.log(res);
-      setTitle(res.data.Title);
-      setDescryption(res.data.Description);
-      setPrice(res.data.Price);
-      setLanguage(res.data.language);
-      setSchedual(res.data.Author);
-      setAuthor(res.data.Author);
-      setRequirements(res.data.Requirements);
-      setCategory(res.data.Category);
-      setVideo(res.data.Video);
-      setImage(res.data.image);
+      setTitle(res.data.results[0].Title);
+      setDescryption(res.data.results[0].Description);
+      setPrice(res.data.results[0].Price);
+      setLanguage(res.data.results[0].language);
+      setSchedual(res.data.results[0].Author);
+      setAuthor(res.data.results[0].Author);
+      setRequirements(res.data.results[0].Requirements);
+      setCategory(res.data.results[0].Category);
+      setVideo(res.data.results[0].Video);
+      setImage(res.data.results[0].image);
     } catch (err) {
       throw new Error(err);
     }
   }, []);
-  const loading = async (e) => {
-    const files = e.target.files;
-    const data = new FormData();
-    data.append("file", files[0]);
-    data.append("upload_preset", "project4");
-
-    const res = await fetch(
-      "https://api.cloudinary.com/v1_1/omarkataa/video/upload",
-      {
-        method: "POST",
-        body: data,
-      }
-    );
-
-    const file = await res.json();
-    console.log(file.secure_url);
-  };
 
   //====================================================//return
 
   return (
     <div>
-      <input type="file" onChange={loading} />
-
       <dl class="row">
         <img src={image} class="img-fluid " alt="..." />
         <dt class="col-sm-3">Title</dt>
