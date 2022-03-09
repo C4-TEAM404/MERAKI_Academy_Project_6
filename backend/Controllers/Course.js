@@ -14,9 +14,10 @@ const CreateNewCourse = async (req, res) => {
     Requirements,
     Category,
     Video,
+    image,
     roleId,
   } = req.body;
-  const query = `INSERT INTO course (Title,Description,Price,Language,Schedule,Author,Requirements,Category,roleId) VALUES (?,?,?,?,?,?,?,?,?)
+  const query = `INSERT INTO course (Title,Description,Price,Language,Schedule,Author,Requirements,Category,Video,image,roleId) VALUES (?,?,?,?,?,?,?,?,?,?,?)
   `;
   const data = [
     Title,
@@ -28,6 +29,7 @@ const CreateNewCourse = async (req, res) => {
     Requirements,
     Category,
     Video,
+    image,
     roleId,
   ];
   connection.query(query, data, (err, result) => {
@@ -83,6 +85,27 @@ const GetCourseByCategory = (req, res) => {
     return res.status(200).json({
       success: true,
       massage: `All the ${Category} Courses`,
+      results: result,
+    });
+  });
+};
+//====================================================//GetCourseById
+const GetCourseById = (req, res) => {
+  const id = req.params.id;
+  const query = `SELECT * FROM course where is_deleted=0 and id=? `;
+  const data = [id];
+  connection.query(query, data, (err, result) => {
+    if (err) {
+      return res.status(500).json({
+        success: false,
+        massage: "server error",
+        err: err,
+      });
+    }
+    // result are the data returned by mysql server
+    return res.status(200).json({
+      success: true,
+      massage: `All the ${id} Courses`,
       results: result,
     });
   });
@@ -188,6 +211,7 @@ module.exports = {
   CreateNewCourse,
   GetAllCourses,
   GetCourseByCategory,
+  GetCourseById,
   GetCourseByTitle,
   DeleteCourseById,
   UpdateCourseById,

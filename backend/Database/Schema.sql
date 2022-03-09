@@ -85,6 +85,7 @@ Create Table course(
     Requirements varchar(255),
     Category varchar(255),
     Video varchar(255),
+    image varchar(255),
     is_deleted TINYINT Default 0,
     roleId int not null,
     FOREIGN Key(roleId) REFERENCES Role(id) ON DELETE CASCADE ON UPDATE CASCADE
