@@ -7,7 +7,7 @@ import Card from "react-bootstrap/Card";
 import CardGroup from "react-bootstrap/CardGroup";
 
 //CSS File
-import "./Introduction.css";
+import "./Home.css";
 
 const Introduction = () => {
   return (

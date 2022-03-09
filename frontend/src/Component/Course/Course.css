@@ -1,0 +1,31 @@
+.courseMainDiv {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+.allCourses {
+  background-color: red;
+  width: 80%;
+}
+
+.paginationDiv {
+  width: 100%;
+  height: 100px;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10vh;
+}
+
+a {
+  text-decoration: none;
+  font-style: none;
+}
+
+.paginationUl {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
