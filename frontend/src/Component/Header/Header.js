@@ -21,7 +21,7 @@ const Header = () => {
           </Link>
         </div>
         <div className="option">
-          <Link to="/About" alt="About">
+          <Link to="/home" alt="About">
             About
           </Link>
         </div>

@@ -7,8 +7,9 @@ import "./Course.css";
 
 const Course = () => {
   const [allCourses, setAllCourses] = useState([]);
+  const { courseId, setCourseId } = useContext(UserContext);
   const [currentPage, setCurrentPage] = useState(1);
-  const [coursePerPage] = useState(6);
+  const [coursePerPage] = useState(4);
 
   const indexOfLastCourse = currentPage * coursePerPage;
   const indexOfFirstCourse = indexOfLastCourse - coursePerPage;
@@ -39,10 +40,16 @@ const Course = () => {
   return (
     <div className="courseMainDiv">
       <div className="allCourses">
-        <Row xs={1} md={2} className="g-4">
+        <Row xs={1} md={2} className="g-4 ">
           {currentCourse.map((_, idx) => (
             <Col>
-              <Card>
+              <Card
+                style={{ width: "100%", height: "100%" }}
+                onClick={(e) => {
+                  setCourseId(_.id);
+                }}
+                defaultValue={_.id}
+              >
                 <Card.Img
                   variant="top"
                   src="https://www.learnfly.com/img/post_img/1335475250_1_5ev1xmjs2-sj4ddejfdnqa.png"
@@ -56,12 +63,13 @@ const Course = () => {
             </Col>
           ))}
         </Row>
-        <div className="btata">
-          <ul>
+        <div className="paginationDiv">
+          <ul className="paginationUl">
             {pageNumbers.map((number) => {
               return (
                 <li>
                   <a
+                    className="paginationUl"
                     href="#"
                     onClick={() => {
                       paginate(number);
@@ -74,17 +82,6 @@ const Course = () => {
             })}
           </ul>
         </div>
-        {/* {allCourses.map((element, index) => {
-          return (
-            <div key={index}>
-              <div>
-                <div>{element.Title}</div>
-                <div>{element.Author}</div>
-                <div>{element.Price}</div>
-              </div>
-            </div>
-          );
-        })} */}
       </div>
     </div>
   );
