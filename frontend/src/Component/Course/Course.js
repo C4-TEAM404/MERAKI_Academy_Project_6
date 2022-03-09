@@ -7,6 +7,14 @@ import "./Course.css";
 
 const Course = () => {
   const [allCourses, setAllCourses] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [coursePerPage] = useState(6);
+
+  const indexOfLastCourse = currentPage * coursePerPage;
+  const indexOfFirstCourse = indexOfLastCourse - coursePerPage;
+  const currentCourse = allCourses.slice(indexOfFirstCourse, indexOfLastCourse);
+  const pageNumbers = [];
+
   const getAllCourses = async () => {
     try {
       const res = await axios.get("http://localhost:5000/course/getall");
@@ -18,16 +26,21 @@ const Course = () => {
       }
     }
   };
-
+  const paginate = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
   useEffect(() => {
     getAllCourses();
   }, []);
+  for (let i = 1; i <= Math.ceil(allCourses.length / coursePerPage); i++) {
+    pageNumbers.push(i);
+  }
 
   return (
     <div className="courseMainDiv">
       <div className="allCourses">
         <Row xs={1} md={2} className="g-4">
-          {allCourses.map((_, idx) => (
+          {currentCourse.map((_, idx) => (
             <Col>
               <Card>
                 <Card.Img
@@ -43,6 +56,24 @@ const Course = () => {
             </Col>
           ))}
         </Row>
+        <div className="btata">
+          <ul>
+            {pageNumbers.map((number) => {
+              return (
+                <li>
+                  <a
+                    href="#"
+                    onClick={() => {
+                      paginate(number);
+                    }}
+                  >
+                    {number}
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
         {/* {allCourses.map((element, index) => {
           return (
             <div key={index}>

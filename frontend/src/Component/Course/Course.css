@@ -1,3 +1,11 @@
 .courseMainDiv {
   min-height: 100vh;
 }
+
+.btata {
+  background-color: red;
+  width: 100px;
+  height: 100px;
+  z-index: 1000000000000000;
+  color: white;
+}
