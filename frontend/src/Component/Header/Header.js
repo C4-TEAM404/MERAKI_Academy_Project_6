@@ -16,12 +16,12 @@ const Header = () => {
       </div>
       <div className="NavigationBar">
         <div className="option">
-          <Link to="/Home" alt="Home">
+          <Link to="/" alt="Home">
             Home
           </Link>
         </div>
         <div className="option">
-          <Link to="/home" alt="About">
+          <Link to="/" alt="About">
             About
           </Link>
         </div>

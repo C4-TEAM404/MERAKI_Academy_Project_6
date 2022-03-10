@@ -31,9 +31,9 @@ const Introduction = () => {
         </div>
       </div>
       <div className="Part2">
-        <div>
-          <div>Our Popular Courses</div>
-          <div>
+        <div className="page2Details">
+          <div className="popular">Our Popular Courses</div>
+          <div className="details">
             Enim semper, gravida interdum nullam, pellentesque adipiscing
             scelerisque vitae dui, magnis platea. Ac sagittis ridiculus Est ac
             sollicitudin varius integer laoreet morbi porta
