@@ -12,10 +12,9 @@ import "./Login.css";
 
 const Login = () => {
   //====================================================//useState
-  // const useeContext = useContext(UserContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  //====================================================//useEffect
+  //====================================================//useContext
   const { login, setLogin } = useContext(UserContext);
   const history = useNavigate();
   //====================================================//useEffect
