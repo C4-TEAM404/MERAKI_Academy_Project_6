@@ -4,8 +4,11 @@ import { UserContext } from "../../App";
 import Card from "react-bootstrap/Card";
 import { Grid, Row, Col } from "react-bootstrap";
 import "./Course.css";
+import { useNavigate } from "react-router-dom";
 
 const Course = () => {
+  const history = useNavigate();
+
   const [allCourses, setAllCourses] = useState([]);
   const { courseId, setCourseId } = useContext(UserContext);
   const [currentPage, setCurrentPage] = useState(1);
@@ -82,8 +85,8 @@ const Course = () => {
               <Card
                 onClick={(e) => {
                   setCourseId(_.id);
+                  history("/coursedescryption");
                 }}
-                defaultValue={_.id}
               >
                 <Card.Img
                   variant="top"
