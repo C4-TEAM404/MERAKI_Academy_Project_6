@@ -1,13 +1,13 @@
 * {
   padding: 0;
   margin: 0;
-  box-sizing: border-box;
+  /* box-sizing: border-box; */
   font-family: "Righteous", cursive;
 }
 
 body {
   background-color: white;
-  min-height: 100vh;
+  /* min-height: 100vh; */
 }
 
 input::-webkit-outer-spin-button,
@@ -20,7 +20,8 @@ input::-webkit-inner-spin-button {
   /* scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
   overflow-y: scroll; */
-  height: 100vh;
+  /* height: 100vh; */
+  /* height: 100%; */
   padding: 0;
   margin: 0;
 }
