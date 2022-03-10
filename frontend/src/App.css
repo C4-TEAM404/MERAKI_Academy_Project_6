@@ -21,7 +21,6 @@ input::-webkit-inner-spin-button {
   scroll-behavior: smooth;
   overflow-y: scroll; */
   height: 100vh;
-  width: 100vw;
   padding: 0;
   margin: 0;
 }

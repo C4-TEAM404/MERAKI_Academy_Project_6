@@ -43,7 +43,7 @@ const Course = () => {
   return (
     <div className="courseMainDiv">
       <div className="allCourses">
-        <Row xs={1} md={2} className="g-4 ">
+        <Row xs={1} md={2} className="g-4">
           {currentCourse.map((_, idx) => (
             <Col>
               <Card
