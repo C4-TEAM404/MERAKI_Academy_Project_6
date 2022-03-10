@@ -1,11 +1,17 @@
 .courseMainDiv {
   min-height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  /* background-color: red; */
 }
 .allCourses {
-  background-color: red;
-  width: 80%;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .paginationDiv {
@@ -28,4 +34,8 @@ a {
   display: flex;
   flex-direction: row;
   gap: 20px;
+}
+
+.filterDiv {
+  z-index: 1000;
 }
