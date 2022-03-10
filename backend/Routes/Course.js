@@ -17,7 +17,7 @@ courseRouter.post("/new", CreateNewCourse);
 courseRouter.get("/getall", GetAllCourses);
 courseRouter.post("/getByC", GetCourseByCategory);
 courseRouter.get("/getByid/:id", GetCourseById);
-courseRouter.get("/getByT", GetCourseByTitle);
+courseRouter.post("/getByT", GetCourseByTitle);
 courseRouter.delete("/deletebyid/:id", DeleteCourseById);
 courseRouter.put("/updatebyid/:id", UpdateCourseById);
 

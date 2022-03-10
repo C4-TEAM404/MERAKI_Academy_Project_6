@@ -13,8 +13,8 @@ const Course = () => {
   const { courseId, setCourseId } = useContext(UserContext);
   const [currentPage, setCurrentPage] = useState(1);
   const [coursePerPage] = useState(6);
-  // const [filter, setFilter] = useState("");
   const [category, setCategory] = useState(0);
+  const [search, setSearch] = useState("");
 
   const indexOfLastCourse = currentPage * coursePerPage;
   const indexOfFirstCourse = indexOfLastCourse - coursePerPage;
@@ -41,6 +41,7 @@ const Course = () => {
   //===================================================== Filter by category
   const filterByCategory = async (e) => {
     if (e.target.value == 0) {
+      setCategory(0);
       return getAllCourses();
     }
     setCategory(e.target.value);
@@ -53,6 +54,29 @@ const Course = () => {
       console.log(err);
     }
   };
+
+  //===================================================== Filter by category
+
+  const searchByTitle = async (e) => {
+    console.log("bata", e.target.value);
+    if (e.target.value) {
+      console.log(e.target.value);
+      try {
+        const res = await axios.post("http://localhost:5000/course/getByT", {
+          Title: e.target.value,
+          Category: category,
+        });
+        console.log(res);
+        setAllCourses(res.data.results);
+      } catch (err) {
+        throw new Error(err);
+      }
+    } else {
+      let e = { target: { value: category } };
+      filterByCategory(e);
+    }
+  };
+  //===================================================== useEffect
 
   useEffect(() => {
     getAllCourses();
@@ -77,6 +101,29 @@ const Course = () => {
           <option value={"Language"}>Language</option>
           <option value={"sciences"}>sciences</option>
         </select>
+      </div>
+      <div class="input-group">
+        <input
+          type="search"
+          class="form-control rounded"
+          placeholder="Search"
+          aria-label="Search"
+          aria-describedby="search-addon"
+          // onChange={(e) => {
+          //   setSearch(e.target.value);
+          // }}
+          onChange={(e) => {
+            console.log("inside", e.target.value);
+            searchByTitle(e);
+          }}
+        />
+        <button
+          type="button"
+          class="btn btn-outline-primary"
+          onClick={searchByTitle}
+        >
+          search
+        </button>
       </div>
       <div className="allCourses">
         <Row xs={1} md={4} className="g-4">
