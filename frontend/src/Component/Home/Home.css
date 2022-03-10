@@ -145,8 +145,45 @@ h1 {
 .Part3 {
   min-height: 100vh;
   background-color: blue;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 100px;
 }
-.page3MainDiv {
+
+.ratio {
+  width: 50%;
+  background-color: red;
+}
+.why {
+  color: white;
+  font-size: 30px;
+}
+.whyDesc {
+  width: 65%;
+  color: white;
+}
+
+.part3LeftSide {
+  background-color: red;
+  display: flex;
+  flex-direction: column;
+
+  gap: 40px;
+}
+.boxes {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.box {
+  background-color: green;
+  height: 80px;
+}
+.boxDesc {
+  width: 90%;
+}
+/* .page3MainDiv {
   height: 100%;
   background-color: rgb(238, 152, 152);
   display: flex;
@@ -154,7 +191,7 @@ h1 {
   justify-content: space-between;
   align-items: center;
   padding: 20px;
-}
+} */
 
 .btabt {
   background-color: green;
