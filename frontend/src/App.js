@@ -27,7 +27,6 @@ function App() {
           <Route path="/coursedescryption" element={<Course_Details />} />
           <Route path="/createcourse" element={<Create_Course />} />
           <Route path="/Home" element={<Home />} />
-
           <Route path="/Course" element={<Course />} />
         </Routes>
         <Footer />
