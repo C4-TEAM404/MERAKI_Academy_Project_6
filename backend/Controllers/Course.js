@@ -85,7 +85,7 @@ const GetCourseByCategory = (req, res) => {
     return res.status(200).json({
       success: true,
       massage: `All the ${Category} Courses`,
-      results: result,
+      result: result,
     });
   });
 };
