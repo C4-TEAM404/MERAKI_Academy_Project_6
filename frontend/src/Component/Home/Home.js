@@ -94,7 +94,34 @@ const Introduction = () => {
           </CardGroup>
         </div>
       </div>
-      <div className="Part3">Part3</div>
+      <div className="Part3">
+        <div className="part3LeftSide">
+          <div className="why">Why Choose Us</div>
+          <div className="whyDesc">
+            Auctor eleifend egestas felis a suscipit, amet ultricies orci. Eget
+            nonummy ultrices magna ornare tellus molestie.
+          </div>
+          <div className="boxes">
+            <div className="box">
+              <div className="boxIcon">
+                <img src="https://demo.themeix.com/html/eduzone/images/video-logo.png" />
+              </div>
+              <div className="boxDesc">
+                loasdasdasdasdloasdasdasdasdloasdasdasdasdloasdasdasdasdloasdasdasdasdloasdasdasdasd
+              </div>
+            </div>
+            <div className="box">2</div>
+            <div className="box">3</div>
+          </div>
+        </div>
+        <div class="ratio ratio-16x9">
+          <iframe
+            src="https://www.youtube.com/embed/vlDzYIIOYmM"
+            title="YouTube video"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </div>
       <div className="Part4">Part4</div>
       <div className="Part5">Part5</div>
     </div>
