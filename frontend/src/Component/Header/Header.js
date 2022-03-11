@@ -1,14 +1,11 @@
 //====================================================//Require
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
+import React, { useState } from "react";
+import { Navbar, Container, Nav } from "react-bootstrap";
 
 //CSS File
 import "./Header.css";
 
 const Header = () => {
-  const [showNavColor, setShowNavColor] = useState(false);
-
   return (
     <div className="HeaderMainDiv">
       {/* <div className="Logo">
@@ -50,7 +47,7 @@ const Header = () => {
           style={{ width: "100%" }}
         >
           <Container>
-            <Navbar.Brand href="#home">
+            <Navbar.Brand href="home">
               <img
                 src="https://i.ibb.co/ZhmywL6/logo.png"
                 height="70"
@@ -61,11 +58,11 @@ const Header = () => {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav bgColor='dark'">
               <Nav className="ms-auto gap-5 navbar navbar-light bg-lignt ">
-                <Nav.Link href="#features">Home</Nav.Link>
-                <Nav.Link href="#features">About</Nav.Link>
-                <Nav.Link href="#features">Coures</Nav.Link>
-                <Nav.Link href="#features">login</Nav.Link>
-                <Nav.Link href="#features">Register</Nav.Link>
+                <Nav.Link href="home">Home</Nav.Link>
+                <Nav.Link href="home">About</Nav.Link>
+                <Nav.Link href="Course">Coures</Nav.Link>
+                <Nav.Link href="login">login</Nav.Link>
+                <Nav.Link href="Register">Register</Nav.Link>
               </Nav>
             </Navbar.Collapse>
           </Container>

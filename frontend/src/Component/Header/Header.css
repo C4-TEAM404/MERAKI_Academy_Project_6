@@ -57,6 +57,7 @@ a:hover {
 
 .navbar-light .navbar-nav .nav-link {
   color: rgb(0, 0, 0);
+  letter-spacing: 1px;
 }
 .nav-link:focus,
 .nav-link:hover {
