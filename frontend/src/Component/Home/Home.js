@@ -1,11 +1,17 @@
 //====================================================//Require
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
-import Button from "react-bootstrap/Button";
+import React from "react";
 import Card from "react-bootstrap/Card";
 import CardGroup from "react-bootstrap/CardGroup";
 import { MDBBtn } from "mdb-react-ui-kit";
+import {
+  MDBCard,
+  MDBCardBody,
+  MDBCardTitle,
+  MDBCardText,
+  MDBRow,
+  MDBCol,
+  MDBListGroupItem,
+} from "mdb-react-ui-kit";
 
 //CSS File
 import "./Home.css";
@@ -17,7 +23,7 @@ const Introduction = () => {
         <div className="part1Div">
           <div className="Message1">
             <div>
-              <div className="hex">HEX</div>{" "}
+              <div className="hex">HEX</div>
               <div className="Training">Training Organization</div>
             </div>
             <div className="Message2">
@@ -44,7 +50,7 @@ const Introduction = () => {
         </div>
         <div className="Popular_card">
           <CardGroup>
-            <Card>
+            <Card className="shadow p-3 mb-5 bg-body rounded">
               <Card.Img
                 variant="top"
                 src="https://focusvocationalschool.com/wp-content/uploads/2020/12/170427-637363828865101045-16x9-1.jpg"
@@ -61,7 +67,7 @@ const Introduction = () => {
                 <small className="text-muted">Last updated 3 mins ago</small>
               </Card.Footer>
             </Card>
-            <Card>
+            <Card className="shadow p-3 mb-5 bg-body rounded">
               <Card.Img
                 variant="top"
                 src="https://www.learnfly.com/img/post_img/1335475250_1_5ev1xmjs2-sj4ddejfdnqa.png"
@@ -77,7 +83,7 @@ const Introduction = () => {
                 <small className="text-muted">Last updated 3 mins ago</small>
               </Card.Footer>
             </Card>
-            <Card>
+            <Card className="shadow p-3 mb-5 bg-body rounded">
               <Card.Img
                 variant="top"
                 src="https://udemycoupons.me/wp-content/uploads/2021/09/CSS-Complete-Course.jpg"
@@ -98,7 +104,7 @@ const Introduction = () => {
         </div>
       </div>
       <div className="Part3">
-        <div className="part3LeftSide">
+        {/* <div className="part3LeftSide">
           <div className="why">Why Choose Us</div>
           <div className="whyDesc">
             Auctor eleifend egestas felis a suscipit, amet ultricies orci. Eget
@@ -123,6 +129,86 @@ const Introduction = () => {
             title="YouTube video"
             allowfullscreen
           ></iframe>
+        </div> */}
+        <div className="part3Div">
+          <MDBCard
+            style={({ width: "100%" }, { height: "100%" })}
+            className="border-0 p-0"
+          >
+            <MDBRow>
+              <MDBCol md="6">
+                <MDBCardBody>
+                  <MDBCardTitle className="TitlePart3">
+                    Why Choose Us
+                  </MDBCardTitle>
+                  <MDBCardText>
+                    This is a wider card with supporting text below as a natural
+                    lead-in to additional content. This content is a little bit
+                    longer.
+                  </MDBCardText>
+                  <MDBListGroupItem
+                    className="border-0 g-10"
+                    style={{ height: "21vh" }}
+                  >
+                    <img
+                      src="https://i.ibb.co/fQ134DJ/video-logo3.png"
+                      className="img-thumbnail border-0 "
+                      alt="..."
+                      style={{ maxWidth: "5rem" }}
+                    />
+                    <div className="font-weight-bold fs-4">
+                      {" "}
+                      Online Certification
+                    </div>
+                    <div className="text-muted ">
+                      Performance Based Certificate
+                    </div>
+                  </MDBListGroupItem>
+                  <MDBListGroupItem
+                    className="border-0 gap-10 g-20"
+                    style={{ height: "21vh" }}
+                  >
+                    <img
+                      src="https://i.ibb.co/375sGXY/video-logo.png"
+                      className="img-thumbnail border-0"
+                      alt="..."
+                      style={{ maxWidth: "5rem" }}
+                    />
+                    <div className="font-weight-bold fs-4">
+                      Best Education System
+                    </div>
+                    <div className="text-muted">
+                      Advance Education Management
+                    </div>
+                  </MDBListGroupItem>
+                  <MDBListGroupItem
+                    className="border-0"
+                    style={{ height: "21vh" }}
+                  >
+                    <img
+                      src="https://i.ibb.co/6XD428m/video-logo2.png"
+                      className="img-thumbnail border-0"
+                      alt="..."
+                      style={{ maxWidth: "5rem" }}
+                    />
+                    <div className="font-weight-bold fs-4">
+                      Learning Management
+                    </div>
+                    <div className="text-muted">LMS Integration </div>
+                  </MDBListGroupItem>
+                </MDBCardBody>
+              </MDBCol>
+              <MDBCol md="6">
+                <div className="ratio ratio-1x1">
+                  <iframe
+                    src="https://www.youtube.com/embed/vlDzYIIOYmM"
+                    title="YouTube video"
+                    allowfullscreen
+                  ></iframe>
+                </div>
+              </MDBCol>
+            </MDBRow>
+          </MDBCard>
         </div>
       </div>
       <div className="Part4">Part4</div>
