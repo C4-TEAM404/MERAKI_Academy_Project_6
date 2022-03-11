@@ -211,7 +211,9 @@ const Introduction = () => {
           </MDBCard>
         </div>
       </div>
-      <div className="Part4">Part4</div>
+      <div className="Part4">
+        <div></div>
+      </div>
       <div className="Part5">Part5</div>
     </div>
   );

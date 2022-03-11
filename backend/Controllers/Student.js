@@ -5,11 +5,22 @@ const bcrypt = require("bcrypt");
 //====================================================//CreateNewStudent
 
 const CreateNewStudent = async (req, res) => {
-  let { firstName, lastName, phone, email, password,profileImage, roleId } = req.body;
+  let { firstName, lastName, phone, email, password, profileImage, roleId } =
+    req.body;
   const query = `INSERT INTO student (firstName,lastName,phone,email,password,profileImage,roleId) VALUES (?,?,?,?,?,?,?)`;
   password = await bcrypt.hash(password, 10);
-  const data = [firstName, lastName, phone, email, password,profileImage, roleId];
+  const data = [
+    firstName,
+    lastName,
+    phone,
+    email,
+    password,
+    profileImage,
+    roleId,
+  ];
   connection.query(query, data, (err, result) => {
+    console.log("CreateNewStudent", err);
+
     if (!err) {
       return res.status(200).json({
         success: true,
@@ -92,7 +103,8 @@ const DeleteStudentById = (req, res) => {
 
 const UpdateStudentById = (req, res) => {
   userId = req.token.userId;
-  const { firstName, lastName, phone, email, password,profileImage } = req.body;
+  const { firstName, lastName, phone, email, password, profileImage } =
+    req.body;
   const query = `SELECT password FROM student WHERE id= ?`;
   const data = [userId];
   connection.query(query, data, async (err, result) => {
@@ -101,7 +113,7 @@ const UpdateStudentById = (req, res) => {
       console.log(CheckPassword, "-------");
       if (CheckPassword) {
         const query = `UPDATE student SET firstName=?, lastName=? , phone=?, email=?,profileImage=? WHERE id= ?`;
-        const data = [firstName, lastName, phone, email,profileImage, userId];
+        const data = [firstName, lastName, phone, email, profileImage, userId];
         connection.query(query, data, (err, result) => {
           if (!err) {
             return res.status(201).json({
