@@ -1,4 +1,5 @@
 import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useState, useEffect, createContext } from "react";
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import Login from "./Component/Login/Login";
