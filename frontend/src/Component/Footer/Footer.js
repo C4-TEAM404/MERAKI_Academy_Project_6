@@ -66,25 +66,64 @@ const Footer = () => {
               <MDBCol lg="3" md="6" className="mb-4 mb-md-0">
                 <h5 className="text-uppercase">Links</h5>
 
+                <ul className="list-unstyled mb-0 ">
+                  <li>
+                    <a
+                      href="http://localhost:3000/home"
+                      className="text-white "
+                    >
+                      HOME
+                    </a>
+                  </li>
+                  <li>
+                    <a href="http://localhost:3000/home" className="text-white">
+                      ABOUT
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="http://localhost:3000/Course"
+                      className="text-white"
+                    >
+                      Course
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="http://localhost:3000/login"
+                      className="text-white "
+                    >
+                      LOGIN
+                    </a>
+                  </li>
+                </ul>
+              </MDBCol>
+
+              <MDBCol lg="3" md="6" className="mb-4 mb-md-0 text-left">
+                <h5 className="text-uppercase">Links</h5>
+
                 <ul className="list-unstyled mb-0">
                   <li>
-                    <a href="#!" className="text-white">
-                      Link 1
+                    <a
+                      href="http://localhost:3000/Register"
+                      className="text-white"
+                    >
+                      REGISTER
                     </a>
                   </li>
                   <li>
                     <a href="#!" className="text-white">
-                      Link 2
+                      Register And Account
                     </a>
                   </li>
                   <li>
                     <a href="#!" className="text-white">
-                      Link 3
+                      About Us
                     </a>
                   </li>
                   <li>
                     <a href="#!" className="text-white">
-                      Link 4
+                      Services & Help
                     </a>
                   </li>
                 </ul>
@@ -96,49 +135,22 @@ const Footer = () => {
                 <ul className="list-unstyled mb-0">
                   <li>
                     <a href="#!" className="text-white">
-                      Link 1
+                      Support Forum
                     </a>
                   </li>
                   <li>
                     <a href="#!" className="text-white">
-                      Link 2
+                      About Us
                     </a>
                   </li>
                   <li>
                     <a href="#!" className="text-white">
-                      Link 3
+                      Register And Account
                     </a>
                   </li>
                   <li>
                     <a href="#!" className="text-white">
-                      Link 4
-                    </a>
-                  </li>
-                </ul>
-              </MDBCol>
-
-              <MDBCol lg="3" md="6" className="mb-4 mb-md-0">
-                <h5 className="text-uppercase">Links</h5>
-
-                <ul className="list-unstyled mb-0">
-                  <li>
-                    <a href="#!" className="text-white">
-                      Link 1
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#!" className="text-white">
-                      Link 2
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#!" className="text-white">
-                      Link 3
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#!" className="text-white">
-                      Link 4
+                      Services & Help
                     </a>
                   </li>
                 </ul>
@@ -150,22 +162,22 @@ const Footer = () => {
                 <ul className="list-unstyled mb-0">
                   <li>
                     <a href="#!" className="text-white">
-                      Link 1
+                      Support Forum
                     </a>
                   </li>
                   <li>
                     <a href="#!" className="text-white">
-                      Link 2
+                      Faq & Help Center
                     </a>
                   </li>
                   <li>
                     <a href="#!" className="text-white">
-                      Link 3
+                      Services & Help
                     </a>
                   </li>
                   <li>
                     <a href="#!" className="text-white">
-                      Link 4
+                      Register And Account
                     </a>
                   </li>
                 </ul>
@@ -178,9 +190,9 @@ const Footer = () => {
           className="text-center p-3"
           style={{ backgroundColor: "rgba(0, 0, 0, 0.2)" }}
         >
-          © 2020 Copyright:
-          <a className="text-white" href="https://mdbootstrap.com/">
-            MDBootstrap.com
+          © 2021 Copyright:
+          <a className="text-white" href="http://localhost:3000/home/">
+            HEX Company
           </a>
         </div>
       </MDBFooter>
