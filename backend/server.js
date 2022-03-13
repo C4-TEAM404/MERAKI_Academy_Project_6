@@ -61,18 +61,4 @@ io.on("connection", (socket) => {
     io.in("omar").emit("message", "success");
     console.log(data);
   });
-
-  // =================================================== video
-
-  socket.on("callUser", (data) => {
-    io.to(data.userToCall).emit("callUser", {
-      signal: data.signalData,
-      from: data.from,
-      name: data.name,
-    });
-  });
-
-  socket.on("answerCall", (data) => {
-    io.in(data.to).emit("callAccepted", data.signal);
-  });
 });
