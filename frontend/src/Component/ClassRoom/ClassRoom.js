@@ -1,44 +1,55 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import Peer from "peerjs";
-import Webcam from "react-webcam";
+import { UserContext } from "../../App";
+import Chat from "../Chat/Chat";
+import axios from "axios";
 
 const peer = new Peer();
 const ClassRoom = () => {
+  const { login, courseId } = useContext(UserContext);
   const [peerId, setPeerId] = useState("");
   const [remotePeerId, setRemotePeerId] = useState("");
-  const [ans, setAns] = useState("");
   const remoteVideo = useRef(null);
-  const currentUser = useRef(null);
   const mycam = useRef(null);
 
-  const answe = useRef(null);
-  const str = useRef(null);
-
-  useEffect(() => {
+  useEffect(async () => {
+    console.log("lmlml");
     peer.on("open", function (id) {
-      console.log(id);
+      console.log("id", id);
       setPeerId(id);
     });
 
-    peer.on("call", (call) => {
-      console.log(call);
-      var getUserMedia =
-        navigator.getUserMedia ||
-        navigator.webkitGetUserMedia ||
-        navigator.mozGetUserMedia;
-      getUserMedia({ video: true, audio: true }, function (stream) {
-        str.current = stream;
-        answe.current = call;
-        console.log("str", stream, "answe", call);
-        // call.answer(stream); // Answer the call with an A/V stream.
-        call.on("stream", function (remoteStream) {
-          remoteVideo.current.srcObject = remoteStream;
-          remoteVideo.current.play();
-          console.log(remoteVideo);
+    try {
+      console.log(Object.values(peer)[2]);
+      console.table(peer._socket._events.message.context._id);
+      console.log(courseId);
+      const res = await axios.put("http://localhost:5000/course/updateroomid", {
+        room_Id:
+          Object.values(peer)[2] || peer._socket._events.message.context._id,
+        courseId,
+      });
+      console.log(res);
+      peer.on("call", (call) => {
+        console.log(call);
+        var getUserMedia =
+          navigator.getUserMedia ||
+          navigator.webkitGetUserMedia ||
+          navigator.mozGetUserMedia;
+        getUserMedia({ video: true, audio: true }, function (stream) {
+          mycam.current.srcObject = stream;
+          mycam.current.play();
+          console.log("str", stream, "answe", call);
+          call.answer(stream); // Answer the call with an A/V stream.
+          call.on("stream", function (remoteStream) {
+            remoteVideo.current.srcObject = remoteStream;
+            remoteVideo.current.play();
+            console.log(remoteVideo);
+          });
         });
       });
-    });
-    console.log(peer);
+    } catch (err) {
+      console.log(err.response);
+    }
   }, []);
 
   const call = (peerId) => {
@@ -56,31 +67,33 @@ const ClassRoom = () => {
         console.log(remoteVideo);
       });
     });
-    console.log();
   };
 
-  const answer1 = async () => {
-    peer.on("call", (call) => {
-      console.log(call);
-      var getUserMedia =
-        navigator.getUserMedia ||
-        navigator.webkitGetUserMedia ||
-        navigator.mozGetUserMedia;
-      getUserMedia({ video: true, audio: true }, function (stream) {
-        call.answer(stream); // Answer the call with an A/V stream.
-        call.on("stream", function (remoteStream) {
-          remoteVideo.current.srcObject = remoteStream;
-          remoteVideo.current.play();
-          console.log(remoteVideo);
-        });
-      });
-    });
+  // const answer1 = async () => {
+  //   mycam.current.srcObject = str;
+  //   mycam.current.play();
+  //   peer.on("call", (call) => {
+  //     console.log(call);
+  //     var getUserMedia =
+  //       navigator.getUserMedia ||
+  //       navigator.webkitGetUserMedia ||
+  //       navigator.mozGetUserMedia;
+  //     getUserMedia({ video: true, audio: true }, function (stream) {
+  //       call.answer(stream); // Answer the call with an A/V stream.
+  //       call.on("stream", function (remoteStream) {
+  //         remoteVideo.current.srcObject = remoteStream;
+  //         remoteVideo.current.play();
+  //         console.log(remoteVideo);
+  //       });
+  //     });
+  //   });
 
-    console.log("answe", answe, "str", str);
-    answe.current.answer(str.current);
-  };
+  //   console.log("answe", answe, "str", str);
+  //   answe.current.answer(str.current);
+  // };
   return (
     <div>
+      <Chat />
       {/* <Webcam /> */}
       <input
         type="text"
@@ -95,14 +108,6 @@ const ClassRoom = () => {
         }}
       >
         call
-      </button>
-      <button
-        onClick={() => {
-          setAns(true);
-          answer1();
-        }}
-      >
-        answer
       </button>
       <video ref={mycam} />
       <video ref={remoteVideo} />
