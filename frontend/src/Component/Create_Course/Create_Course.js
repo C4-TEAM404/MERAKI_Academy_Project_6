@@ -8,6 +8,7 @@ import "./Create_Course.css";
 
 const Create_Course = () => {
   const history = useNavigate();
+  const { login } = useContext(UserContext);
   //====================================================//useState
 
   const [title, setTitle] = useState("");
@@ -20,6 +21,7 @@ const Create_Course = () => {
   const [category, setCategory] = useState("");
   const [video, setVideo] = useState("");
   const [image, setImage] = useState("");
+  const [teacherId, setTeacherId] = useState("");
 
   //====================================================//function
 
@@ -98,6 +100,7 @@ const Create_Course = () => {
         Category: category,
         Video: video,
         image,
+        teacher_Id: login.userId,
         roleId: 2,
       });
 
