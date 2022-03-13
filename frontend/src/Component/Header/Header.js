@@ -1,6 +1,7 @@
 //====================================================//Require
 import React, { useState } from "react";
 import { Navbar, Container, Nav } from "react-bootstrap";
+import { Routes, Route, Link, useNavigate } from "react-router-dom";
 
 //CSS File
 import "./Header.css";
@@ -60,7 +61,10 @@ const Header = () => {
               <Nav className="ms-auto gap-5 navbar navbar-light bg-lignt ">
                 <Nav.Link href="home">Home</Nav.Link>
                 <Nav.Link href="home">About</Nav.Link>
-                <Nav.Link href="Course">Coures</Nav.Link>
+                {/* <Nav.Link href="Course">Coures</Nav.Link> */}
+                <Link to="/Course" alt="Course">
+                  Course
+                </Link>
                 <Nav.Link href="login">login</Nav.Link>
                 <Nav.Link href="Register">Register</Nav.Link>
               </Nav>
