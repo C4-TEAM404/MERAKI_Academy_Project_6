@@ -41,6 +41,8 @@ const Login = () => {
         token: res.data.token,
         isLoggedIn: true,
         userId: res.data.userId[0].id,
+        firstName: res.data.userId[0].firstName,
+        lastName: res.data.userId[0].lastName,
         roleId: res.data.role,
         profileImage: res.data.userId[0].profileImage,
       };
