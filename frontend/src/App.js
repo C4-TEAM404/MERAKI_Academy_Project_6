@@ -10,6 +10,8 @@ import Course_Details from "./Component/Course_Details/Course_Details";
 import Create_Course from "./Component/Create_Course/Create_Course";
 import Home from "./Component/Home/Home";
 import Course from "./Component/Course/Course";
+import Chat from "./Component/Chat/Chat";
+import ClassRoom from "./Component/ClassRoom/ClassRoom";
 
 function App() {
   const [login, setLogin] = useState({});
@@ -17,8 +19,10 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
       <UserContext.Provider value={{ login, setLogin, setCourseId, courseId }}>
+        <Header />
+        <Link to="/chat">chat</Link>
+        <Link to="/video">video</Link>
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register_Student />} />
@@ -28,6 +32,8 @@ function App() {
           <Route path="/createcourse" element={<Create_Course />} />
           <Route path="/Home" element={<Home />} />
           <Route path="/Course" element={<Course />} />
+          <Route path="/chat" element={<Chat />} />
+          <Route path="/video" element={<ClassRoom />} />
         </Routes>
         <Footer />
       </UserContext.Provider>
