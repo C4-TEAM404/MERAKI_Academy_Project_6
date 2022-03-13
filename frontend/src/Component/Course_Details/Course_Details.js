@@ -1,6 +1,6 @@
 //====================================================//Require
 import React, { useState, useEffect, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { UserContext } from "../../App";
 
@@ -80,6 +80,8 @@ const Course_Details = () => {
           ></iframe>
         </dd>
       </dl>
+
+      <Link to="/video">video</Link>
     </div>
   );
 };
