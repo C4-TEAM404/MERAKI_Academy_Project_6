@@ -1,14 +1,22 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import Peer from "peerjs";
 import { UserContext } from "../../App";
 import Chat from "../Chat/Chat";
 import axios from "axios";
+import stopMediaStream from "stop-media-stream";
 
 const peer = new Peer();
 const ClassRoom = () => {
+  const history = useNavigate();
   const { login, courseId } = useContext(UserContext);
   const [peerId, setPeerId] = useState("");
+  const [roomId, setRoomId] = useState("");
   const [remotePeerId, setRemotePeerId] = useState("");
+  const [endcall, setEndcall] = useState({});
+  const [streamtrack, setStreamtrack] = useState({});
+  const [streamtrackcall, setStreamtrackcall] = useState({});
+  const [streamtrackcal2, setStreamtrackcal2] = useState({});
   const remoteVideo = useRef(null);
   const mycam = useRef(null);
 
@@ -29,27 +37,59 @@ const ClassRoom = () => {
         courseId,
       });
       console.log(res);
-      peer.on("call", (call) => {
-        console.log(call);
-        var getUserMedia =
-          navigator.getUserMedia ||
-          navigator.webkitGetUserMedia ||
-          navigator.mozGetUserMedia;
-        getUserMedia({ video: true, audio: true }, function (stream) {
-          mycam.current.srcObject = stream;
-          mycam.current.play();
-          console.log("str", stream, "answe", call);
-          call.answer(stream); // Answer the call with an A/V stream.
-          call.on("stream", function (remoteStream) {
-            remoteVideo.current.srcObject = remoteStream;
-            remoteVideo.current.play();
-            console.log(remoteVideo);
-          });
-        });
-      });
+      if (login.roleId == 3) {
+        const res1 = await axios.get(
+          `http://localhost:5000/course/getByid/${courseId}`
+        );
+
+        setRoomId(res1.data.results[0].room_Id);
+        console.log(res1);
+      }
+
+      // peer.on("call", (call) => {
+      //   console.log(call);
+      //   var getUserMedia =
+      //     navigator.getUserMedia ||
+      //     navigator.webkitGetUserMedia ||
+      //     navigator.mozGetUserMedia;
+      //   getUserMedia({ video: true, audio: true }, function (stream) {
+      //     mycam.current.srcObject = stream;
+      //     mycam.current.play();
+      //     console.log("str", stream, "answe", call);
+      //     call.answer(stream); // Answer the call with an A/V stream.
+      //     call.on("stream", function (remoteStream) {
+      //       remoteVideo.current.srcObject = remoteStream;
+      //       remoteVideo.current.play();
+      //       console.log(remoteVideo);
+      //     });
+      //   });
+      // });
     } catch (err) {
       console.log(err.response);
     }
+  }, []);
+
+  useEffect(() => {
+    peer.on("call", (call) => {
+      console.log(call);
+      setEndcall(call);
+      var getUserMedia =
+        navigator.getUserMedia ||
+        navigator.webkitGetUserMedia ||
+        navigator.mozGetUserMedia;
+      getUserMedia({ video: true, audio: true }, function (stream) {
+        mycam.current.srcObject = stream;
+        mycam.current.play();
+        setStreamtrack(stream.getTracks());
+        console.log("str", stream, "answe", call);
+        call.answer(stream); // Answer the call with an A/V stream.
+        call.on("stream", function (remoteStream) {
+          remoteVideo.current.srcObject = remoteStream;
+          remoteVideo.current.play();
+          console.log(remoteVideo);
+        });
+      });
+    });
   }, []);
 
   const call = (peerId) => {
@@ -60,11 +100,13 @@ const ClassRoom = () => {
     getUserMedia({ video: true, audio: true }, function (stream) {
       mycam.current.srcObject = stream;
       mycam.current.play();
+      setStreamtrackcall(stream.getTracks());
       var call = peer.call(peerId, stream);
       call.on("stream", function (remoteStream) {
         remoteVideo.current.srcObject = remoteStream;
         remoteVideo.current.play();
         console.log(remoteVideo);
+        setStreamtrackcal2(remoteStream.getTracks());
       });
     });
   };
@@ -94,7 +136,6 @@ const ClassRoom = () => {
   return (
     <div>
       <Chat />
-      {/* <Webcam /> */}
       <input
         type="text"
         value={remotePeerId}
@@ -109,8 +150,44 @@ const ClassRoom = () => {
       >
         call
       </button>
+      <button
+        onClick={() => {
+          // navigator.mediaDevices
+          // .getUserMedia({ video: true, audio: false })
+          // .then((mediaStream) => {
+          //   stopMediaStream(mediaStream);
+          // });
+          if (login.roleId == 2) {
+            streamtrack.forEach(function (track) {
+              if (track.readyState == "live") {
+                track.stop();
+              }
+            });
+            streamtrackcall.forEach(function (track) {
+              if (track.readyState == "live") {
+                track.stop();
+              }
+            });
+            endcall.close();
+          } else if (login.roleId == 3) {
+            streamtrackcall.forEach(function (track) {
+              if (track.readyState == "live") {
+                track.stop();
+              }
+            });
+            streamtrackcal2.forEach(function (track) {
+              if (track.readyState == "live") {
+                track.stop();
+              }
+            });
+          }
+        }}
+      >
+        end
+      </button>
+      <button onClick={() => {}}>start</button>
       <video ref={mycam} />
-      <video ref={remoteVideo} />
+      {login.roleId != 2 && <video ref={remoteVideo} />}
       ClassRoom
     </div>
   );
