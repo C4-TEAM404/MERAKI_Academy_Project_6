@@ -152,9 +152,11 @@ Create Table user_courses(
 
     id int not null auto_increment primary key,
     studentId int,
+    teacher_Id int,
     courseId int,
     is_deleted TINYINT Default 0,
     FOREIGN Key(studentId) REFERENCES Student(id) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN Key(teacher_Id) REFERENCES teacher(id) ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN Key(courseId) REFERENCES course(id) ON DELETE CASCADE ON UPDATE CASCADE
 
 );
@@ -162,9 +164,9 @@ Create Table user_courses(
 -- ====================================================//Insert data user_courses Table
 
 
-Insert into user_courses (studentId,courseId) Values (1,1);
-Insert into user_courses (studentId,courseId) Values (1,2);
-Insert into user_courses (studentId,courseId) Values (1,3);
-Insert into user_courses (studentId,courseId) Values (2,1);
-Insert into user_courses (studentId,courseId) Values (2,2);
-Insert into user_courses (studentId,courseId) Values (2,3);
+Insert into user_courses (studentId,teacher_Id,courseId) Values (1,1,1);
+Insert into user_courses (studentId,teacher_Id,courseId) Values (1,1,2);
+Insert into user_courses (studentId,teacher_Id,courseId) Values (1,1,3);
+Insert into user_courses (studentId,teacher_Id,courseId) Values (2,1,1);
+Insert into user_courses (studentId,teacher_Id,courseId) Values (2,2,2);
+Insert into user_courses (studentId,teacher_Id,courseId) Values (2,2,3);
