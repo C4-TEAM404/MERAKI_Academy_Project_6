@@ -13,6 +13,7 @@ import Home from "./Component/Home/Home";
 import Course from "./Component/Course/Course";
 import Chat from "./Component/Chat/Chat";
 import ClassRoom from "./Component/ClassRoom/ClassRoom";
+import Payment from "./Component/Payment/Payment";
 
 function App() {
   const [login, setLogin] = useState({});
@@ -35,6 +36,7 @@ function App() {
           <Route path="/Course" element={<Course />} />
           <Route path="/chat" element={<Chat />} />
           <Route path="/video" element={<ClassRoom />} />
+          <Route path="/Payment" element={<Payment />} />
         </Routes>
         <Footer />
       </UserContext.Provider>

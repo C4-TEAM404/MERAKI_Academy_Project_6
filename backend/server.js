@@ -7,6 +7,7 @@ const app = express();
 app.use(express.json());
 const cors = require("cors");
 app.use(cors());
+
 // ===================================================//create server
 
 const server = http.createServer(app);
@@ -23,6 +24,7 @@ const studentRouter = require("./Routes/Student");
 const courseRouter = require("./Routes/Course");
 const roleRouter = require("./Routes/Role");
 const LoginRouter = require("./Routes/Login");
+const Payment = require("./Routes/Payment");
 const req = require("express/lib/request");
 //====================================================// Routes Middleware
 app.use("/admin", adminRouter);
@@ -31,6 +33,7 @@ app.use("/student", studentRouter);
 app.use("/course", courseRouter);
 app.use("/role", roleRouter);
 app.use("/login", LoginRouter);
+app.use("/payment", Payment);
 
 //====================================================// Handles any other endpoints [unassigned - endpoints]
 app.use("*", (req, res) => res.status(404).json("NO content at this path"));
@@ -39,7 +42,6 @@ server.listen(PORT, () => {
   console.log(`SERVER WORKING ON PORT: ${PORT}`);
 });
 
-// ============================
 // ===================================================
 io.on("connection", (socket) => {
   console.log(`connected ${socket.id}`);
