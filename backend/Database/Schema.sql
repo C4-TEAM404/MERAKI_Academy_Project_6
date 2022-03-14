@@ -86,24 +86,36 @@ Create Table course(
     Category varchar(255),
     Video varchar(255),
     image varchar(255),
+    room_Id varchar(255),
+    teacher_Id int not null,
     is_deleted TINYINT Default 0,
     roleId int not null,
-    FOREIGN Key(roleId) REFERENCES Role(id) ON DELETE CASCADE ON UPDATE CASCADE
+    FOREIGN Key(roleId) REFERENCES Role(id) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN Key(teacher_Id) REFERENCES teacher(id) ON DELETE CASCADE ON UPDATE CASCADE
 
 
 );
 
 -- ====================================================//Insert data Course Table
 
-Insert into course (Title,Description,Price,language,Schedule,Author,Requirements,Category,Video,roleId) Values("Javascript","Dom&Jquery","50$","English","7-11 PM","Dainile The'","Knowing basic concept","software","https://youtu.be/gT0Lh1eYk78",2);
-Insert into course (Title,Description,Price,language,Schedule,Author,Requirements,Category,Video,roleId) Values("Tenses","ELEMENT","50$","Espanish","7-11 PM","james Khose'"," basic concept","Language","https://youtu.be/9JSANnwYpBY",2);
-Insert into course (Title,Description,Price,language,Schedule,Author,Requirements,Category,Video,roleId) Values("Newton Second low","physics concepts","50$","Arabic","7-11 PM","Ghaidaa Sleeman"," basic concept","sciences","https://youtu.be/miA_Jfin2Qg",2);
-Insert into course (Title,Description,Price,language,Schedule,Author,Requirements,Category,Video,roleId) Values("Javascript","Dom&Jquery","50$","English","7-11 PM","Dainile The'","Knowing basic concept","software","https://youtu.be/gT0Lh1eYk78",2);
-Insert into course (Title,Description,Price,language,Schedule,Author,Requirements,Category,Video,roleId) Values("Tenses","ELEMENT","50$","Espanish","7-11 PM","james Khose'"," basic concept","Language","https://youtu.be/9JSANnwYpBY",2);
-Insert into course (Title,Description,Price,language,Schedule,Author,Requirements,Category,Video,roleId) Values("Newton Second low","physics concepts","50$","Arabic","7-11 PM","Ghaidaa Sleeman"," basic concept","sciences","https://youtu.be/miA_Jfin2Qg",2);
-Insert into course (Title,Description,Price,language,Schedule,Author,Requirements,Category,Video,roleId) Values("Javascript","Dom&Jquery","50$","English","7-11 PM","Dainile The'","Knowing basic concept","software","https://youtu.be/gT0Lh1eYk78",2);
-Insert into course (Title,Description,Price,language,Schedule,Author,Requirements,Category,Video,roleId) Values("Tenses","ELEMENT","50$","Espanish","7-11 PM","james Khose'"," basic concept","Language","https://youtu.be/9JSANnwYpBY",2);
-Insert into course (Title,Description,Price,language,Schedule,Author,Requirements,Category,Video,roleId) Values("Newton Second low","physics concepts","50$","Arabic","7-11 PM","Ghaidaa Sleeman"," basic concept","sciences","https://youtu.be/miA_Jfin2Qg",2);
+Insert into course (Title,Description,Price,language,Schedule,Author,Requirements,Category,Video,image,room_Id,
+    teacher_Id,roleId) Values("Javascript","Dom&Jquery","50$","English","7-11 PM","Dainile The'","Knowing basic concept","software","https://youtu.be/gT0Lh1eYk78","https://i.imgur.com/6xrqbvr.jpg",null,1,2);
+Insert into course (Title,Description,Price,language,Schedule,Author,Requirements,Category,Video,image,room_Id,
+    teacher_Id,roleId) Values("Tenses","ELEMENT","50$","Espanish","7-11 PM","james Khose'"," basic concept","Language","https://youtu.be/9JSANnwYpBY","https://i.imgur.com/6xrqbvr.jpg",null,1,2);
+Insert into course (Title,Description,Price,language,Schedule,Author,Requirements,Category,Video,image,room_Id,
+    teacher_Id,roleId) Values("Newton Second low","physics concepts","50$","Arabic","7-11 PM","Ghaidaa Sleeman"," basic concept","sciences","https://youtu.be/miA_Jfin2Qg","https://i.imgur.com/6xrqbvr.jpg",null,1,2);
+Insert into course (Title,Description,Price,language,Schedule,Author,Requirements,Category,Video,image,room_Id,
+    teacher_Id,roleId) Values("Javascript","Dom&Jquery","50$","English","7-11 PM","Dainile The'","Knowing basic concept","software","https://youtu.be/gT0Lh1eYk78","https://i.imgur.com/6xrqbvr.jpg",null,1,2);
+Insert into course (Title,Description,Price,language,Schedule,Author,Requirements,Category,Video,image,room_Id,
+    teacher_Id,roleId) Values("Tenses","ELEMENT","50$","Espanish","7-11 PM","james Khose'"," basic concept","Language","https://youtu.be/9JSANnwYpBY","https://i.imgur.com/6xrqbvr.jpg",null,1,2);
+Insert into course (Title,Description,Price,language,Schedule,Author,Requirements,Category,Video,image,room_Id,
+    teacher_Id,roleId) Values("Newton Second low","physics concepts","50$","Arabic","7-11 PM","Ghaidaa Sleeman"," basic concept","sciences","https://youtu.be/miA_Jfin2Qg","https://i.imgur.com/6xrqbvr.jpg",null,1,2);
+Insert into course (Title,Description,Price,language,Schedule,Author,Requirements,Category,Video,image,room_Id,
+    teacher_Id,roleId) Values("Javascript","Dom&Jquery","50$","English","7-11 PM","Dainile The'","Knowing basic concept","software","https://youtu.be/gT0Lh1eYk78","https://i.imgur.com/6xrqbvr.jpg",null,1,2);
+Insert into course (Title,Description,Price,language,Schedule,Author,Requirements,Category,Video,image,room_Id,
+    teacher_Id,roleId) Values("Tenses","ELEMENT","50$","Espanish","7-11 PM","james Khose'"," basic concept","Language","https://youtu.be/9JSANnwYpBY","https://i.imgur.com/6xrqbvr.jpg",null,1,2);
+Insert into course (Title,Description,Price,language,Schedule,Author,Requirements,Category,Video,image,room_Id,
+    teacher_Id,roleId) Values("Newton Second low","physics concepts","50$","Arabic","7-11 PM","Ghaidaa Sleeman"," basic concept","sciences","https://youtu.be/miA_Jfin2Qg","https://i.imgur.com/6xrqbvr.jpg",null,1,2);
 
 
 
@@ -140,9 +152,11 @@ Create Table user_courses(
 
     id int not null auto_increment primary key,
     studentId int,
+    teacher_Id int,
     courseId int,
     is_deleted TINYINT Default 0,
     FOREIGN Key(studentId) REFERENCES Student(id) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN Key(teacher_Id) REFERENCES teacher(id) ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN Key(courseId) REFERENCES course(id) ON DELETE CASCADE ON UPDATE CASCADE
 
 );
@@ -150,9 +164,9 @@ Create Table user_courses(
 -- ====================================================//Insert data user_courses Table
 
 
-Insert into user_courses (studentId,courseId) Values (1,1);
-Insert into user_courses (studentId,courseId) Values (1,2);
-Insert into user_courses (studentId,courseId) Values (1,3);
-Insert into user_courses (studentId,courseId) Values (2,1);
-Insert into user_courses (studentId,courseId) Values (2,2);
-Insert into user_courses (studentId,courseId) Values (2,3);
+Insert into user_courses (studentId,teacher_Id,courseId) Values (1,1,1);
+Insert into user_courses (studentId,teacher_Id,courseId) Values (1,1,2);
+Insert into user_courses (studentId,teacher_Id,courseId) Values (1,1,3);
+Insert into user_courses (studentId,teacher_Id,courseId) Values (2,1,1);
+Insert into user_courses (studentId,teacher_Id,courseId) Values (2,2,2);
+Insert into user_courses (studentId,teacher_Id,courseId) Values (2,2,3);

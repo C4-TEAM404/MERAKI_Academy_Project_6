@@ -1,6 +1,6 @@
 //====================================================//Require
 import React, { useState, useEffect, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { UserContext } from "../../App";
 
@@ -20,9 +20,10 @@ const Course_Details = () => {
   const [category, setCategory] = useState("");
   const [video, setVideo] = useState("");
   const [image, setImage] = useState("");
+  const [showroom, setShowroom] = useState([]);
 
   //====================================================//useContext
-  const { courseId } = useContext(UserContext);
+  const { login, courseId } = useContext(UserContext);
   //====================================================//useEffect
 
   useEffect(async () => {
@@ -41,7 +42,15 @@ const Course_Details = () => {
       setCategory(res.data.results[0].Category);
       setVideo(res.data.results[0].Video);
       setImage(res.data.results[0].image);
+      const res1 = await axios.post(`http://localhost:5000/course/usercourse`, {
+        courseId: courseId,
+        userId: login.userId || 1,
+        roleId: login.roleId || 2,
+      });
+      console.log(res1);
+      setShowroom(res1.data.result);
     } catch (err) {
+      console.log(err.response);
       throw new Error(err);
     }
   }, []);
@@ -80,6 +89,7 @@ const Course_Details = () => {
           ></iframe>
         </dd>
       </dl>
+      {showroom.length && <Link to="/video">video</Link>}
     </div>
   );
 };

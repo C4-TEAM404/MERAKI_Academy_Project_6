@@ -59,14 +59,28 @@ const Header = () => {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav bgColor='dark'">
               <Nav className="ms-auto gap-5 navbar navbar-light bg-lignt ">
-                <Nav.Link href="home">Home</Nav.Link>
-                <Nav.Link href="home">About</Nav.Link>
+                <Link to="/home" alt="home">
+                  home
+                </Link>
+                <Link to="/About" alt="About">
+                  About
+                </Link>
+
+                {/* <Nav.Link href="home">Home</Nav.Link> */}
+                {/* <Nav.Link href="home">About</Nav.Link> */}
                 {/* <Nav.Link href="Course">Coures</Nav.Link> */}
                 <Link to="/Course" alt="Course">
                   Course
                 </Link>
-                <Nav.Link href="login">login</Nav.Link>
-                <Nav.Link href="Register">Register</Nav.Link>
+                <Link to="/login" alt="login">
+                  login
+                </Link>
+                <Link to="/Register" alt="Register">
+                  Register
+                </Link>
+
+                {/* <Nav.Link href="login">login</Nav.Link> */}
+                {/* <Nav.Link href="Register">Register</Nav.Link> */}
               </Nav>
             </Navbar.Collapse>
           </Container>

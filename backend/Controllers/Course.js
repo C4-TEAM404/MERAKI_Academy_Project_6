@@ -15,9 +15,11 @@ const CreateNewCourse = async (req, res) => {
     Category,
     Video,
     image,
+    room_Id,
+    teacher_Id,
     roleId,
   } = req.body;
-  const query = `INSERT INTO course (Title,Description,Price,Language,Schedule,Author,Requirements,Category,Video,image,roleId) VALUES (?,?,?,?,?,?,?,?,?,?,?)
+  const query = `INSERT INTO course (Title,Description,Price,Language,Schedule,Author,Requirements,Category,Video,image,Room,teacher_Id,roleId) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)
   `;
   const data = [
     Title,
@@ -30,6 +32,8 @@ const CreateNewCourse = async (req, res) => {
     Category,
     Video,
     image,
+    room_Id,
+    teacher_Id,
     roleId,
   ];
   connection.query(query, data, (err, result) => {
@@ -208,6 +212,56 @@ const UpdateCourseById = (req, res) => {
   });
 };
 
+//====================================================//UpdateRoom+video code/teacher_id
+
+const update_room_video_code = (req, res) => {
+  const { room_Id, courseId } = req.body;
+  const query = `update course set room_Id = ? where id=? `;
+  const data = [room_Id, courseId];
+  console.log(courseId);
+  connection.query(query, data, (err, result) => {
+    if (!err) {
+      return res.status(200).json({
+        success: true,
+        message: `Succeeded to updated course with room_Id & teacher_Id => ${room_Id}  & ${courseId} `,
+        result: result,
+      });
+    } else {
+      return res.status(404).json({
+        success: false,
+        message: `Thewith room_Id & teacher_Id => ${room_Id}  & ${courseId} is not found`,
+        err,
+      });
+    }
+  });
+};
+
+const getUser_Course = (req, res) => {
+  const { courseId, userId, roleId } = req.body;
+  console.log(courseId);
+  let query = `select * from user_courses where is_deleted=0 and courseId=? and teacher_Id=? `;
+  if (roleId == 3) {
+    query = `select * from user_courses where is_deleted=0 and courseId=? and studentId=? `;
+  }
+  const data = [courseId, userId];
+
+  connection.query(query, data, (err, result) => {
+    if (!err) {
+      return res.status(200).json({
+        success: true,
+        message: `Succeeded `,
+        result: result,
+      });
+    } else {
+      return res.status(404).json({
+        success: false,
+        message: `not found`,
+        err,
+      });
+    }
+  });
+};
+
 module.exports = {
   CreateNewCourse,
   GetAllCourses,
@@ -216,4 +270,6 @@ module.exports = {
   GetCourseByTitle,
   DeleteCourseById,
   UpdateCourseById,
+  update_room_video_code,
+  getUser_Course,
 };
