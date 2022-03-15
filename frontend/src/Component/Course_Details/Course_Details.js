@@ -3,6 +3,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { UserContext } from "../../App";
+import Payment from "../Payment/Payment";
 
 //CSS File
 import "./Course_Details.css";
@@ -11,7 +12,7 @@ const Course_Details = () => {
   //====================================================//useState
 
   const [title, setTitle] = useState("");
-  const [descryption, setDescryption] = useState("");
+  const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
   const [language, setLanguage] = useState("");
   const [schedual, setSchedual] = useState("");
@@ -31,9 +32,9 @@ const Course_Details = () => {
       const res = await axios.get(
         `http://localhost:5000/course/getByid/${courseId}`
       );
-      console.log(res);
+      console.log(res, "---------------");
       setTitle(res.data.results[0].Title);
-      setDescryption(res.data.results[0].Description);
+      setDescription(res.data.results[0].Description);
       setPrice(res.data.results[0].Price);
       setLanguage(res.data.results[0].language);
       setSchedual(res.data.results[0].Author);
@@ -63,13 +64,10 @@ const Course_Details = () => {
         <img src={image} class="img-fluid " alt="..." />
         <dt class="col-sm-3">Title</dt>
         <dd class="col-sm-9">{title}</dd>
-
         <dt class="col-sm-3">Description</dt>
-        <dd class="col-sm-9">{descryption}</dd>
-
+        <dd class="col-sm-9">{description}</dd>
         <dt class="col-sm-3">Price</dt>
         <dd class="col-sm-9">{price}</dd>
-
         <dt class="col-sm-3">language</dt>
         <dd class="col-sm-9">{language}</dd>
         <dt class="col-sm-3">Schedule</dt>
@@ -80,6 +78,10 @@ const Course_Details = () => {
         <dd class="col-sm-9">{requirements}</dd>
         <dt class="col-sm-3">Category</dt>
         <dd class="col-sm-9">{category}</dd>
+        <dt class="col-sm-3">Enroll</dt>
+        <dd class="col-sm-9">
+          <Payment Title={title} description={description} price={price} />
+        </dd>
         <dt class="col-sm-3">Video</dt>
         <dd class="col-sm-9">
           <iframe

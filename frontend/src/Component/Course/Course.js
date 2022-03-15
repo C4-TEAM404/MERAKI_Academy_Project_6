@@ -5,7 +5,6 @@ import Card from "react-bootstrap/Card";
 import { Grid, Row, Col } from "react-bootstrap";
 import "./Course.css";
 import { useNavigate } from "react-router-dom";
-
 const Course = () => {
   const history = useNavigate();
 
