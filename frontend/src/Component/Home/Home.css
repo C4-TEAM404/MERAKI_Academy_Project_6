@@ -297,10 +297,12 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  color: #ec5c5c;
+  text-align: center;
+  background-color: white;
 }
 .Part5 {
   min-height: 100vh;
-  background-color: red;
   scroll-snap-align: end;
 }
 
