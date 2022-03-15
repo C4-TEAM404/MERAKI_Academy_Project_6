@@ -23,8 +23,8 @@ function App() {
     <div className="App">
       <UserContext.Provider value={{ login, setLogin, setCourseId, courseId }}>
         <Header />
-        <Link to="/chat">chat</Link>
-        <Link to="/video">video</Link>
+        {/* <Link to="/chat">chat</Link>
+        <Link to="/video">video</Link> */}
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register_Student />} />

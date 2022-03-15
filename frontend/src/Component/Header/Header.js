@@ -9,36 +9,6 @@ import "./Header.css";
 const Header = () => {
   return (
     <div className="HeaderMainDiv">
-      {/* <div className="Logo">
-        <img className="logoPic" src="https://i.ibb.co/FsHnLVc/logo.png" />
-      </div>
-      <div className="NavigationBar">
-        <div className="option">
-          <Link to="/" alt="Home">
-            Home
-          </Link>
-        </div>
-        <div className="option">
-          <Link to="/" alt="About">
-            About
-          </Link>
-        </div>
-        <div className="option">
-          <Link to="/Course" alt="Course">
-            Course
-          </Link>
-        </div>
-        <div className="option">
-          <Link to="/Login" alt="Login">
-            Login
-          </Link>
-        </div>
-        <div className="option">
-          <Link to="/Register" alt="Register">
-            Register
-          </Link>
-        </div>
-      </div> */}
       <>
         <Navbar
           collapseOnSelect
@@ -60,15 +30,11 @@ const Header = () => {
             <Navbar.Collapse id="responsive-navbar-nav bgColor='dark'">
               <Nav className="ms-auto gap-5 navbar navbar-light bg-lignt ">
                 <Link to="/home" alt="home">
-                  home
+                  Home
                 </Link>
                 <Link to="/home" alt="About">
                   About
                 </Link>
-
-                {/* <Nav.Link href="home">Home</Nav.Link> */}
-                {/* <Nav.Link href="home">About</Nav.Link> */}
-                {/* <Nav.Link href="Course">Coures</Nav.Link> */}
                 <Link to="/Course" alt="Course">
                   Course
                 </Link>
@@ -78,9 +44,6 @@ const Header = () => {
                 <Link to="/Register" alt="Register">
                   Register
                 </Link>
-
-                {/* <Nav.Link href="login">login</Nav.Link> */}
-                {/* <Nav.Link href="Register">Register</Nav.Link> */}
               </Nav>
             </Navbar.Collapse>
           </Container>
