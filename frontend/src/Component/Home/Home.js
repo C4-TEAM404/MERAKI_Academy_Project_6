@@ -10,6 +10,7 @@ import {
   MDBCardText,
   MDBRow,
   MDBCol,
+  MDBCardImage,
   MDBListGroupItem,
 } from "mdb-react-ui-kit";
 
@@ -31,9 +32,9 @@ const Introduction = () => {
               mauris inceptos eget. Urna imperdiet.
             </div>
             <div className="part1Buttons">
-              <MDBBtn>Primary</MDBBtn>
-              <MDBBtn className="mx-2" color="secondary">
-                Secondary
+              <MDBBtn href="/login">LOGIN</MDBBtn>
+              <MDBBtn classNam2e="mx-2" color="secondary" href="/Register">
+                TRY HEX
               </MDBBtn>
             </div>
           </div>
@@ -70,13 +71,14 @@ const Introduction = () => {
             <Card className="shadow p-3 mb-5 bg-body rounded">
               <Card.Img
                 variant="top"
-                src="https://www.learnfly.com/img/post_img/1335475250_1_5ev1xmjs2-sj4ddejfdnqa.png"
+                src="https://focusvocationalschool.com/wp-content/uploads/2020/12/170427-637363828865101045-16x9-1.jpg"
               />
               <Card.Body>
                 <Card.Title>Card title</Card.Title>
                 <Card.Text>
-                  This card has supporting text below as a natural lead-in to
-                  additional content.
+                  This is a wider card with supporting text below as a natural
+                  lead-in to additional content. This content is a little bit
+                  longer.
                 </Card.Text>
               </Card.Body>
               <Card.Footer>
@@ -86,14 +88,14 @@ const Introduction = () => {
             <Card className="shadow p-3 mb-5 bg-body rounded">
               <Card.Img
                 variant="top"
-                src="https://udemycoupons.me/wp-content/uploads/2021/09/CSS-Complete-Course.jpg"
+                src="https://focusvocationalschool.com/wp-content/uploads/2020/12/170427-637363828865101045-16x9-1.jpg"
               />
               <Card.Body>
                 <Card.Title>Card title</Card.Title>
                 <Card.Text>
                   This is a wider card with supporting text below as a natural
-                  lead-in to additional content. This card has even longer
-                  content than the first to show that equal height action.
+                  lead-in to additional content. This content is a little bit
+                  longer.
                 </Card.Text>
               </Card.Body>
               <Card.Footer>
@@ -104,36 +106,10 @@ const Introduction = () => {
         </div>
       </div>
       <div className="Part3">
-        {/* <div className="part3LeftSide">
-          <div className="why">Why Choose Us</div>
-          <div className="whyDesc">
-            Auctor eleifend egestas felis a suscipit, amet ultricies orci. Eget
-            nonummy ultrices magna ornare tellus molestie.
-          </div>
-          <div className="boxes">
-            <div className="box">
-              <div className="boxIcon">
-                <img src="https://demo.themeix.com/html/eduzone/images/video-logo.png" />
-              </div>
-              <div className="boxDesc">
-                loasdasdasdasdloasdasdasdasdloasdasdasdasdloasdasdasdasdloasdasdasdasdloasdasdasdasd
-              </div>
-            </div>
-            <div className="box">2</div>
-            <div className="box">3</div>
-          </div>
-        </div>
-        <div class="ratio ratio-16x9">
-          <iframe
-            src="https://www.youtube.com/embed/vlDzYIIOYmM"
-            title="YouTube video"
-            allowfullscreen
-          ></iframe>
-        </div> */}
         <div className="part3Div">
           <MDBCard
-            style={({ width: "100%" }, { height: "100%" })}
-            className="border-0 p-0"
+            style={({ width: "80%" }, { height: "100%" })}
+            className="border-0 p-100"
           >
             <MDBRow>
               <MDBCol md="6">
@@ -212,7 +188,64 @@ const Introduction = () => {
         </div>
       </div>
       <div className="Part4">
-        <div></div>
+        <div className="page4Details">
+          <div className="popular">Our Instructor</div>
+          <div className="details">
+            Enim semper, gravida interdum nullam, pellentesque adipiscing
+            scelerisque vitae dui, magnis platea. Ac sagittis ridiculus Est ac
+            sollicitudin varius integer laoreet morbi porta
+          </div>
+          <div className="Popular_card">
+            <CardGroup className="CardGroupPage4">
+              <Card className="shadow p-3 mb-5 bg-body rounded">
+                <Card.Img
+                  variant="top"
+                  src="https://i.ibb.co/tD6L5zL/testimonial-author5.jpg"
+                />
+                <Card.Body>
+                  <Card.Title>Jaxon Tucker</Card.Title>
+                </Card.Body>
+              </Card>
+              <Card className="shadow p-3 mb-5 bg-body rounded">
+                <Card.Img
+                  style={({ width: "100%" }, { height: "150%" })}
+                  variant="top"
+                  src="https://i.ibb.co/VHPmSTR/testimonial-author.jpg"
+                />
+                <Card.Body>
+                  <Card.Title>L. Bohan</Card.Title>
+                </Card.Body>
+              </Card>
+              <Card className="shadow p-3 mb-5 bg-body rounded">
+                <Card.Img
+                  variant="top"
+                  src="https://i.ibb.co/8N3svBH/testimonial-author2.jpg"
+                />
+                <Card.Body>
+                  <Card.Title>J. Renz</Card.Title>
+                </Card.Body>
+              </Card>
+              <Card className="shadow p-3 mb-5 bg-body rounded">
+                <Card.Img
+                  variant="top"
+                  src="https://i.ibb.co/hcGvZ2S/testimonial-author3.jpg"
+                />
+                <Card.Body>
+                  <Card.Title>Alannah Varley</Card.Title>
+                </Card.Body>
+              </Card>
+              {/* <Card className="shadow  rounded">
+                <Card.Img
+                  variant="top"
+                  src="https://udemycoupons.me/wp-content/uploads/2021/09/CSS-Complete-Course.jpg"
+                />
+                <Card.Body>
+                  <Card.Title>Card title</Card.Title>
+                </Card.Body>
+              </Card> */}
+            </CardGroup>
+          </div>
+        </div>
       </div>
       <div className="Part5">Part5</div>
     </div>

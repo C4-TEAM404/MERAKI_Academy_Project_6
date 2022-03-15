@@ -51,6 +51,9 @@
 }
 
 .btn-primary {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 15vw;
   height: 8vh;
   font-size: 1.2rem;
@@ -61,6 +64,9 @@
   transition: 0.6s;
 }
 .btn-secondary {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 15vw;
   height: 8vh;
   font-size: 1.2rem;
@@ -88,12 +94,7 @@
     width: 100%;
     gap: 20px;
   }
-  .btn-primary {
-    width: 50vw;
-  }
-  .btn-secondary {
-    width: 50vw;
-  }
+
   .part1Div {
     justify-content: center;
     align-items: center;
@@ -122,6 +123,40 @@
     text-align: center;
   }
 }
+@media (max-width: 800px) {
+  .btn-primary {
+    width: 17vw;
+    height: 8vh;
+  }
+
+  .btn-secondary {
+    width: 17vw;
+    height: 8vh;
+  }
+}
+
+@media (max-width: 730px) {
+  .btn-primary {
+    width: 18vw;
+    height: 8vh;
+  }
+
+  .btn-secondary {
+    width: 18vw;
+    height: 8vh;
+  }
+}
+@media (max-width: 620px) {
+  .btn-primary {
+    width: 32vw;
+    height: 8vh;
+  }
+
+  .btn-secondary {
+    width: 32vw;
+    height: 8vh;
+  }
+}
 /* ======================================================Part 2 */
 
 .Part2 {
@@ -146,7 +181,13 @@
 .card-group {
   gap: 20px;
   margin-top: 50px;
-  width: 85%;
+  width: 96%;
+}
+
+.CardGroupPage4 {
+  gap: 20px;
+  margin-top: 50px;
+  width: 96%;
 }
 
 .card-title {
@@ -179,10 +220,10 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 100px;
 }
 .part3Div {
   width: 100%;
+  padding: 22px;
 }
 
 .why {
@@ -205,7 +246,9 @@
   background-color: white;
   color: black;
   padding: 0;
-  text-align: left;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start !important;
 }
 .boxes {
   display: flex;
@@ -220,14 +263,44 @@
   width: 90%;
 }
 
+/* ======================================================Part 4 */
+
 .Part4 {
   min-height: 100vh;
-  background-color: pink;
   scroll-snap-align: start;
+}
+
+.part4MainDiv {
+  width: 100%;
+  height: 100%;
+  background-color: blue;
+}
+
+.card-img-top {
+  height: 100%;
+}
+
+.page2Details {
+  margin-top: 20px;
+}
+
+.page4Details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+.card-title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 .Part5 {
   min-height: 100vh;
-  background-color: blue;
+  background-color: red;
   scroll-snap-align: end;
 }
 
