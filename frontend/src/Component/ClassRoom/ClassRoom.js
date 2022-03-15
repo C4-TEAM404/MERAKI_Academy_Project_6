@@ -9,14 +9,16 @@ import stopMediaStream from "stop-media-stream";
 const peer = new Peer();
 const ClassRoom = () => {
   const history = useNavigate();
-  const { login, courseId } = useContext(UserContext);
+  const { login, courseId, setRoomName } = useContext(UserContext);
   const [peerId, setPeerId] = useState("");
   const [roomId, setRoomId] = useState("");
   const [remotePeerId, setRemotePeerId] = useState("");
   const [endcall, setEndcall] = useState({});
+  const [endcallstudent, setEndcallstudent] = useState({});
   const [streamtrack, setStreamtrack] = useState({});
   const [streamtrackcall, setStreamtrackcall] = useState({});
   const [streamtrackcal2, setStreamtrackcal2] = useState({});
+  const [toggle, setToggle] = useState(false);
   const remoteVideo = useRef(null);
   const mycam = useRef(null);
 
@@ -28,21 +30,35 @@ const ClassRoom = () => {
     });
 
     try {
-      console.log(Object.values(peer)[2]);
-      console.table(peer._socket._events.message.context._id);
-      console.log(courseId);
-      const res = await axios.put("http://localhost:5000/course/updateroomid", {
-        room_Id:
-          Object.values(peer)[2] || peer._socket._events.message.context._id,
-        courseId,
-      });
-      console.log(res);
+      if (login.roleId == 2) {
+        console.log(Object.values(peer)[2]);
+        console.table(peer._socket._events.message.context._id);
+        console.log(courseId);
+        const res = await axios.put(
+          "http://localhost:5000/course/updateroomid",
+          {
+            room_Id:
+              Object.values(peer)[2] ||
+              peer._socket._events.message.context._id,
+            courseId,
+          }
+        );
+        console.log(res);
+        setRemotePeerId(
+          Object.values(peer)[2] || peer._socket._events.message.context._id
+        );
+        setRoomName(
+          Object.values(peer)[2] || peer._socket._events.message.context._id
+        );
+      }
+
       if (login.roleId == 3) {
         const res1 = await axios.get(
           `http://localhost:5000/course/getByid/${courseId}`
         );
 
-        setRoomId(res1.data.results[0].room_Id);
+        setRemotePeerId(res1.data.results[0].room_Id);
+        setRoomName(res1.data.results[0].room_Id);
         console.log(res1);
       }
 
@@ -93,6 +109,7 @@ const ClassRoom = () => {
   }, []);
 
   const call = (peerId) => {
+    setToggle(true);
     var getUserMedia =
       navigator.getUserMedia ||
       navigator.webkitGetUserMedia ||
@@ -135,7 +152,8 @@ const ClassRoom = () => {
   // };
   return (
     <div>
-      <Chat />
+      <Chat setRoomId={remotePeerId} toggle={toggle} />
+      <br />
       <input
         type="text"
         value={remotePeerId}
@@ -181,13 +199,14 @@ const ClassRoom = () => {
               }
             });
           }
+
+          setToggle(false);
         }}
       >
         end
       </button>
-      <button onClick={() => {}}>start</button>
-      <video ref={mycam} />
-      {login.roleId != 2 && <video ref={remoteVideo} />}
+      {toggle && <video ref={mycam} />}
+      {login.roleId != 2 && toggle && <video ref={remoteVideo} />}
       ClassRoom
     </div>
   );

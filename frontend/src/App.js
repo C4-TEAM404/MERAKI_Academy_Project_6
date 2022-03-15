@@ -18,10 +18,20 @@ import Payment from "./Component/Payment/Payment";
 function App() {
   const [login, setLogin] = useState({});
   const [courseId, setCourseId] = useState({});
+  const [roomName, setRoomName] = useState("");
 
   return (
     <div className="App">
-      <UserContext.Provider value={{ login, setLogin, setCourseId, courseId }}>
+      <UserContext.Provider
+        value={{
+          login,
+          setLogin,
+          setCourseId,
+          courseId,
+          roomName,
+          setRoomName,
+        }}
+      >
         <Header />
         <Link to="/chat">chat</Link>
         <Link to="/video">video</Link>

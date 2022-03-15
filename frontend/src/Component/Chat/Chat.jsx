@@ -6,10 +6,10 @@ import { UserContext } from "../../App";
 //====================================================//Require
 let socket = io.connect("http://localhost:5000");
 
-const Chat = () => {
+const Chat = ({ setRoomId, toggle }) => {
   //====================================================//Require
 
-  const { login } = useContext(UserContext);
+  const { login, roomName } = useContext(UserContext);
   //====================================================//Require
   const [message, setMessage] = useState([]);
   const [first, setFirst] = useState("");
@@ -20,20 +20,21 @@ const Chat = () => {
 
   useEffect(() => {
     socket.on("message", (data) => {
+      console.log("omar");
       console.log(data);
     });
   }, [socket]);
 
   const handler = async () => {
-    const res = await socket.on("connected");
-    console.log(res.id);
-    setFirst(`${res.id}+${login.userId}`);
-    socket.emit("join_room", "omar");
+    // const res = await socket.on("connected");
+    // console.log(res.id);
+    // setFirst(`${res.id}+${login.userId}`);
+    socket.emit("join_room", roomName);
   };
 
   const message_handler = () => {
     socket.emit(`message`, {
-      room: first,
+      room: roomName,
       message: "hello",
       name: `${login.firstName}-${login.lastName}`,
     });
@@ -42,7 +43,7 @@ const Chat = () => {
   const submit_handler = async (e) => {
     e.preventDefault();
 
-    socket.emit("join_room", join);
+    socket.emit("join_room", "setRoomId");
   };
 
   const recieve = async () => {};
@@ -56,7 +57,7 @@ const Chat = () => {
         <input
           type="text"
           placeholder="join room"
-          value={join}
+          value={setRoomId}
           onChange={(e) => {
             setJoin(e.target.value);
           }}

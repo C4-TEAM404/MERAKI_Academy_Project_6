@@ -54,13 +54,13 @@ io.on("connection", (socket) => {
   });
   // ===========================================join room
   socket.on("join_room", (data) => {
-    socket.join(`${data}`);
+    socket.join(data);
     console.log("join_room", data);
   });
 
   // // ===============================================messages
   socket.on("message", (data) => {
-    io.in("omar").emit("message", "success");
+    io.in(data.room).emit("message", "success");
     console.log(data);
   });
 });
