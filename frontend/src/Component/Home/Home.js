@@ -32,8 +32,10 @@ const Introduction = () => {
               mauris inceptos eget. Urna imperdiet.
             </div>
             <div className="part1Buttons">
-              <MDBBtn href="/login">LOGIN</MDBBtn>
-              <MDBBtn classNam2e="mx-2" color="secondary" href="/Register">
+              <MDBBtn class="btn-primary" href="/login">
+                LOGIN
+              </MDBBtn>
+              <MDBBtn class="btn-secondary " href="/Register">
                 TRY HEX
               </MDBBtn>
             </div>
@@ -203,7 +205,7 @@ const Introduction = () => {
                   src="https://i.ibb.co/tD6L5zL/testimonial-author5.jpg"
                 />
                 <Card.Body>
-                  <Card.Title>
+                  <Card.Title class="text-center">
                     Jaxon Tucker <br />
                     Instructor
                   </Card.Title>
@@ -216,7 +218,7 @@ const Introduction = () => {
                   src="https://i.ibb.co/VHPmSTR/testimonial-author.jpg"
                 />
                 <Card.Body>
-                  <Card.Title>
+                  <Card.Title class="text-center">
                     L. Bohan <br />
                     Teacher
                   </Card.Title>
@@ -228,7 +230,7 @@ const Introduction = () => {
                   src="https://i.ibb.co/8N3svBH/testimonial-author2.jpg"
                 />
                 <Card.Body>
-                  <Card.Title>
+                  <Card.Title class="text-center">
                     J. Renz
                     <br />
                     Teacher
@@ -241,7 +243,7 @@ const Introduction = () => {
                   src="https://i.ibb.co/hcGvZ2S/testimonial-author3.jpg"
                 />
                 <Card.Body>
-                  <Card.Title>
+                  <Card.Title class="text-center">
                     Alannah Varley <br /> Instructor
                   </Card.Title>
                 </Card.Body>

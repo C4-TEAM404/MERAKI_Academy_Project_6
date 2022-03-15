@@ -57,12 +57,11 @@ const Course = () => {
   //===================================================== Filter by category
 
   const searchByTitle = async (e) => {
-    console.log("bata", e.target.value);
-    if (e.target.value) {
+    if (search) {
       console.log(e.target.value);
       try {
         const res = await axios.post("http://localhost:5000/course/getByT", {
-          Title: e.target.value,
+          Title: search,
           Category: category,
         });
         console.log(res);
@@ -87,6 +86,22 @@ const Course = () => {
   return (
     <div className="courseMainDiv">
       <div className="FilterAndSearch">
+        <div className="filterDiv">
+          <select
+            class="form-select form-select-lg"
+            placeholder="What are you Looking For ?"
+            defaultValue={0}
+            onChange={filterByCategory}
+          >
+            <option className="hiddenOption" value={0} selected hidden>
+              Filter by Category ...
+            </option>
+            <option value={0}>All</option>
+            <option value={"software"}>software</option>
+            <option value={"Language"}>Language</option>
+            <option value={"sciences"}>sciences</option>
+          </select>
+        </div>
         <div class="input-group">
           <input
             type="search"
@@ -95,32 +110,19 @@ const Course = () => {
             aria-label="Search"
             aria-describedby="search-addon"
             onChange={(e) => {
-              searchByTitle(e);
+              setSearch(e.target.value);
             }}
           />
           <button
             type="button"
-            class="btn btn-outline-primary"
-            onClick={searchByTitle}
+            class="btn  btn-lg "
+            style={{ width: "20%" }}
+            onClick={(e) => {
+              searchByTitle(e);
+            }}
           >
-            search
+            Search
           </button>
-        </div>
-        <div className="filterDiv">
-          <select
-            class="form-select form-select-lg"
-            placeholder="What are you Looking For ?"
-            defaultValue={0}
-            onChange={filterByCategory}
-          >
-            <option value={0} disabled selected hidden>
-              Filter by Category ...
-            </option>
-            <option value={0}>All</option>
-            <option value={"software"}>software</option>
-            <option value={"Language"}>Language</option>
-            <option value={"sciences"}>sciences</option>
-          </select>
         </div>
       </div>
       <div className="allCourses">
@@ -145,47 +147,6 @@ const Course = () => {
               </Card>
             </Col>
           ))}
-          {/* {filter
-            ? filter.map((_, idx) => (
-                <Col>
-                  <Card
-                    onClick={(e) => {
-                      setCourseId(_.id);
-                    }}
-                    defaultValue={_.id}
-                  >
-                    <Card.Img
-                      variant="top"
-                      src="https://www.learnfly.com/img/post_img/1335475250_1_5ev1xmjs2-sj4ddejfdnqa.png"
-                    />
-                    <Card.Body>
-                      <Card.Title>{_.Title}</Card.Title>
-                      <Card.Text>{_.Author}</Card.Text>
-                      <Card.Text>{_.Price}</Card.Text>
-                    </Card.Body>
-                  </Card>
-                </Col>
-              ))
-            : allCourses.map((_, idx) => (
-                <Col>
-                  <Card
-                    onClick={(e) => {
-                      setCourseId(_.id);
-                    }}
-                    defaultValue={_.id}
-                  >
-                    <Card.Img
-                      variant="top"
-                      src="https://www.learnfly.com/img/post_img/1335475250_1_5ev1xmjs2-sj4ddejfdnqa.png"
-                    />
-                    <Card.Body>
-                      <Card.Title>{_.Title}</Card.Title>
-                      <Card.Text>{_.Author}</Card.Text>
-                      <Card.Text>{_.Price}</Card.Text>
-                    </Card.Body>
-                  </Card>
-                </Col>
-              ))} */}
         </Row>
         <div className="paginationDiv">
           <ul className="paginationUl">
