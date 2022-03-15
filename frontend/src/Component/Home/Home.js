@@ -203,7 +203,10 @@ const Introduction = () => {
                   src="https://i.ibb.co/tD6L5zL/testimonial-author5.jpg"
                 />
                 <Card.Body>
-                  <Card.Title>Jaxon Tucker</Card.Title>
+                  <Card.Title>
+                    Jaxon Tucker <br />
+                    Instructor
+                  </Card.Title>
                 </Card.Body>
               </Card>
               <Card className="shadow p-3 mb-5 bg-body rounded">
@@ -213,7 +216,10 @@ const Introduction = () => {
                   src="https://i.ibb.co/VHPmSTR/testimonial-author.jpg"
                 />
                 <Card.Body>
-                  <Card.Title>L. Bohan</Card.Title>
+                  <Card.Title>
+                    L. Bohan <br />
+                    Teacher
+                  </Card.Title>
                 </Card.Body>
               </Card>
               <Card className="shadow p-3 mb-5 bg-body rounded">
@@ -222,7 +228,11 @@ const Introduction = () => {
                   src="https://i.ibb.co/8N3svBH/testimonial-author2.jpg"
                 />
                 <Card.Body>
-                  <Card.Title>J. Renz</Card.Title>
+                  <Card.Title>
+                    J. Renz
+                    <br />
+                    Teacher
+                  </Card.Title>
                 </Card.Body>
               </Card>
               <Card className="shadow p-3 mb-5 bg-body rounded">
@@ -231,23 +241,51 @@ const Introduction = () => {
                   src="https://i.ibb.co/hcGvZ2S/testimonial-author3.jpg"
                 />
                 <Card.Body>
-                  <Card.Title>Alannah Varley</Card.Title>
+                  <Card.Title>
+                    Alannah Varley <br /> Instructor
+                  </Card.Title>
                 </Card.Body>
               </Card>
-              {/* <Card className="shadow  rounded">
-                <Card.Img
-                  variant="top"
-                  src="https://udemycoupons.me/wp-content/uploads/2021/09/CSS-Complete-Course.jpg"
-                />
-                <Card.Body>
-                  <Card.Title>Card title</Card.Title>
-                </Card.Body>
-              </Card> */}
             </CardGroup>
           </div>
         </div>
       </div>
-      <div className="Part5">Part5</div>
+      <div className="Part5">
+        <div className="Part5MainDiv">
+          <div className="page4Details">
+            <div className="popular">Abous Us</div>
+            <div className="details">
+              Enim semper, gravida interdum nullam, pellentesque adipiscing
+              scelerisque vitae dui, magnis platea. Ac sagittis ridiculus Est ac
+              sollicitudin varius integer laoreet morbi porta
+            </div>
+            <div className="Popular_card">
+              <CardGroup className="CardGroupPage4">
+                <Card className="shadow p-3 mb-5 bg-body rounded">
+                  <Card.Img
+                    variant="top"
+                    src="https://i.ibb.co/cYLDLfd/123.jpg"
+                  />
+                  <Card.Body>
+                    <Card.Title>Omar Kataa</Card.Title>
+                  </Card.Body>
+                </Card>
+                <Card className="shadow p-3 mb-5 bg-body rounded">
+                  <Card.Img
+                    style={({ width: "100%" }, { height: "150%" })}
+                    variant="top"
+                    src="https://i.ibb.co/SVT6Lz5/456.jpg"
+                  />
+
+                  <Card.Body>
+                    <Card.Title>Haitham Alulaimi</Card.Title>
+                  </Card.Body>
+                </Card>
+              </CardGroup>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
