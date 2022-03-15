@@ -86,43 +86,42 @@ const Course = () => {
 
   return (
     <div className="courseMainDiv">
-      <div className="filterDiv">
-        <select
-          className="departmentDoctorFilter"
-          defaultValue={0}
-          onChange={filterByCategory}
-        >
-          <option value={0} disabled selected hidden>
-            Filter by Category ...
-          </option>
-          <option value={0}>All</option>
-          <option value={"software"}>software</option>
-          <option value={"Language"}>Language</option>
-          <option value={"sciences"}>sciences</option>
-        </select>
-      </div>
-      <div class="input-group">
-        <input
-          type="search"
-          class="form-control rounded"
-          placeholder="Search"
-          aria-label="Search"
-          aria-describedby="search-addon"
-          // onChange={(e) => {
-          //   setSearch(e.target.value);
-          // }}
-          onChange={(e) => {
-            console.log("inside", e.target.value);
-            searchByTitle(e);
-          }}
-        />
-        <button
-          type="button"
-          class="btn btn-outline-primary"
-          onClick={searchByTitle}
-        >
-          search
-        </button>
+      <div className="FilterAndSearch">
+        <div class="input-group">
+          <input
+            type="search"
+            class="form-control  rounded"
+            placeholder="What are you Looking For ?"
+            aria-label="Search"
+            aria-describedby="search-addon"
+            onChange={(e) => {
+              searchByTitle(e);
+            }}
+          />
+          <button
+            type="button"
+            class="btn btn-outline-primary"
+            onClick={searchByTitle}
+          >
+            search
+          </button>
+        </div>
+        <div className="filterDiv">
+          <select
+            class="form-select form-select-lg"
+            placeholder="What are you Looking For ?"
+            defaultValue={0}
+            onChange={filterByCategory}
+          >
+            <option value={0} disabled selected hidden>
+              Filter by Category ...
+            </option>
+            <option value={0}>All</option>
+            <option value={"software"}>software</option>
+            <option value={"Language"}>Language</option>
+            <option value={"sciences"}>sciences</option>
+          </select>
+        </div>
       </div>
       <div className="allCourses">
         <Row xs={1} md={4} className="g-4">
