@@ -139,8 +139,8 @@ const Register_Student = () => {
   return (
     <div className="register_student-pageDiv">
       <div className="register_student-mainDiv">
-        <section class=" border-0">
-          <div class="container h-100 border-0 shadow  ">
+        <section class="border-0">
+          <div class="container h-100 border-0 shadow-lg p-3 mb-5 bg-white rounded">
             <div class="row d-flex justify-content-center align-items-center h-100 border-0">
               <div class="col-lg-12 col-xl-11 border-0">
                 <div class="card text-black border-0">
@@ -209,7 +209,7 @@ const Register_Student = () => {
                                 value={email}
                               />
                               <label class="form-label" for="form3Example3c">
-                                Your Email
+                                Email
                               </label>
                             </div>
                           </div>
@@ -256,10 +256,14 @@ const Register_Student = () => {
                           </div>
                         </form>
                       </div>
-                      <div class="col-md-10 col-lg-6 col-xl-7 d-flex flex-column  align-items-center order-1 order-lg-2">
+                      <div class="col-md-10 col-lg-6 col-xl-7 d-flex flex-column gap-0  align-items-center order-1 order-lg-2">
                         <div className="TeacherRegisterForm">
                           Student Registration Form
                         </div>
+                        <label class="form-label" for="form3Example1c">
+                          Want To be A Doctor ?{" "}
+                          <a href="/TRegister">Click Here</a>
+                        </label>
                         <img
                           src="https://i.ibb.co/WDkyQqt/Students.gif"
                           class="img-fluid"
