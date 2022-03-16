@@ -135,7 +135,7 @@ const UpdateTeacherById = (req, res) => {
   });
 };
 
-//====================================================//DeleteTeacherById
+//====================================================//GetTeacher_CourseById
 
 const GetTeacher_CourseById = (req, res) => {
   const id = req.body.id;

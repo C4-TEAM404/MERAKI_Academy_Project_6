@@ -139,8 +139,29 @@ const UpdateStudentById = (req, res) => {
   });
 };
 
-//====================================================//Get
-
+//====================================================//GetStudent_CourseById
+const GetStudent_CourseById = (req, res) => {
+  const id = req.body.id;
+  const query = `SELECT *
+  FROM user_courses 
+ JOIN course ON user_courses.courseId=course.id
+ WHERE user_courses.studentId =? AND user_courses.is_deleted = 0`;
+  const data = [id];
+  connection.query(query, data, (err, result) => {
+    if (!err) {
+      return res.status(200).json({
+        success: true,
+        message: `Succeeded to get Student_Courses with id => ${id}`,
+        result: result,
+      });
+    } else {
+      return res.status(404).json({
+        success: false,
+        message: `The Student => ${id} is not found`,
+      });
+    }
+  });
+};
 
 module.exports = {
   CreateNewStudent,
@@ -148,4 +169,5 @@ module.exports = {
   GetStudentById,
   DeleteStudentById,
   UpdateStudentById,
+  GetStudent_CourseById,
 };
