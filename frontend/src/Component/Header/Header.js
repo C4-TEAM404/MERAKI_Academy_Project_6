@@ -53,6 +53,7 @@ const Header = () => {
                 <Link to="/teacherpage" alt="teacherpage">
                   MyPage
                 </Link>
+
               </Nav>
             </Navbar.Collapse>
           </Container>
