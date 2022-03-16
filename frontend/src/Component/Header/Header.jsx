@@ -1,4 +1,5 @@
 //====================================================//Require
+import { Button } from "bootstrap";
 import React, { useState, useContext } from "react";
 import { Navbar, Container, Nav } from "react-bootstrap";
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
@@ -8,7 +9,8 @@ import { UserContext } from "../../App";
 import "./Header.css";
 
 const Header = () => {
-  const { login } = useContext(UserContext);
+  const history = useNavigate();
+  const { login, setLogin } = useContext(UserContext);
   return (
     <div className="HeaderMainDiv">
       <>
@@ -37,30 +39,57 @@ const Header = () => {
                 <Link
                   to="#about"
                   alt="About"
-                  onClick={(event) => (window.location.href = "#About")}
+                  onClick={(event) =>
+                    (window.location.href = "http://localhost:3000/#About")
+                  }
                 >
                   {" "}
                   About
                 </Link>
                 <Link to="/Course" alt="Course">
-                  Course
+                  Courses
                 </Link>
-                <Link to="/login" alt="login">
-                  login
-                </Link>
-                <Link to="/SRegister" alt="Register">
-                  Register
-                </Link>
+                {!login.userId && (
+                  <Link to="/login" alt="login">
+                    login
+                  </Link>
+                )}
+
+                {!login.userId && (
+                  <Link to="/SRegister" alt="Register">
+                    Register
+                  </Link>
+                )}
+
                 {login.roleId == 2 && (
                   <Link to="/createcourse" alt="createcourse">
                     Create Course
                   </Link>
                 )}
 
-                <Link to="/teacherpage" alt="teacherpage">
-                  MyPage
-                </Link>
-
+                {login.roleId == 2 && (
+                  <Link to="/Teacher_Page" alt="Teacher_Page">
+                    MyPage
+                  </Link>
+                )}
+                {login.roleId == 3 && (
+                  <Link to="/Student_Page" alt="Student_Page">
+                    MyPage
+                  </Link>
+                )}
+                {login.userId && (
+                  <Link
+                    to="/"
+                    alt="Home"
+                    onClick={(event) => {
+                      localStorage.clear();
+                      setLogin({});
+                    }}
+                  >
+                    {" "}
+                    Logout
+                  </Link>
+                )}
               </Nav>
             </Navbar.Collapse>
           </Container>

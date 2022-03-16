@@ -255,7 +255,7 @@ const Introduction = () => {
       <div className="Part5">
         <div className="Part5MainDiv" id="About">
           <div className="page4Details">
-            <div className="popular">Abous Us</div>
+            <div className="popular">About Us</div>
             <div className="details">
               Enim semper, gravida interdum nullam, pellentesque adipiscing
               scelerisque vitae dui, magnis platea. Ac sagittis ridiculus Est ac

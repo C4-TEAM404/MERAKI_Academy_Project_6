@@ -15,7 +15,7 @@ import Chat from "./Component/Chat/Chat";
 import ClassRoom from "./Component/ClassRoom/ClassRoom";
 import Payment from "./Component/Payment/Payment";
 import Teacher_Page from "./Component/Teacher_Page/Teacher_Page";
-import Student_Page from "./Component/Register_Student/Register_Student";
+import Student_Page from "./Component/Student_Page/Student_Page";
 
 function App() {
   const [login, setLogin] = useState({});
@@ -49,7 +49,8 @@ function App() {
           <Route path="/video" element={<ClassRoom />} />
           <Route path="/Payment" element={<Payment />} />
           <Route path="/teacherpage" element={<Teacher_Page />} />
-          <Route path="/Student_Page" element={<Teacher_Page />} />
+          <Route path="/Teacher_Page" element={<Teacher_Page />} />
+          <Route path="/Student_Page" element={<Student_Page />} />
         </Routes>
         <Footer />
       </UserContext.Provider>

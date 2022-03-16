@@ -5,6 +5,7 @@ import axios from "axios";
 import { UserContext } from "../../App";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import Swal from "sweetalert2";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 //CSS File
@@ -18,7 +19,9 @@ const Login = () => {
   const { login, setLogin } = useContext(UserContext);
   const history = useNavigate();
   //====================================================//useEffect
-
+  const ChangeDir = () => {
+    history("/Course");
+  };
   const emailHandler = (e) => {
     setEmail(e.target.value);
   };
@@ -48,7 +51,24 @@ const Login = () => {
           profileImage: res.data.userId[0].profileImage,
         };
         setLogin(result);
-        history("/register");
+        const Toast = Swal.mixin({
+          toast: true,
+          position: "top-end",
+          showConfirmButton: false,
+          timer: 1500,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener("mouseenter", Swal.stopTimer);
+            toast.addEventListener("mouseleave", Swal.resumeTimer);
+          },
+        });
+
+        Toast.fire({
+          icon: "success",
+          title: "Login successfully",
+        });
+        const myTimeout = setTimeout(ChangeDir, 500);
+
         localStorage.setItem("token", result.token);
         localStorage.setItem("isLoggedIn", result.isLoggedIn);
         localStorage.setItem("userId", result.userId);
