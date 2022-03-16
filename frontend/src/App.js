@@ -27,8 +27,8 @@ function App() {
         <Link to="/video">video</Link> */}
         <Routes>
           <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register_Student />} />
-          <Route path="/RegisterT" element={<Register_Teacher />} />
+          <Route path="/SRegister" element={<Register_Student />} />
+          <Route path="/TRegister" element={<Register_Teacher />} />
           <Route path="/" element={<Home />} />
           <Route path="/coursedescryption" element={<Course_Details />} />
           <Route path="/createcourse" element={<Create_Course />} />
