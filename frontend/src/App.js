@@ -23,6 +23,54 @@ function App() {
   const [roomName, setRoomName] = useState("");
 
   return (
+    //     </div>
+    //
+    //
+    //
+    //     </div>
+
+    //     <div class="input-group mb-3">
+    //       <label class="input-group-text" for="inputGroupFile01">
+    //         Upload video
+    //       </label>
+    //       <input
+    //         type="file"
+    //         class="form-control"
+    //         id="inputGroupFile01"
+    //         style={{ display: "none" }}
+    //         onChange={video_handler}
+    //       />
+    //     </div>
+    //     {video && (
+    //       <div>
+    //         <iframe width="420" height="345" src={video}></iframe>
+    //       </div>
+    //     )}
+
+    //     <div class="input-group mb-3">
+    //       <label class="input-group-text" for="inputGroupFile02">
+    //         Upload image
+    //       </label>
+    //       <input
+    //         type="file"
+    //         class="form-control"
+    //         id="inputGroupFile02"
+    //         style={{ display: "none" }}
+    //         onChange={image_handler}
+    //       />
+    //     </div>
+
+    //     {image && (
+    //       <div>
+    //         <img src={image} class="h-1 img-fluid" alt="..." />
+    //       </div>
+    //     )}
+
+    //     <button type="submit" class="btn btn-primary">
+    //       Submit
+    //     </button>
+    //   </form>
+    // </div>
     <div className="App">
       <UserContext.Provider
         value={{
