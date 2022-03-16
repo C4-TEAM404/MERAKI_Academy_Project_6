@@ -39,7 +39,58 @@ const Teacher_Page = () => {
     pageNumbers.push(i);
   }
 
-  return <div></div>;
+
+  return (
+    <div>
+      <div className="allCourses">
+        <Row xs={1} md={4} className="g-4">
+          {currentCourse.map((_, idx) => (
+            <Col>
+              <Card
+                className="cardCourse"
+                onClick={(e) => {
+                  setCourseId(_.id);
+                  history("/coursedescryption");
+                }}
+              >
+                <Card.Img
+                  variant="top"
+                  className="imagCardCourse"
+                  src="https://www.learnfly.com/img/post_img/1335475250_1_5ev1xmjs2-sj4ddejfdnqa.png"
+                />
+                <Card.Body>
+                  <Card.Title>{_.Title}</Card.Title>
+                  <Card.Text>{_.Author}</Card.Text>
+                  <Card.Text>Price : {_.Price} $</Card.Text>
+                  <Card.Text>Start In : {_.start}</Card.Text>
+                </Card.Body>
+              </Card>
+            </Col>
+          ))}
+        </Row>
+        <div className="paginationDiv">
+          <ul className="paginationUl">
+            {pageNumbers.map((number) => {
+              return (
+                <li>
+                  <a
+                    className="paginationUl"
+                    href="#"
+                    onClick={() => {
+                      paginate(number);
+                    }}
+                  >
+                    {number}
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      </div>
+    </div>
+  );
+
 };
 
 export default Teacher_Page;

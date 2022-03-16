@@ -4,6 +4,7 @@ const bcrypt = require("bcrypt");
 
 //====================================================//CreateNewCourse
 const CreateNewCourse = async (req, res) => {
+  console.log("req.body", req.body);
   let {
     Title,
     Description,
@@ -17,10 +18,13 @@ const CreateNewCourse = async (req, res) => {
     image,
     room_Id,
     teacher_Id,
+    start,
     roleId,
   } = req.body;
-  const query = `INSERT INTO course (Title,Description,Price,Language,Schedule,Author,Requirements,Category,Video,image,Room,teacher_Id,roleId) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)
-  `;
+
+  // const query = `SELECT * FROM course where is_deleted=0`;
+  const query = `INSERT INTO course (Title,Description,Price,Language,Schedule,Author,Requirements,Category,Video,image,room_Id,teacher_Id,start,roleId) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+   `;
   const data = [
     Title,
     Description,
@@ -34,9 +38,11 @@ const CreateNewCourse = async (req, res) => {
     image,
     room_Id,
     teacher_Id,
+    start,
     roleId,
   ];
   connection.query(query, data, (err, result) => {
+    console.log(result);
     if (!err) {
       return res.status(200).json({
         success: true,
@@ -44,6 +50,7 @@ const CreateNewCourse = async (req, res) => {
         result: result,
       });
     } else {
+      console.log(err.response);
       return res.status(409).json({
         success: false,
         message: " This Course already exists",

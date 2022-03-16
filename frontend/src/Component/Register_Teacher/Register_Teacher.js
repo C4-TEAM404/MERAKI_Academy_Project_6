@@ -276,6 +276,7 @@ const Register_Teacher = () => {
           </div>
         </section>
       </div>
+
     </div>
   );
 };
