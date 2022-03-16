@@ -39,6 +39,7 @@ const Teacher_Page = () => {
     pageNumbers.push(i);
   }
 
+
   return (
     <div>
       <div className="allCourses">
@@ -89,6 +90,7 @@ const Teacher_Page = () => {
       </div>
     </div>
   );
+
 };
 
 export default Teacher_Page;
