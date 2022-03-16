@@ -60,7 +60,10 @@ io.on("connection", (socket) => {
 
   // // ===============================================messages
   socket.on("message", (data) => {
-    io.in(data.room).emit("message", "success");
+    io.in(data.room).emit("message", {
+      message: data.message,
+      name: data.name,
+    });
     console.log(data);
   });
 });

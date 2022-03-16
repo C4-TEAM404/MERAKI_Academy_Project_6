@@ -5,8 +5,10 @@ import { UserContext } from "../../App";
 import Chat from "../Chat/Chat";
 import axios from "axios";
 import stopMediaStream from "stop-media-stream";
-
+import { io } from "socket.io-client";
 const peer = new Peer();
+let socket = io.connect("http://localhost:5000");
+
 const ClassRoom = () => {
   const history = useNavigate();
   const { login, courseId, setRoomName } = useContext(UserContext);
@@ -18,6 +20,8 @@ const ClassRoom = () => {
   const [streamtrack, setStreamtrack] = useState({});
   const [streamtrackcall, setStreamtrackcall] = useState({});
   const [streamtrackcal2, setStreamtrackcal2] = useState({});
+  const [messages, setMessages] = useState([]);
+  const [message, setMessage] = useState("");
   const [toggle, setToggle] = useState(false);
   const remoteVideo = useRef(null);
   const mycam = useRef(null);
@@ -47,9 +51,9 @@ const ClassRoom = () => {
         setRemotePeerId(
           Object.values(peer)[2] || peer._socket._events.message.context._id
         );
-        setRoomName(
-          Object.values(peer)[2] || peer._socket._events.message.context._id
-        );
+        // setRoomName(
+        //   Object.values(peer)[2] || peer._socket._events.message.context._id
+        // );
       }
 
       if (login.roleId == 3) {
@@ -58,7 +62,7 @@ const ClassRoom = () => {
         );
 
         setRemotePeerId(res1.data.results[0].room_Id);
-        setRoomName(res1.data.results[0].room_Id);
+        // setRoomName(res1.data.results[0].room_Id);
         console.log(res1);
       }
 
@@ -107,6 +111,23 @@ const ClassRoom = () => {
       });
     });
   }, []);
+  useEffect(() => {
+    socket.on("message", (data) => {
+      console.log("omar");
+      console.log(data);
+
+      setMessages((messages) => [...messages, data]);
+    });
+
+    return () => socket.removeAllListeners();
+  }, [socket]);
+
+  const handler = async () => {
+    // const res = await socket.on("connected");
+    // console.log(res.id);
+    // setFirst(`${res.id}+${login.userId}`);
+    socket.emit("join_room", remotePeerId);
+  };
 
   const call = (peerId) => {
     setToggle(true);
@@ -150,63 +171,103 @@ const ClassRoom = () => {
   //   console.log("answe", answe, "str", str);
   //   answe.current.answer(str.current);
   // };
+  const message_handler = (e) => {
+    e.preventDefault();
+    console.log("omar");
+    socket.emit(`message`, {
+      room: remotePeerId,
+      message: message,
+      name: `${login.firstName}-${login.lastName}`,
+    });
+  };
   return (
     <div>
-      <Chat setRoomId={remotePeerId} toggle={toggle} />
-      <br />
-      <input
-        type="text"
-        value={remotePeerId}
-        onChange={(e) => {
-          setRemotePeerId(e.target.value);
-        }}
-      />
-      <button
-        onClick={() => {
-          call(remotePeerId);
-        }}
-      >
-        call
-      </button>
-      <button
-        onClick={() => {
-          // navigator.mediaDevices
-          // .getUserMedia({ video: true, audio: false })
-          // .then((mediaStream) => {
-          //   stopMediaStream(mediaStream);
-          // });
-          if (login.roleId == 2) {
-            streamtrack.forEach(function (track) {
-              if (track.readyState == "live") {
-                track.stop();
-              }
-            });
-            streamtrackcall.forEach(function (track) {
-              if (track.readyState == "live") {
-                track.stop();
-              }
-            });
-            endcall.close();
-          } else if (login.roleId == 3) {
-            streamtrackcall.forEach(function (track) {
-              if (track.readyState == "live") {
-                track.stop();
-              }
-            });
-            streamtrackcal2.forEach(function (track) {
-              if (track.readyState == "live") {
-                track.stop();
-              }
-            });
-          }
+      {console.log(messages)}
+      {messages &&
+        messages.map((element) => {
+          return (
+            <div>
+              <p>{element.name}</p>
+              <p>{element.message}</p>
+            </div>
+          );
+        })}
+      <form onSubmit={message_handler}>
+        <input
+          value={message}
+          type="text"
+          onChange={(e) => {
+            setMessage(e.target.value);
+          }}
+        />
 
-          setToggle(false);
-        }}
-      >
-        end
-      </button>
-      {toggle && <video ref={mycam} />}
-      {login.roleId != 2 && toggle && <video ref={remoteVideo} />}
+        <button type="submit">send</button>
+      </form>
+      <div></div>
+      <div>
+        <input
+          type="text"
+          value={remotePeerId}
+          onChange={(e) => {
+            setRemotePeerId(e.target.value);
+          }}
+        />
+        <button
+          onClick={() => {
+            call(remotePeerId);
+            handler();
+          }}
+        >
+          call
+        </button>
+        <button
+          onClick={() => {
+            message_handler();
+          }}
+        >
+          send
+        </button>
+        <button
+          onClick={() => {
+            // navigator.mediaDevices
+            // .getUserMedia({ video: true, audio: false })
+            // .then((mediaStream) => {
+            //   stopMediaStream(mediaStream);
+            // });
+            if (login.roleId == 2) {
+              streamtrack.forEach(function (track) {
+                if (track.readyState == "live") {
+                  track.stop();
+                }
+              });
+              streamtrackcall.forEach(function (track) {
+                if (track.readyState == "live") {
+                  track.stop();
+                }
+              });
+              endcall.close();
+            } else if (login.roleId == 3) {
+              streamtrackcall.forEach(function (track) {
+                if (track.readyState == "live") {
+                  track.stop();
+                }
+              });
+              streamtrackcal2.forEach(function (track) {
+                if (track.readyState == "live") {
+                  track.stop();
+                }
+              });
+            }
+
+            setToggle(false);
+          }}
+        >
+          end
+        </button>
+        <video ref={mycam} />
+        {/* {toggle && <video ref={mycam} />} */}
+        {login.roleId != 2 && <video ref={remoteVideo} />}
+      </div>
       ClassRoom
     </div>
   );
