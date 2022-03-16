@@ -49,6 +49,13 @@ const Header = () => {
                 <Link to="/Register" alt="Register">
                   Register
                 </Link>
+
+                <Link to="/teacherpage" alt="teacherpage">
+                  MyPage
+                </Link>
+
+                
+
               </Nav>
             </Navbar.Collapse>
           </Container>
