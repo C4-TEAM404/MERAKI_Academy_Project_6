@@ -48,7 +48,7 @@ const Header = () => {
                 <Link to="/login" alt="login">
                   login
                 </Link>
-                <Link to="/Register" alt="Register">
+                <Link to="/SRegister" alt="Register">
                   Register
                 </Link>
                 {login.roleId == 2 && (

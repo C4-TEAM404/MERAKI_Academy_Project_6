@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { UserContext } from "../../App";
+import Swal from "sweetalert2";
 
 //CSS File
 import "./Register_Student.css";
@@ -40,6 +41,8 @@ const Register_Student = () => {
     setPassword(e.target.value);
   };
 
+  //====================================================//Loading Function
+
   const loading = async (e) => {
     const files = e.target.files;
     const data = new FormData();
@@ -59,6 +62,34 @@ const Register_Student = () => {
     console.log(file.secure_url, profileImage);
   };
 
+  //====================================================//ChangeDir Function
+  const ChangeDir = () => {
+    let timerInterval;
+    Swal.fire({
+      title: "Auto close alert!",
+      html: "We Will Move To Your Page in  <b></b> milliseconds.",
+      timer: 2000,
+      timerProgressBar: true,
+      didOpen: () => {
+        Swal.showLoading();
+        const b = Swal.getHtmlContainer().querySelector("b");
+        timerInterval = setInterval(() => {
+          b.textContent = Swal.getTimerLeft();
+        }, 100);
+      },
+      willClose: () => {
+        clearInterval(timerInterval);
+        history("/Course");
+      },
+    }).then((result) => {
+      if (result.dismiss === Swal.DismissReason.timer) {
+        console.log("I was closed by the timer");
+      }
+    });
+  };
+
+  //====================================================//Submit Function
+
   const submit_Handler = async (e) => {
     e.preventDefault();
     try {
@@ -71,35 +102,51 @@ const Register_Student = () => {
         profileImage,
         roleId: 3,
       });
-      console.log(res, "-------------------");
-      setFirstName("");
-      setLastName("");
-      setPhone("");
-      setEmail("");
-      setPassword("");
-      setProfileImage(
-        "https://media.istockphoto.com/vectors/avatar-person-user-icon-blue-version-vector-id1216255414?k=20&m=1216255414&s=170667a&w=0&h=I2yRx9b3GZl57PqZb0OumlZOVqMbyRNxmPEZ0NwxksM="
-      );
-    } catch (err) {
-      throw new Error(err);
+      if (res.data.success) {
+        const Toast = Swal.mixin({
+          toast: true,
+          position: "top-end",
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener("mouseenter", Swal.stopTimer);
+            toast.addEventListener("mouseleave", Swal.resumeTimer);
+          },
+        });
+
+        Toast.fire({
+          icon: "success",
+          title: "Registration successfully",
+        });
+
+        setFirstName("");
+        setLastName("");
+        setPhone("");
+        setEmail("");
+        setPassword("");
+        setProfileImage("");
+
+        const myTimeout = setTimeout(ChangeDir, 2000);
+      } else throw Error;
+    } catch (error) {
+      if (!error.response.data.success) {
+        return console.log(error);
+      }
     }
   };
 
   return (
     <div className="register_student-pageDiv">
-      {/* <div className="register_student-mainDiv">
+      <div className="register_student-mainDiv">
         <section class=" border-0">
-          <div class="container h-100 border-0">
+          <div class="container h-100 border-0 shadow  ">
             <div class="row d-flex justify-content-center align-items-center h-100 border-0">
               <div class="col-lg-12 col-xl-11 border-0">
                 <div class="card text-black border-0">
                   <div class="card-body p-md-5 border-0">
                     <div class="row justify-content-center border-0">
                       <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1 border-0">
-                        <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4 border-0">
-                          Sign up
-                        </p>
-
                         <form class="mx-1 mx-md-4" onSubmit={submit_Handler}>
                           <div class="d-flex flex-row align-items-center mb-4">
                             <i class="fas fa-user fa-lg me-3 fa-fw"></i>
@@ -145,7 +192,7 @@ const Register_Student = () => {
                                 value={phone}
                               />
                               <label class="form-label" for="form3Example1c">
-                                Phone{" "}
+                                Phone
                               </label>
                             </div>
                           </div>
@@ -209,9 +256,12 @@ const Register_Student = () => {
                           </div>
                         </form>
                       </div>
-                      <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+                      <div class="col-md-10 col-lg-6 col-xl-7 d-flex flex-column  align-items-center order-1 order-lg-2">
+                        <div className="TeacherRegisterForm">
+                          Student Registration Form
+                        </div>
                         <img
-                          src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
+                          src="https://i.ibb.co/WDkyQqt/Students.gif"
                           class="img-fluid"
                           alt="Sample image"
                         />
@@ -223,7 +273,7 @@ const Register_Student = () => {
             </div>
           </div>
         </section>
-      </div> */}
+      </div>
     </div>
   );
 };
