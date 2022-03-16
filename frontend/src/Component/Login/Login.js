@@ -85,7 +85,78 @@ const Login = () => {
   return (
     <div className="loginMainDiv">
       <div className="formLoginDiv">
-        <Form onSubmit={submitHandler} className="d-grid gap-2">
+        <section class=" border-0">
+          <div class="container h-100 border-0 shadow-lg p-0 mb-5 bg-white rounded  ">
+            <div class="row d-flex justify-content-center align-items-center h-100 border-0">
+              <div class="col-lg-12 col-xl-11 border-0">
+                <div class="card text-black border-0">
+                  <div class="card-body p-md-0 border-0">
+                    <div class="row justify-content-center border-0">
+                      <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1 d-flex justify-content-center align-items-center border-0">
+                        <form class="mx-1 mx-md-4 " onSubmit={submitHandler}>
+                          <div class="d-flex flex-row align-items-center mb-4">
+                            <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                            <div class="form-outline flex-fill mb-0">
+                              <input
+                                type="email"
+                                id="form3Example3c"
+                                class="form-control"
+                                required
+                                value={email}
+                                onChange={emailHandler}
+                              />
+                              <label class="form-label" for="form3Example3c">
+                                Email
+                              </label>
+                            </div>
+                          </div>
+
+                          <div class="d-flex flex-row align-items-center mb-4">
+                            <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+                            <div class="form-outline flex-fill mb-0">
+                              <input
+                                type="password"
+                                id="form3Example4c"
+                                class="form-control"
+                                required
+                                value={password}
+                                onChange={passowrdHandler}
+                              />
+                              <label class="form-label" for="form3Example4c">
+                                Password
+                              </label>
+                            </div>
+                          </div>
+
+                          <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                            <button
+                              type="submit"
+                              class="btn btn-primary btn-lg"
+                            >
+                              Login
+                            </button>
+                          </div>
+                          <label class="form-label" for="form3Example1c">
+                            Not Register Yet ?
+                            <a href="/TRegister">Click Here</a>
+                          </label>
+                        </form>
+                      </div>
+                      <div class="col-md-10 col-lg-6 col-xl-7 d-flex flex-column   justify-content-center align-items-center order-1 order-lg-2">
+                        <img
+                          src="https://i.ibb.co/FxgTn0P/Secure-login.gif"
+                          class="img-fluid"
+                          alt="Sample image"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        {/* <Form onSubmit={submitHandler} className="d-grid gap-2">
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label class="text-start">Email address</Form.Label>
             <Form.Control
@@ -114,7 +185,7 @@ const Login = () => {
           <Button variant="outline-primary" type="submit" size="lg">
             Login
           </Button>
-        </Form>
+        </Form> */}
       </div>
     </div>
   );
