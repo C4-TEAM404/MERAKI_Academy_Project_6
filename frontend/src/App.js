@@ -14,6 +14,7 @@ import Course from "./Component/Course/Course";
 import Chat from "./Component/Chat/Chat";
 import ClassRoom from "./Component/ClassRoom/ClassRoom";
 import Payment from "./Component/Payment/Payment";
+import Teacher_Page from "./Component/Teacher_Page/Teacher_Page";
 
 function App() {
   const [login, setLogin] = useState({});
@@ -33,8 +34,7 @@ function App() {
         }}
       >
         <Header />
-        <Link to="/chat">chat</Link>
-        <Link to="/video">video</Link>
+
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register_Student />} />
@@ -47,6 +47,7 @@ function App() {
           <Route path="/chat" element={<Chat />} />
           <Route path="/video" element={<ClassRoom />} />
           <Route path="/Payment" element={<Payment />} />
+          <Route path="/teacherpage" element={<Teacher_Page />} />
         </Routes>
         <Footer />
       </UserContext.Provider>

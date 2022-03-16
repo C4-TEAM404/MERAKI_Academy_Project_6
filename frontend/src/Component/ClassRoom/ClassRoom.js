@@ -179,10 +179,11 @@ const ClassRoom = () => {
       message: message,
       name: `${login.firstName}-${login.lastName}`,
     });
+
+    setMessage("");
   };
   return (
     <div>
-      {console.log(messages)}
       {messages &&
         messages.map((element) => {
           return (

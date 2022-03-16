@@ -78,6 +78,9 @@ const Header = () => {
                 <Link to="/Register" alt="Register">
                   Register
                 </Link>
+                <Link to="/teacherpage" alt="teacherpage">
+                  MyPage
+                </Link>
 
                 {/* <Nav.Link href="login">login</Nav.Link> */}
                 {/* <Nav.Link href="Register">Register</Nav.Link> */}

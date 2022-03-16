@@ -135,10 +135,33 @@ const UpdateTeacherById = (req, res) => {
   });
 };
 
+//====================================================//DeleteTeacherById
+
+const GetTeacher_CourseById = (req, res) => {
+  const id = req.body.id;
+  const query = `select * from course WHERE is_deleted=0 and teacher_Id=?`;
+  const data = [id];
+  connection.query(query, data, (err, result) => {
+    if (!err) {
+      return res.status(200).json({
+        success: true,
+        message: `Succeeded to get teacher_course with id => ${id}`,
+        result: result,
+      });
+    } else {
+      return res.status(404).json({
+        success: false,
+        message: `The teacher_course => ${id} is not found`,
+      });
+    }
+  });
+};
+
 module.exports = {
   CreateNewTeacher,
   GetAllTeacher,
   GetTeacherById,
   DeleteTeacherById,
   UpdateTeacherById,
+  GetTeacher_CourseById,
 };

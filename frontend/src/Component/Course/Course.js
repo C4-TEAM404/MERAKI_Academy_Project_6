@@ -145,47 +145,6 @@ const Course = () => {
               </Card>
             </Col>
           ))}
-          {/* {filter
-            ? filter.map((_, idx) => (
-                <Col>
-                  <Card
-                    onClick={(e) => {
-                      setCourseId(_.id);
-                    }}
-                    defaultValue={_.id}
-                  >
-                    <Card.Img
-                      variant="top"
-                      src="https://www.learnfly.com/img/post_img/1335475250_1_5ev1xmjs2-sj4ddejfdnqa.png"
-                    />
-                    <Card.Body>
-                      <Card.Title>{_.Title}</Card.Title>
-                      <Card.Text>{_.Author}</Card.Text>
-                      <Card.Text>{_.Price}</Card.Text>
-                    </Card.Body>
-                  </Card>
-                </Col>
-              ))
-            : allCourses.map((_, idx) => (
-                <Col>
-                  <Card
-                    onClick={(e) => {
-                      setCourseId(_.id);
-                    }}
-                    defaultValue={_.id}
-                  >
-                    <Card.Img
-                      variant="top"
-                      src="https://www.learnfly.com/img/post_img/1335475250_1_5ev1xmjs2-sj4ddejfdnqa.png"
-                    />
-                    <Card.Body>
-                      <Card.Title>{_.Title}</Card.Title>
-                      <Card.Text>{_.Author}</Card.Text>
-                      <Card.Text>{_.Price}</Card.Text>
-                    </Card.Body>
-                  </Card>
-                </Col>
-              ))} */}
         </Row>
         <div className="paginationDiv">
           <ul className="paginationUl">
