@@ -264,7 +264,7 @@ const Register_Teacher = () => {
                         </div>
                         <label class="form-label" for="form3Example1c">
                           Want To be A Student ?
-                          <a href="/SRegister">Click Here</a>
+                          <a href="/SRegister"> Click Here</a>
                         </label>
                         <img
                           src="https://i.ibb.co/MR1j9F2/Coding-workshop.gif"

@@ -139,6 +139,9 @@ const UpdateStudentById = (req, res) => {
   });
 };
 
+//====================================================//Get
+
+
 module.exports = {
   CreateNewStudent,
   GetAllStudents,

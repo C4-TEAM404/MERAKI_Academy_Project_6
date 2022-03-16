@@ -261,7 +261,7 @@ const Register_Student = () => {
                           Student Registration Form
                         </div>
                         <label class="form-label" for="form3Example1c">
-                          Want To be A Doctor ?{" "}
+                          Want To be A Teacher ?{" "}
                           <a href="/TRegister">Click Here</a>
                         </label>
                         <img
