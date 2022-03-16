@@ -9,6 +9,7 @@ const {
   GetStudentById,
   DeleteStudentById,
   UpdateStudentById,
+  GetStudent_CourseById,
 } = require("../controllers/Student");
 
 const { authentication } = require("../Middleware/authentication");
@@ -18,6 +19,7 @@ studentRouter.get("/getall", GetAllStudents);
 studentRouter.get("/getbyid", GetStudentById);
 studentRouter.delete("/deletebyid/:id", DeleteStudentById);
 studentRouter.put("/updatebyid", authentication, UpdateStudentById);
+studentRouter.get("/getCourseById", GetStudent_CourseById);
 
 //====================================================// module.exports
 module.exports = studentRouter;
