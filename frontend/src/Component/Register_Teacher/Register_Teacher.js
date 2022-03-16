@@ -146,6 +146,7 @@ const Register_Teacher = () => {
                 placeholder="Passowrd"
               />
             </div>
+
             <div className="profileImage_div">
               <input
                 type="file"

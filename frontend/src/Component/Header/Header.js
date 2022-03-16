@@ -1,12 +1,14 @@
 //====================================================//Require
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Navbar, Container, Nav } from "react-bootstrap";
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
+import { UserContext } from "../../App";
 
 //CSS File
 import "./Header.css";
 
 const Header = () => {
+  const { login } = useContext(UserContext);
   return (
     <div className="HeaderMainDiv">
       <>
@@ -49,6 +51,11 @@ const Header = () => {
                 <Link to="/Register" alt="Register">
                   Register
                 </Link>
+                {login.roleId == 2 && (
+                  <Link to="/createcourse" alt="createcourse">
+                    Create Course
+                  </Link>
+                )}
 
                 <Link to="/teacherpage" alt="teacherpage">
                   MyPage

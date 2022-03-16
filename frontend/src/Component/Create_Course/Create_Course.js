@@ -21,7 +21,7 @@ const Create_Course = () => {
   const [category, setCategory] = useState("");
   const [video, setVideo] = useState("");
   const [image, setImage] = useState("");
-  const [teacherId, setTeacherId] = useState("");
+  const [start, setStart] = useState("");
 
   //====================================================//function
 
@@ -48,6 +48,9 @@ const Create_Course = () => {
   };
   const category_handler = (e) => {
     setCategory(e.target.value);
+  };
+  const start_handler = (e) => {
+    setStart(e.target.value);
   };
   const video_handler = async (e) => {
     const files = e.target.files;
@@ -100,14 +103,16 @@ const Create_Course = () => {
         Category: category,
         Video: video,
         image,
-        teacher_Id: login.userId,
+        teacher_Id: login.userId || 1,
+        start,
         roleId: 2,
+        room_Id: null,
       });
 
       console.log(res);
       history("/");
     } catch (err) {
-      throw new Error(err);
+      throw new Error(err.respone);
     }
   };
 
@@ -210,6 +215,18 @@ const Create_Course = () => {
             id="exampleInputPassword1"
             value={category}
             onChange={category_handler}
+          />
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">
+            Start In
+          </label>
+          <input
+            type="text"
+            class="form-control"
+            id="exampleInputPassword1"
+            value={start}
+            onChange={start_handler}
           />
         </div>
 
