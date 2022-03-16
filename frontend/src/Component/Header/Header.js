@@ -32,7 +32,12 @@ const Header = () => {
                 <Link to="/home" alt="home">
                   Home
                 </Link>
-                <Link to="/home" alt="About">
+                <Link
+                  to="#about"
+                  alt="About"
+                  onClick={(event) => (window.location.href = "#About")}
+                >
+                  {" "}
                   About
                 </Link>
                 <Link to="/Course" alt="Course">
