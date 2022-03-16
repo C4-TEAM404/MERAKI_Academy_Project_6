@@ -1,8 +1,8 @@
 //====================================================//Require
 import React, { useState, useEffect, useContext } from "react";
-import { io } from "socket.io-client";
-import { UserContext } from "../../App";
 
+import { UserContext } from "../../App";
+import { io } from "socket.io-client";
 //====================================================//Require
 let socket = io.connect("http://localhost:5000");
 
