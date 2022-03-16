@@ -82,7 +82,6 @@ const Register_Teacher = () => {
         history("/Course");
       },
     }).then((result) => {
-      /* Read more about handling dismissals below */
       if (result.dismiss === Swal.DismissReason.timer) {
         console.log("I was closed by the timer");
       }
@@ -127,9 +126,7 @@ const Register_Teacher = () => {
         setPhone("");
         setEmail("");
         setPassword("");
-        setProfileImage(
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeBsPLKmhSxuLp7I5Ubv3rzYJMLhcFdTQmWQDoJmUDYQrQi2Ildz7pCBdFCIdq4NBYheg&usqp=CAU"
-        );
+        setProfileImage("");
 
         const myTimeout = setTimeout(ChangeDir, 2000);
       } else throw Error;
@@ -279,87 +276,6 @@ const Register_Teacher = () => {
           </div>
         </section>
       </div>
-      {/*       
-      <div className="register_student-mainDiv">
-        <div className="header">
-          <h2 className="Register_header">Register</h2>
-        </div>
-
-        <div className="form_register_div">
-          <form className="form_register" onSubmit={submit_Handler}>
-            <div className="firsName_div">
-              <input
-                className="firsName_input"
-                type="text"
-                required
-                onChange={firstName_handler}
-                value={firstName}
-                placeholder="Firat Name"
-              />
-            </div>
-
-            <div className="lastName_div">
-              <input
-                className="lastName_input"
-                type="text"
-                required
-                onChange={lastName_handler}
-                value={lastName}
-                placeholder="Last Name"
-              />
-            </div>
-            <div className="phone_div">
-              <input
-                type="number"
-                className="phone_input"
-                required
-                onChange={phone_handler}
-                value={phone}
-                placeholder="Phone"
-              />
-            </div>
-
-            <div className="email_div">
-              <input
-                type="email"
-                className="email_input"
-                required
-                onChange={email_handler}
-                value={email}
-                placeholder="Email"
-              />
-            </div>
-            <div className="password_div">
-              <input
-                type="password"
-                className="password_input"
-                required
-                onChange={password_handler}
-                value={password}
-                placeholder="Passowrd"
-              />
-            </div>
-            <div className="profileImage_div">
-              <input
-                type="file"
-                className="profileImage_input"
-                onChange={loading}
-              />
-            </div>
-            <div className="submit_button_div">
-              <button className="submit_button">Register</button>
-            </div>
-          </form>
-        </div>
-      </div>
-
-      <div className="show_Image">
-        <img
-          src={profileImage}
-          alt="Profile_Picture"
-          className="show_Image_img"
-        />
-      </div> */}
     </div>
   );
 };

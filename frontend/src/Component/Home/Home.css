@@ -83,8 +83,8 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  background-color: white;
-  color: #ec5c5c;
+  background-color: grey;
+  color: white;
 }
 
 .btn-secondary:hover {
