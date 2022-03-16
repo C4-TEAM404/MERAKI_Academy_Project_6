@@ -34,52 +34,37 @@ const Login = () => {
         email,
         password,
       });
-      console.log(res);
-      setEmail("");
-      setPassword("");
-      const result = {
-        token: res.data.token,
-        isLoggedIn: true,
-        userId: res.data.userId[0].id,
-        firstName: res.data.userId[0].firstName,
-        lastName: res.data.userId[0].lastName,
-        roleId: res.data.role,
-        profileImage: res.data.userId[0].profileImage,
-      };
-      localStorage.setItem("token", result.token);
-      localStorage.setItem("isLoggedIn", result.isLoggedIn);
-      localStorage.setItem("userId", result.userId);
-      localStorage.setItem("roleId", result.roleId);
-      localStorage.setItem("profileImage", result.profileImage);
-      setLogin(result);
-      history("/register");
-    } catch (err) {
-      throw new Error(err);
+
+      if (res.data.success) {
+        setEmail("");
+        setPassword("");
+        const result = {
+          token: res.data.token,
+          isLoggedIn: true,
+          userId: res.data.userId[0].id,
+          firstName: res.data.userId[0].firstName,
+          lastName: res.data.userId[0].lastName,
+          roleId: res.data.role,
+          profileImage: res.data.userId[0].profileImage,
+        };
+        setLogin(result);
+        history("/register");
+        localStorage.setItem("token", result.token);
+        localStorage.setItem("isLoggedIn", result.isLoggedIn);
+        localStorage.setItem("userId", result.userId);
+        localStorage.setItem("roleId", result.roleId);
+        localStorage.setItem("profileImage", result.profileImage);
+      } else throw Error;
+    } catch (error) {
+      if (!error.response.data.success) {
+        return console.log(error);
+      }
     }
   };
   //====================================================//Return
   return (
     <div className="loginMainDiv">
       <div className="formLoginDiv">
-        {/* <form className="formLogin" onSubmit={submitHandler}>
-          <input
-            value={email}
-            className="emailLogin"
-            type="email"
-            placeholder="Email"
-            onChange={emailHandler}
-          />
-
-          <input
-            value={password}
-            className="passwordLogin"
-            type="password"
-            placeholder="Password"
-            onChange={passowrdHandler}
-          />
-
-          <button type="submit"> Login </button>
-        </form> */}
         <Form onSubmit={submitHandler} className="d-grid gap-2">
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label class="text-start">Email address</Form.Label>
