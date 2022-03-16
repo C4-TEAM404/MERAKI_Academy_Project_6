@@ -112,7 +112,7 @@ const Course_Details = () => {
          
         </dd>
       </dl> */}
-      {/* {showroom.length && <Link to="/video">video</Link>} */}
+      {showroom.length && <Link to="/video">video</Link>}
     </div>
   );
 };
