@@ -7,7 +7,7 @@
   /* background-color: red; */
 }
 .allCourses {
-  width: 97%;
+  width: 100%;
   display: flex;
   padding: 20px;
   flex-direction: column;
@@ -18,7 +18,19 @@
   border-radius: 7px;
   background-color: rgb(255, 255, 255);
 }
-
+.cardCourse {
+  transition: 0.5s;
+  border-radius: 20px;
+  transform: 2s;
+}
+.imagCardCourse {
+  border-top-left-radius: 20px 20px;
+  border-top-right-radius: 20px 20px;
+}
+.cardCourse:hover {
+  cursor: pointer;
+  background-color: #fddddd;
+}
 .paginationDiv {
   width: 100%;
   height: 100px;

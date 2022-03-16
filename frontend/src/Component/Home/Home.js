@@ -253,7 +253,7 @@ const Introduction = () => {
         </div>
       </div>
       <div className="Part5">
-        <div className="Part5MainDiv">
+        <div className="Part5MainDiv" id="About">
           <div className="page4Details">
             <div className="popular">Abous Us</div>
             <div className="details">
