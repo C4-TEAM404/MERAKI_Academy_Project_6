@@ -5,6 +5,9 @@ import { UserContext } from "../../App";
 import axios from "axios";
 import { io } from "socket.io-client";
 import "./ClassRoom.css";
+
+import { AiOutlineArrowUp } from "react-icons/ai";
+
 const peer = new Peer();
 let socket = io.connect("http://localhost:5000");
 
@@ -146,33 +149,36 @@ const ClassRoom = () => {
               </div>
             </div>
             <div class="card" style={{ height: "100%" }}>
-              <div class="card-body d-flex flex-column justify-content-between">
+              <div class="card-body d-flex flex-column justify-content-between gap-3">
                 <div className="messagesMap">
                   {messages &&
                     messages.map((element) => {
                       return (
                         <div className="chatView shadow p-2 mb-4">
-                          <p className="massageSender">
+                          <div className="SenderName">
                             {element.name.split("-")[0]}
-                            <br />
-                            <p className="massageContain">{element.message}</p>
-                            {Date}
-                          </p>
+                            <div className="MessageContain">
+                              {element.message}
+                            </div>
+                          </div>
                         </div>
                       );
                     })}
                 </div>
-                <div className="messageForm">
-                  <form onSubmit={message_handler}>
+                <div className="messageFormDiv">
+                  <form onSubmit={message_handler} className="MessageForm">
                     <input
                       value={message}
+                      className="textMessageForm"
                       type="text"
                       onChange={(e) => {
                         setMessage(e.target.value);
                       }}
                     />
 
-                    <button type="submit">send</button>
+                    <button type="submit" className="btnMessageForm">
+                      <AiOutlineArrowUp size={"30"} />
+                    </button>
                   </form>
                 </div>
               </div>
