@@ -267,7 +267,9 @@ const ClassRoom = () => {
         </button>
         <video ref={mycam} />
         {/* {toggle && <video ref={mycam} />} */}
-        {login.roleId != 2 && <video ref={remoteVideo} />}
+        {/* <video ref={remoteVideo} /> */}
+        {console.log(login.roleId)}
+        {login.roleId == 3 && <video ref={remoteVideo} />}
       </div>
       ClassRoom
     </div>

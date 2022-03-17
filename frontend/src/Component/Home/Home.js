@@ -35,7 +35,7 @@ const Introduction = () => {
               <MDBBtn class="btn-primary" href="/login">
                 LOGIN
               </MDBBtn>
-              <MDBBtn class="btn-secondary " href="/Register">
+              <MDBBtn class="btn-secondary " href="/SRegister">
                 TRY HEX
               </MDBBtn>
             </div>
