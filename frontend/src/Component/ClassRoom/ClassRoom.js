@@ -12,7 +12,6 @@ const ClassRoom = () => {
   const history = useNavigate();
   const { login, courseId, setRoomName } = useContext(UserContext);
   const [peerId, setPeerId] = useState("");
-  const [roomId, setRoomId] = useState("");
   const [remotePeerId, setRemotePeerId] = useState("");
   const [endcall, setEndcall] = useState({});
   const [endcallstudent, setEndcallstudent] = useState({});
