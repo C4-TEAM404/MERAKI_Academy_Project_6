@@ -137,8 +137,8 @@ const ClassRoom = () => {
   return (
     <div className="classRoomMainDiv">
       <div className="VideoCallDiv">
-        <div class="row p-4 g-4 " style={{ width: "100%", height: "100%" }}>
-          <div class="col-sm-4 d-flex justify-content  flex-column d-grid gap-4 ">
+        <div class="row p-4 g-4  " style={{ width: "100%", height: "100%" }}>
+          <div class="col-sm-5 d-flex   flex-column d-grid gap-4 ">
             <div class="card " style={{ height: "100%" }}>
               <div class="card-body">
                 <div className="myCamDiv">
@@ -146,32 +146,40 @@ const ClassRoom = () => {
                 </div>
               </div>
             </div>
-            <div class="card " style={{ height: "100%" }}>
-              <div class="card-body">
-                {messages &&
-                  messages.map((element) => {
-                    return (
-                      <div>
-                        <p>{element.name}</p>
-                        <p>{element.message}</p>
-                      </div>
-                    );
-                  })}
-                <form onSubmit={message_handler}>
-                  <input
-                    value={message}
-                    type="text"
-                    onChange={(e) => {
-                      setMessage(e.target.value);
-                    }}
-                  />
+            <div class="card" style={{ height: "100%" }}>
+              <div class="card-body d-flex flex-column justify-content-between">
+                <div className="messagesMap">
+                  {messages &&
+                    messages.map((element) => {
+                      return (
+                        <div className="chatView shadow p-2 mb-4">
+                          <p className="massageSender">
+                            {element.name.split("-")[0]}
+                            <br />
+                            <p className="massageContain">{element.message}</p>
+                            {Date}
+                          </p>
+                        </div>
+                      );
+                    })}
+                </div>
+                <div className="messageForm">
+                  <form onSubmit={message_handler}>
+                    <input
+                      value={message}
+                      type="text"
+                      onChange={(e) => {
+                        setMessage(e.target.value);
+                      }}
+                    />
 
-                  <button type="submit">send</button>
-                </form>
+                    <button type="submit">send</button>
+                  </form>
+                </div>
               </div>
             </div>
           </div>
-          <div class="col-sm-8">
+          <div class="col-sm-7">
             <div class="card" style={{ height: "100%" }}>
               <div class="card-body">
                 {login.roleId === 3 && (
