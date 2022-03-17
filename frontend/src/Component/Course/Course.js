@@ -132,7 +132,8 @@ const Course = () => {
               <Card
                 className="cardCourse"
                 onClick={(e) => {
-                  setCourseId(_.id);
+                  localStorage.setItem("courseId", _.id);
+                  setCourseId(_.id || localStorage.getItem("courseId"));
                   history("/coursedescryption");
                 }}
               >
