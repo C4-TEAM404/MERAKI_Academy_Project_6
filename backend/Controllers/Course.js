@@ -27,15 +27,20 @@ const CreateNewCourse = async (req, res) => {
    `;
   const data = [
     Title,
+
     Description,
     Price,
     Language,
+
     Schedule,
     Author,
+
     Requirements,
     Category,
+
     Video,
     image,
+
     room_Id,
     teacher_Id,
     start,
