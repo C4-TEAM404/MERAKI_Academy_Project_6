@@ -24,13 +24,15 @@ const Course_Details = () => {
   const [showroom, setShowroom] = useState([]);
 
   //====================================================//useContext
-  const { login, courseId } = useContext(UserContext);
+  const { login, courseId, setCourseId } = useContext(UserContext);
   //====================================================//useEffect
 
   useEffect(async () => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/course/getByid/${courseId}`
+        `http://localhost:5000/course/getByid/${localStorage.getItem(
+          "courseId"
+        )}`
       );
       console.log(res, "---------------");
       setTitle(res.data.results[0].Title);
