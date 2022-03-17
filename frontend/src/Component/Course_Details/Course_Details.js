@@ -24,7 +24,8 @@ const Course_Details = () => {
   const [showroom, setShowroom] = useState([]);
 
   //====================================================//useContext
-  const { login, courseId, setCourseId } = useContext(UserContext);
+  const { login, courseId, setCourseId, setTeacherId } =
+    useContext(UserContext);
   //====================================================//useEffect
 
   useEffect(async () => {
@@ -45,6 +46,7 @@ const Course_Details = () => {
       setCategory(res.data.results[0].Category);
       setVideo(res.data.results[0].Video);
       setImage(res.data.results[0].image);
+      setTeacherId(res.data.results[0].teacher_Id);
       const res1 = await axios.post(`http://localhost:5000/course/usercourse`, {
         courseId: courseId,
         userId: login.userId || 1,
@@ -83,9 +85,9 @@ const Course_Details = () => {
         <div className="priceFloatCard">
           <div className="priceFloat"> $ {price - 0.1}</div>
         </div>
-        {/* <div className="payFloatCard">
+        <div className="payFloatCard">
           <Payment Title={title} description={description} price={price} />
-        </div> */}
+        </div>
       </div>
       {/* <dl class="row">
         <img src={image} class="img-fluid " alt="..." />
