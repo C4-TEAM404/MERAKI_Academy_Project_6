@@ -36,7 +36,6 @@ const Course_Details = () => {
           "courseId"
         )}`
       );
-      console.log(res, "---------------");
       setTitle(res.data.results[0].Title);
       setDescription(res.data.results[0].Description);
       setPrice(res.data.results[0].Price);
@@ -97,7 +96,7 @@ const Course_Details = () => {
         </div>
       </div>
 
-      {showroom.length && <Link to="/video">video</Link>}
+      
     </div>
     // <div className="CourseDetailsMainDiv">
     //   <div className="detailsHeader">
@@ -151,9 +150,11 @@ const Course_Details = () => {
         <dd class="col-sm-9">
          
         </dd>
-  </dl> */
-    // {showroom.length && <Link to="/video">video</Link>}
-    // </div>
+      </dl> */}
+
+      {showroom.length !== 0 && <Link to="/ClassRoom">video</Link>}
+    </div>
+
   );
 };
 
