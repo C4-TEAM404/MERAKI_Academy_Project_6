@@ -21,6 +21,7 @@ function App() {
   const [login, setLogin] = useState({});
   const [courseId, setCourseId] = useState({});
   const [roomName, setRoomName] = useState("");
+  const [teacherId, setTeacherId] = useState("");
 
   return (
     <div className="App">
@@ -32,6 +33,8 @@ function App() {
           courseId,
           roomName,
           setRoomName,
+          teacherId,
+          setTeacherId,
         }}
       >
         <Header />

@@ -326,7 +326,7 @@ const Create_Course = () => {
                       style={{
                         width: "75%",
                         height: "75%",
-                        objectFit: "fill",
+                        objectFit: "cover",
                       }}
                       alt="..."
                     />
