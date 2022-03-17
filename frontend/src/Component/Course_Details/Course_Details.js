@@ -32,7 +32,6 @@ const Course_Details = () => {
       const res = await axios.get(
         `http://localhost:5000/course/getByid/${courseId}`
       );
-      console.log(res, "---------------");
       setTitle(res.data.results[0].Title);
       setDescription(res.data.results[0].Description);
       setPrice(res.data.results[0].Price);
@@ -112,7 +111,8 @@ const Course_Details = () => {
          
         </dd>
       </dl> */}
-      {showroom.length && <Link to="/video">video</Link>}
+
+      {showroom.length !== 0 && <Link to="/ClassRoom">video</Link>}
     </div>
   );
 };

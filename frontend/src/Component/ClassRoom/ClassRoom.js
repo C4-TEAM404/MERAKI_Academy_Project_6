@@ -2,10 +2,9 @@ import React, { useState, useEffect, useRef, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import Peer from "peerjs";
 import { UserContext } from "../../App";
-import Chat from "../Chat/Chat";
 import axios from "axios";
-import stopMediaStream from "stop-media-stream";
 import { io } from "socket.io-client";
+import "./ClassRoom.css";
 const peer = new Peer();
 let socket = io.connect("http://localhost:5000");
 
@@ -51,9 +50,6 @@ const ClassRoom = () => {
         setRemotePeerId(
           Object.values(peer)[2] || peer._socket._events.message.context._id
         );
-        // setRoomName(
-        //   Object.values(peer)[2] || peer._socket._events.message.context._id
-        // );
       }
 
       if (login.roleId == 3) {
@@ -62,28 +58,8 @@ const ClassRoom = () => {
         );
 
         setRemotePeerId(res1.data.results[0].room_Id);
-        // setRoomName(res1.data.results[0].room_Id);
         console.log(res1);
       }
-
-      // peer.on("call", (call) => {
-      //   console.log(call);
-      //   var getUserMedia =
-      //     navigator.getUserMedia ||
-      //     navigator.webkitGetUserMedia ||
-      //     navigator.mozGetUserMedia;
-      //   getUserMedia({ video: true, audio: true }, function (stream) {
-      //     mycam.current.srcObject = stream;
-      //     mycam.current.play();
-      //     console.log("str", stream, "answe", call);
-      //     call.answer(stream); // Answer the call with an A/V stream.
-      //     call.on("stream", function (remoteStream) {
-      //       remoteVideo.current.srcObject = remoteStream;
-      //       remoteVideo.current.play();
-      //       console.log(remoteVideo);
-      //     });
-      //   });
-      // });
     } catch (err) {
       console.log(err.response);
     }
@@ -123,9 +99,6 @@ const ClassRoom = () => {
   }, [socket]);
 
   const handler = async () => {
-    // const res = await socket.on("connected");
-    // console.log(res.id);
-    // setFirst(`${res.id}+${login.userId}`);
     socket.emit("join_room", remotePeerId);
   };
 
@@ -149,28 +122,7 @@ const ClassRoom = () => {
     });
   };
 
-  // const answer1 = async () => {
-  //   mycam.current.srcObject = str;
-  //   mycam.current.play();
-  //   peer.on("call", (call) => {
-  //     console.log(call);
-  //     var getUserMedia =
-  //       navigator.getUserMedia ||
-  //       navigator.webkitGetUserMedia ||
-  //       navigator.mozGetUserMedia;
-  //     getUserMedia({ video: true, audio: true }, function (stream) {
-  //       call.answer(stream); // Answer the call with an A/V stream.
-  //       call.on("stream", function (remoteStream) {
-  //         remoteVideo.current.srcObject = remoteStream;
-  //         remoteVideo.current.play();
-  //         console.log(remoteVideo);
-  //       });
-  //     });
-  //   });
-
-  //   console.log("answe", answe, "str", str);
-  //   answe.current.answer(str.current);
-  // };
+  //
   const message_handler = (e) => {
     e.preventDefault();
     console.log("omar");
@@ -183,29 +135,111 @@ const ClassRoom = () => {
     setMessage("");
   };
   return (
-    <div>
-      {messages &&
-        messages.map((element) => {
-          return (
-            <div>
-              <p>{element.name}</p>
-              <p>{element.message}</p>
+    <div className="classRoomMainDiv">
+      <div className="VideoCallDiv">
+        <div class="row p-4 g-4 " style={{ width: "100%", height: "100%" }}>
+          <div class="col-sm-4 d-flex justify-content  flex-column d-grid gap-4 ">
+            <div class="card " style={{ height: "100%" }}>
+              <div class="card-body">
+                <div className="myCamDiv">
+                  <video ref={mycam} className="myCam" />
+                </div>
+              </div>
             </div>
-          );
-        })}
-      <form onSubmit={message_handler}>
-        <input
-          value={message}
-          type="text"
-          onChange={(e) => {
-            setMessage(e.target.value);
-          }}
-        />
+            <div class="card " style={{ height: "100%" }}>
+              <div class="card-body">
+                {messages &&
+                  messages.map((element) => {
+                    return (
+                      <div>
+                        <p>{element.name}</p>
+                        <p>{element.message}</p>
+                      </div>
+                    );
+                  })}
+                <form onSubmit={message_handler}>
+                  <input
+                    value={message}
+                    type="text"
+                    onChange={(e) => {
+                      setMessage(e.target.value);
+                    }}
+                  />
 
-        <button type="submit">send</button>
-      </form>
-      <div></div>
+                  <button type="submit">send</button>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-8">
+            <div class="card" style={{ height: "100%" }}>
+              <div class="card-body">
+                {login.roleId === 3 && (
+                  <video ref={remoteVideo} className="myCam" />
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       <div>
+        <div>
+          <button
+            onClick={() => {
+              call(remotePeerId);
+              handler();
+            }}
+          >
+            call
+          </button>
+        </div>
+
+        <div>
+          {" "}
+          <button
+            onClick={() => {
+              if (login.roleId == 2) {
+                streamtrack.forEach(function (track) {
+                  if (track.readyState == "live") {
+                    track.stop();
+                  }
+                });
+                streamtrackcall.forEach(function (track) {
+                  if (track.readyState == "live") {
+                    track.stop();
+                  }
+                });
+                endcall.close();
+              } else if (login.roleId == 3) {
+                streamtrackcall.forEach(function (track) {
+                  if (track.readyState == "live") {
+                    track.stop();
+                  }
+                });
+                streamtrackcal2.forEach(function (track) {
+                  if (track.readyState == "live") {
+                    track.stop();
+                  }
+                });
+              }
+
+              setToggle(false);
+            }}
+          >
+            end
+          </button>
+        </div>
+      </div>
+    </div>
+
+    /*
+      /////////////////////////////////////////////////////////////////////////
+    
+
+        /////////////////////////////////////////////////////////////////////////
+
+       /////////////////////////////////////////////////////////////////////////
+      <div className="VideoCallMainDiv">
         <input
           type="text"
           value={remotePeerId}
@@ -213,274 +247,12 @@ const ClassRoom = () => {
             setRemotePeerId(e.target.value);
           }}
         />
-        <button
-          onClick={() => {
-            call(remotePeerId);
-            handler();
-          }}
-        >
-          call
-        </button>
-        <button
-          onClick={() => {
-            message_handler();
-          }}
-        >
-          send
-        </button>
-        <button
-          onClick={() => {
-            // navigator.mediaDevices
-            // .getUserMedia({ video: true, audio: false })
-            // .then((mediaStream) => {
-            //   stopMediaStream(mediaStream);
-            // });
-            if (login.roleId == 2) {
-              streamtrack.forEach(function (track) {
-                if (track.readyState == "live") {
-                  track.stop();
-                }
-              });
-              streamtrackcall.forEach(function (track) {
-                if (track.readyState == "live") {
-                  track.stop();
-                }
-              });
-              endcall.close();
-            } else if (login.roleId == 3) {
-              streamtrackcall.forEach(function (track) {
-                if (track.readyState == "live") {
-                  track.stop();
-                }
-              });
-              streamtrackcal2.forEach(function (track) {
-                if (track.readyState == "live") {
-                  track.stop();
-                }
-              });
-            }
+    
 
-            setToggle(false);
-          }}
-        >
-          end
-        </button>
-        <video ref={mycam} />
-        {/* {toggle && <video ref={mycam} />} */}
-        {login.roleId != 2 && <video ref={remoteVideo} />}
-      </div>
-      ClassRoom
-    </div>
+     */
+    // </div>
+    /////////////////////////////////////////////////////////////////////////
   );
 };
 
 export default ClassRoom;
-
-// //====================================================//Require
-// import Button from "@material-ui/core/Button";
-// import IconButton from "@material-ui/core/IconButton";
-// import TextField from "@material-ui/core/TextField";
-// import AssignmentIcon from "@material-ui/icons/Assignment";
-// import PhoneIcon from "@material-ui/icons/Phone";
-// import React, { useEffect, useRef, useState } from "react";
-// import { CopyToClipboard } from "react-copy-to-clipboard";
-// import Peer from "simple-peer";
-// import io from "socket.io-client";
-// import { useNavigate } from "react-router-dom";
-// import axios from "axios";
-
-// //CSS File
-// import "./ClassRoom.css";
-
-// const socket = io.connect("http://localhost:5000");
-// const ClassRoom = () => {
-//   const [me, setMe] = useState("");
-//   const [stream, setStream] = useState();
-//   const [receivingCall, setReceivingCall] = useState(false);
-//   const [caller, setCaller] = useState("");
-//   const [callerSignal, setCallerSignal] = useState();
-//   const [callAccepted, setCallAccepted] = useState(false);
-//   const [idToCall, setIdToCall] = useState("");
-//   const [callEnded, setCallEnded] = useState(false);
-//   const [name, setName] = useState("");
-//   const myVideo = useRef();
-//   const userVideo = useRef();
-//   const connectionRef = useRef();
-
-//   useEffect(() => {
-//     navigator.mediaDevices
-//       .getUserMedia({ video: true, audio: true })
-//       .then((stream) => {
-//         setStream(stream);
-//         myVideo.current.srcObject = stream;
-//       });
-
-//     socket.on("me", (id) => {
-//       setMe(id);
-//     });
-
-//     socket.on("callUser", (data) => {
-//       setReceivingCall(true);
-//       setCaller(data.from);
-//       setName(data.name);
-//       setCallerSignal(data.signal);
-//     });
-//   }, []);
-
-//   const callUser = (id) => {
-//     const peer = new Peer({
-//       initiator: true,
-//       trickle: false,
-//       stream: stream,
-//     });
-
-//     peer.on("signal", (data) => {
-//       socket.emit("callUser", {
-//         userToCall: id,
-//         signalData: data,
-//         from: me,
-//         name: name,
-//       });
-//     });
-//     peer.on("stream", (stream) => {
-//       userVideo.current.srcObject = stream;
-//     });
-//     socket.on("callAccepted", (signal) => {
-//       setCallAccepted(true);
-//       peer.signal(signal);
-//     });
-
-//     connectionRef.current = peer;
-//     const answerCall = () => {
-//       setCallAccepted(true);
-//       const peer = new Peer({
-//         initiator: false,
-//         trickle: false,
-//         stream: stream,
-//       });
-//       peer.on("signal", (data) => {
-//         socket.emit("answerCall", { signal: data, to: caller });
-//       });
-//       peer.on("stream", (stream) => {
-//         userVideo.current.srcObject = stream;
-//       });
-
-//       peer.signal(callerSignal);
-//       connectionRef.current = peer;
-//     };
-
-//     const leaveCall = () => {
-//       setCallEnded(true);
-//       connectionRef.current.destroy();
-//     };
-//   };
-//   // ====================================================
-//   const answerCall = () => {
-//     setCallAccepted(true);
-//     const peer = new Peer({
-//       initiator: false,
-//       trickle: false,
-//       stream: stream,
-//     });
-//     peer.on("signal", (data) => {
-//       socket.emit("answerCall", { signal: data, to: caller });
-//     });
-//     peer.on("stream", (stream) => {
-//       userVideo.current.srcObject = stream;
-//     });
-
-//     peer.signal(callerSignal);
-//     connectionRef.current = peer;
-//   };
-
-//   const leaveCall = () => {
-//     setCallEnded(true);
-//     connectionRef.current.destroy();
-//   };
-
-//   return (
-//     <>
-//       <h1 style={{ textAlign: "center", color: "#fff" }}>Zoomish</h1>
-//       <div className="container">
-//         <div className="video-container">
-//           <div className="video">
-//             {stream && (
-//               <video
-//                 playsInline
-//                 muted
-//                 ref={myVideo}
-//                 autoPlay
-//                 style={{ width: "300px" }}
-//               />
-//             )}
-//           </div>
-//           <div className="video">
-//             {callAccepted && !callEnded ? (
-//               <video
-//                 playsInline
-//                 ref={userVideo}
-//                 autoPlay
-//                 style={{ width: "300px" }}
-//               />
-//             ) : null}
-//           </div>
-//         </div>
-//         <div className="myId">
-//           <TextField
-//             id="filled-basic"
-//             label="Name"
-//             variant="filled"
-//             value={name}
-//             onChange={(e) => setName(e.target.value)}
-//             style={{ marginBottom: "20px" }}
-//           />
-//           <CopyToClipboard text={me} style={{ marginBottom: "2rem" }}>
-//             <Button
-//               variant="contained"
-//               color="primary"
-//               startIcon={<AssignmentIcon fontSize="large" />}
-//             >
-//               Copy ID
-//             </Button>
-//           </CopyToClipboard>
-
-//           <TextField
-//             id="filled-basic"
-//             label="ID to call"
-//             variant="filled"
-//             value={idToCall}
-//             onChange={(e) => setIdToCall(e.target.value)}
-//           />
-//           <div className="call-button">
-//             {callAccepted && !callEnded ? (
-//               <Button variant="contained" color="secondary" onClick={leaveCall}>
-//                 End Call
-//               </Button>
-//             ) : (
-//               <IconButton
-//                 color="primary"
-//                 aria-label="call"
-//                 onClick={() => callUser(idToCall)}
-//               >
-//                 <PhoneIcon fontSize="large" />
-//               </IconButton>
-//             )}
-//             {idToCall}
-//           </div>
-//         </div>
-//         <div>
-//           {receivingCall && !callAccepted ? (
-//             <div className="caller">
-//               <h1>{name} is calling...</h1>
-//               <Button variant="contained" color="primary" onClick={answerCall}>
-//                 Answer
-//               </Button>
-//             </div>
-//           ) : null}
-//         </div>
-//       </div>
-//     </>
-//   );
-// };
-
-// export default ClassRoom;
