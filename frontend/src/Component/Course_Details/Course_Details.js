@@ -3,7 +3,6 @@ import React, { useState, useEffect, useContext } from "react";
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { UserContext } from "../../App";
-import Payment from "../Payment/Payment";
 
 //CSS File
 import "./Course_Details.css";

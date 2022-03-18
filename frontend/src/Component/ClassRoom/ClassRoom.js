@@ -230,6 +230,7 @@ const ClassRoom = () => {
                     <input
                       value={message}
                       className="textMessageForm"
+                      placeholder="Type Message Here ..."
                       type="text"
                       onChange={(e) => {
                         setMessage(e.target.value);
@@ -237,7 +238,7 @@ const ClassRoom = () => {
                     />
 
                     <button type="submit" className="btnMessageForm">
-                      <BiSend size={"30"} />
+                      <BiSend size={"30"} onMouseEnter={{ color: "red" }} />
                     </button>
                   </form>
                 </div>
