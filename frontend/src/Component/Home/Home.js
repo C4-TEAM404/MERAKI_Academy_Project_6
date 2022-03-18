@@ -3,6 +3,7 @@ import React from "react";
 import Card from "react-bootstrap/Card";
 import CardGroup from "react-bootstrap/CardGroup";
 import { MDBBtn } from "mdb-react-ui-kit";
+import { AiFillLinkedin } from "react-icons/ai";
 import {
   MDBCard,
   MDBCardBody,
@@ -20,6 +21,9 @@ import "./Home.css";
 const Introduction = () => {
   return (
     <div className="introMainDiv">
+      <a href="https://www.facebook.com/" target="_blank">
+        <AiFillLinkedin />
+      </a>
       <div className="Part1">
         <div className="part1Div">
           <div className="Message1">
@@ -256,14 +260,20 @@ const Introduction = () => {
         <div className="Part5MainDiv" id="About">
           <div className="page4Details">
             <div className="popular">About Us</div>
-            <div className="details">
+            {/* <div className="details">
               Enim semper, gravida interdum nullam, pellentesque adipiscing
               scelerisque vitae dui, magnis platea. Ac sagittis ridiculus Est ac
               sollicitudin varius integer laoreet morbi porta
-            </div>
+            </div> */}
             <div className="Popular_card">
               <CardGroup className="CardGroupPage4">
                 <Card className="shadow p-3 mb-5 bg-body rounded">
+                  <Card.Body>
+                    <Card.Title>Omar Kataa</Card.Title>
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                    Dolore eaque fugit sint magni obcaecati ipsam quo accusamus
+                    veritatis pariatur earum?
+                  </Card.Body>
                   <Card.Img
                     variant="top"
                     src="https://i.ibb.co/cYLDLfd/123.jpg"

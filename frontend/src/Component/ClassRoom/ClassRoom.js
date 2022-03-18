@@ -236,11 +236,14 @@ const ClassRoom = () => {
             //   stopMediaStream(mediaStream);
             // });
             if (login.roleId == 2) {
-              streamtrack.forEach(function (track) {
-                if (track.readyState == "live") {
-                  track.stop();
-                }
-              });
+              if (streamtrack) {
+                console.log("omar");
+                streamtrack.forEach(function (track) {
+                  if (track.readyState == "live") {
+                    track.stop();
+                  }
+                });
+              }
               streamtrackcall.forEach(function (track) {
                 if (track.readyState == "live") {
                   track.stop();
