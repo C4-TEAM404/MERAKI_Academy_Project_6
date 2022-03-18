@@ -2,10 +2,16 @@ import React, { useState, useEffect, useRef, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import Peer from "peerjs";
 import { UserContext } from "../../App";
-import Chat from "../Chat/Chat";
 import axios from "axios";
-import stopMediaStream from "stop-media-stream";
 import { io } from "socket.io-client";
+import "./ClassRoom.css";
+import { MdVideoCall } from "react-icons/md";
+
+import { BsCameraVideoFill, BsCameraVideoOffFill } from "react-icons/bs";
+import { BiSend } from "react-icons/bi";
+
+import { AiOutlineArrowUp, AiFillCloseCircle } from "react-icons/ai";
+
 const peer = new Peer();
 let socket = io.connect("http://localhost:5000");
 
@@ -13,7 +19,6 @@ const ClassRoom = () => {
   const history = useNavigate();
   const { login, courseId, setRoomName } = useContext(UserContext);
   const [peerId, setPeerId] = useState("");
-  const [roomId, setRoomId] = useState("");
   const [remotePeerId, setRemotePeerId] = useState("");
   const [endcall, setEndcall] = useState({});
   const [endcallstudent, setEndcallstudent] = useState({});
@@ -51,9 +56,6 @@ const ClassRoom = () => {
         setRemotePeerId(
           Object.values(peer)[2] || peer._socket._events.message.context._id
         );
-        // setRoomName(
-        //   Object.values(peer)[2] || peer._socket._events.message.context._id
-        // );
       }
 
       if (login.roleId == 3) {
@@ -62,28 +64,8 @@ const ClassRoom = () => {
         );
 
         setRemotePeerId(res1.data.results[0].room_Id);
-        // setRoomName(res1.data.results[0].room_Id);
         console.log(res1);
       }
-
-      // peer.on("call", (call) => {
-      //   console.log(call);
-      //   var getUserMedia =
-      //     navigator.getUserMedia ||
-      //     navigator.webkitGetUserMedia ||
-      //     navigator.mozGetUserMedia;
-      //   getUserMedia({ video: true, audio: true }, function (stream) {
-      //     mycam.current.srcObject = stream;
-      //     mycam.current.play();
-      //     console.log("str", stream, "answe", call);
-      //     call.answer(stream); // Answer the call with an A/V stream.
-      //     call.on("stream", function (remoteStream) {
-      //       remoteVideo.current.srcObject = remoteStream;
-      //       remoteVideo.current.play();
-      //       console.log(remoteVideo);
-      //     });
-      //   });
-      // });
     } catch (err) {
       console.log(err.response);
     }
@@ -113,9 +95,8 @@ const ClassRoom = () => {
   }, []);
   useEffect(() => {
     socket.on("message", (data) => {
-      console.log("omar");
+      console.log(messages);
       console.log(data);
-
       setMessages((messages) => [...messages, data]);
     });
 
@@ -123,9 +104,6 @@ const ClassRoom = () => {
   }, [socket]);
 
   const handler = async () => {
-    // const res = await socket.on("connected");
-    // console.log(res.id);
-    // setFirst(`${res.id}+${login.userId}`);
     socket.emit("join_room", remotePeerId);
   };
 
@@ -149,28 +127,7 @@ const ClassRoom = () => {
     });
   };
 
-  // const answer1 = async () => {
-  //   mycam.current.srcObject = str;
-  //   mycam.current.play();
-  //   peer.on("call", (call) => {
-  //     console.log(call);
-  //     var getUserMedia =
-  //       navigator.getUserMedia ||
-  //       navigator.webkitGetUserMedia ||
-  //       navigator.mozGetUserMedia;
-  //     getUserMedia({ video: true, audio: true }, function (stream) {
-  //       call.answer(stream); // Answer the call with an A/V stream.
-  //       call.on("stream", function (remoteStream) {
-  //         remoteVideo.current.srcObject = remoteStream;
-  //         remoteVideo.current.play();
-  //         console.log(remoteVideo);
-  //       });
-  //     });
-  //   });
-
-  //   console.log("answe", answe, "str", str);
-  //   answe.current.answer(str.current);
-  // };
+  //
   const message_handler = (e) => {
     e.preventDefault();
     console.log("omar");
@@ -183,100 +140,114 @@ const ClassRoom = () => {
     setMessage("");
   };
   return (
-    <div>
-      {messages &&
-        messages.map((element) => {
-          return (
-            <div>
-              <p>{element.name}</p>
-              <p>{element.message}</p>
+    <div className="classRoomMainDiv">
+      <div className="VideoCallDiv">
+        <div class="row" style={{ width: "100%", height: "100%" }}>
+          <div class="col-sm-7 mb-2 mt-2  ">
+            <div class="card" style={{ height: "100%" }}>
+              <div class="card-body">
+                {login.roleId === 3 && (
+                  <video ref={remoteVideo} className="myCam" />
+                )}
+              </div>
+              <div className="CallEndBtn">
+                <div>
+                  <button
+                    className="callIcon"
+                    onClick={() => {
+                      call(remotePeerId);
+                      handler();
+                    }}
+                  >
+                    <BsCameraVideoFill size={35} />
+                  </button>
+                </div>
+
+                <div>
+                  {" "}
+                  <button
+                    className="closeIcon"
+                    onClick={() => {
+                      if (login.roleId == 2) {
+                        streamtrack.forEach(function (track) {
+                          if (track.readyState == "live") {
+                            track.stop();
+                          }
+                        });
+                        streamtrackcall.forEach(function (track) {
+                          if (track.readyState == "live") {
+                            track.stop();
+                          }
+                        });
+                        endcall.close();
+                      } else if (login.roleId == 3) {
+                        streamtrackcall.forEach(function (track) {
+                          if (track.readyState == "live") {
+                            track.stop();
+                          }
+                        });
+                        streamtrackcal2.forEach(function (track) {
+                          if (track.readyState == "live") {
+                            track.stop();
+                          }
+                        });
+                      }
+
+                      setToggle(false);
+                    }}
+                  >
+                    <BsCameraVideoOffFill size={30} />
+                  </button>
+                </div>
+              </div>
             </div>
-          );
-        })}
-      <form onSubmit={message_handler}>
-        <input
-          value={message}
-          type="text"
-          onChange={(e) => {
-            setMessage(e.target.value);
-          }}
-        />
+          </div>
+          <div class="col-sm-5 d-flex   flex-column d-grid gap-3 mt-2 ">
+            <div class="card " style={{ height: "100%" }}>
+              <div class="card-body  p-0 m-0 $gray-100">
+                <video ref={mycam} className="myCam" />
+              </div>
+            </div>
+            <div class="card" style={{ height: "100%" }}>
+              <div class="card-body d-flex flex-column justify-content-between gap-3">
+                <div className="messagesMap">
+                  {messages &&
+                    messages.map((element) => {
+                      return (
+                        <div className="chatView shadow p-2 mb-2">
+                          <div className="SenderName">
+                            {element.name.split("-")[0]}
+                            <div className="MessageContain">
+                              {element.message}
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })}
+                </div>
+                <div className="messageFormDiv">
+                  <form onSubmit={message_handler} className="MessageForm">
+                    <input
+                      value={message}
+                      className="textMessageForm"
+                      placeholder="Type Message Here ..."
+                      type="text"
+                      onChange={(e) => {
+                        setMessage(e.target.value);
+                      }}
+                    />
 
-        <button type="submit">send</button>
-      </form>
-      <div></div>
-      <div>
-        <input
-          type="text"
-          value={remotePeerId}
-          onChange={(e) => {
-            setRemotePeerId(e.target.value);
-          }}
-        />
-        <button
-          onClick={() => {
-            call(remotePeerId);
-            handler();
-          }}
-        >
-          call
-        </button>
-        <button
-          onClick={() => {
-            message_handler();
-          }}
-        >
-          send
-        </button>
-        <button
-          onClick={() => {
-            // navigator.mediaDevices
-            // .getUserMedia({ video: true, audio: false })
-            // .then((mediaStream) => {
-            //   stopMediaStream(mediaStream);
-            // });
-            if (login.roleId == 2) {
-              if (streamtrack) {
-                console.log("omar");
-                streamtrack.forEach(function (track) {
-                  if (track.readyState == "live") {
-                    track.stop();
-                  }
-                });
-              }
-              streamtrackcall.forEach(function (track) {
-                if (track.readyState == "live") {
-                  track.stop();
-                }
-              });
-              endcall.close();
-            } else if (login.roleId == 3) {
-              streamtrackcall.forEach(function (track) {
-                if (track.readyState == "live") {
-                  track.stop();
-                }
-              });
-              streamtrackcal2.forEach(function (track) {
-                if (track.readyState == "live") {
-                  track.stop();
-                }
-              });
-            }
-
-            setToggle(false);
-          }}
-        >
-          end
-        </button>
-        <video ref={mycam} />
-        {/* {toggle && <video ref={mycam} />} */}
-        {/* <video ref={remoteVideo} /> */}
-        {console.log(login.roleId)}
-        {login.roleId == 3 && <video ref={remoteVideo} />}
+                    <button type="submit" className="btnMessageForm">
+                      <BiSend size={"30"} onMouseEnter={{ color: "red" }} />
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      ClassRoom
     </div>
   );
 };
-
 export default ClassRoom;
