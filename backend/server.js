@@ -34,7 +34,9 @@ app.use("/course", courseRouter);
 app.use("/role", roleRouter);
 app.use("/login", LoginRouter);
 app.use("/payment", Payment);
-
+app.get("/test", (req, res) => {
+  res.json("success backend");
+});
 //====================================================// Handles any other endpoints [unassigned - endpoints]
 app.use("*", (req, res) => res.status(404).json("NO content at this path"));
 

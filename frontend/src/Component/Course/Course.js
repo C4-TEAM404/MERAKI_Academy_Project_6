@@ -57,11 +57,11 @@ const Course = () => {
   //===================================================== Filter by category
 
   const searchByTitle = async (e) => {
-    if (search) {
+    if (e.target.value) {
       console.log(e.target.value);
       try {
         const res = await axios.post("http://localhost:5000/course/getByT", {
-          Title: search,
+          Title: e.target.value,
           Category: category,
         });
         console.log(res);
@@ -97,9 +97,9 @@ const Course = () => {
               Filter by Category ...
             </option>
             <option value={0}>All</option>
-            <option value={"software"}>software</option>
-            <option value={"Language"}>Language</option>
-            <option value={"sciences"}>sciences</option>
+            <option value={"Basic"}>Basic Javascript</option>
+            <option value={"Backend"}>Backend</option>
+            <option value={"Frontend"}>Frontend</option>
           </select>
         </div>
         <div class="input-group">
@@ -110,7 +110,8 @@ const Course = () => {
             aria-label="Search"
             aria-describedby="search-addon"
             onChange={(e) => {
-              setSearch(e.target.value);
+              // setSearch(e.target.value);
+              searchByTitle(e);
             }}
           />
           <button
@@ -140,12 +141,12 @@ const Course = () => {
                 <Card.Img
                   variant="top"
                   className="imagCardCourse"
-                  src="https://www.learnfly.com/img/post_img/1335475250_1_5ev1xmjs2-sj4ddejfdnqa.png"
+                  src={_.image}
                 />
                 <Card.Body>
                   <Card.Title>{_.Title}</Card.Title>
                   <Card.Text>{_.Author}</Card.Text>
-                  <Card.Text>Price : {_.Price} $</Card.Text>
+                  <Card.Text>Price : {_.Price - 0.01} $</Card.Text>
                   <Card.Text>Start In : {_.start}</Card.Text>
                 </Card.Body>
               </Card>

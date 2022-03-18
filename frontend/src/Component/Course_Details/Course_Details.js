@@ -49,9 +49,9 @@ const Course_Details = () => {
       setImage(res.data.results[0].image);
       setTeacherId(res.data.results[0].teacher_Id);
       const res1 = await axios.post(`http://localhost:5000/course/usercourse`, {
-        courseId: courseId,
-        userId: login.userId || 1,
-        roleId: login.roleId || 2,
+        courseId: courseId || localStorage.getItem("courseId"),
+        userId: login.userId || localStorage.getItem("userId"),
+        roleId: login.roleId || localStorage.getItem("roleId"),
       });
       console.log(res1);
       setShowroom(res1.data.result);
@@ -81,13 +81,13 @@ const Course_Details = () => {
               <p class="lead text-secondary my-2"> Start-In : {start}</p>
               <p class="lead text-secondary my-2">
                 {" "}
-                Requirements : {requirements}
+                Prerequisites : {requirements}
               </p>
               <p class="lead text-secondary my-2">
                 {" "}
                 Description : {description}
               </p>
-              <video src={video} controls width="100%" height="120%"></video>
+              <iframe src={video} width="100%" height="120%"></iframe>
               <a href="#" class="btn btn-outline-secondary btn-lg border">
                 Order Now
               </a>
