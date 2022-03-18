@@ -250,7 +250,7 @@ const update_room_video_code = (req, res) => {
 
 const getUser_Course = (req, res) => {
   const { courseId, userId, roleId } = req.body;
-  console.log(courseId);
+  console.log("req.body", req.body);
   let query = `select * from user_courses where is_deleted=0 and courseId=? and teacher_Id=? `;
   if (roleId == 3) {
     query = `select * from user_courses where is_deleted=0 and courseId=? and studentId=? `;

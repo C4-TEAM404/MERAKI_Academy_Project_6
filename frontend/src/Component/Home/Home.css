@@ -313,3 +313,11 @@
   height: 100%;
   opacity: 0.5;
 }
+.linkdinDiv {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 10%;
+  height: 100%;
+  /* background-color: red; */
+}

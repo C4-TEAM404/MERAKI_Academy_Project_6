@@ -146,8 +146,16 @@ const ClassRoom = () => {
           <div class="col-sm-7 mb-2 mt-2  ">
             <div class="card" style={{ height: "100%" }}>
               <div class="card-body">
-                {login.roleId === 3 && (
-                  <video ref={remoteVideo} className="myCam" />
+                {login.roleId === 2 ? (
+                  <>
+                    {console.log("inside")}
+                    <video ref={mycam} className="myCam" />
+                  </>
+                ) : (
+                  <>
+                    {console.log("userremote")}
+                    <video ref={remoteVideo} className="myCam" />
+                  </>
                 )}
               </div>
               <div className="CallEndBtn">
@@ -203,11 +211,16 @@ const ClassRoom = () => {
             </div>
           </div>
           <div class="col-sm-5 d-flex   flex-column d-grid gap-3 mt-2 ">
-            <div class="card " style={{ height: "100%" }}>
-              <div class="card-body  p-0 m-0 $gray-100">
-                <video ref={mycam} className="myCam" />
+            {login.roleId == 3 ? (
+              <div class="card " style={{ height: "100%" }}>
+                <div class="card-body  p-0 m-0 $gray-100">
+                  <video ref={mycam} className="myCam" />
+                </div>
               </div>
-            </div>
+            ) : (
+              ""
+            )}
+
             <div class="card" style={{ height: "100%" }}>
               <div class="card-body d-flex flex-column justify-content-between gap-3">
                 <div className="messagesMap">
