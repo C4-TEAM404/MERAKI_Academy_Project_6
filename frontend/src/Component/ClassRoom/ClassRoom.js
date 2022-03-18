@@ -5,6 +5,10 @@ import { UserContext } from "../../App";
 import axios from "axios";
 import { io } from "socket.io-client";
 import "./ClassRoom.css";
+import { MdVideoCall } from "react-icons/md";
+
+import { AiOutlineArrowUp, AiFillCloseCircle } from "react-icons/ai";
+
 const peer = new Peer();
 let socket = io.connect("http://localhost:5000");
 
@@ -88,9 +92,8 @@ const ClassRoom = () => {
   }, []);
   useEffect(() => {
     socket.on("message", (data) => {
-      console.log("omar");
+      console.log(messages);
       console.log(data);
-
       setMessages((messages) => [...messages, data]);
     });
 
@@ -136,8 +139,67 @@ const ClassRoom = () => {
   return (
     <div className="classRoomMainDiv">
       <div className="VideoCallDiv">
-        <div class="row p-4 g-4  " style={{ width: "100%", height: "100%" }}>
-          <div class="col-sm-5 d-flex   flex-column d-grid gap-4 ">
+        <div class="row" style={{ width: "100%", height: "100%" }}>
+          <div class="col-sm-7 mb-5">
+            <div class="card" style={{ height: "95%" }}>
+              <div class="card-body">
+                {login.roleId === 3 && (
+                  <video ref={remoteVideo} className="myCam" />
+                )}
+              </div>
+            </div>
+            <div className="CallEndBtn">
+              <div>
+                <button
+                  className="callIcon"
+                  onClick={() => {
+                    call(remotePeerId);
+                    handler();
+                  }}
+                >
+                  <MdVideoCall size={35} />
+                </button>
+              </div>
+
+              <div>
+                {" "}
+                <button
+                  className="closeIcon"
+                  onClick={() => {
+                    if (login.roleId == 2) {
+                      streamtrack.forEach(function (track) {
+                        if (track.readyState == "live") {
+                          track.stop();
+                        }
+                      });
+                      streamtrackcall.forEach(function (track) {
+                        if (track.readyState == "live") {
+                          track.stop();
+                        }
+                      });
+                      endcall.close();
+                    } else if (login.roleId == 3) {
+                      streamtrackcall.forEach(function (track) {
+                        if (track.readyState == "live") {
+                          track.stop();
+                        }
+                      });
+                      streamtrackcal2.forEach(function (track) {
+                        if (track.readyState == "live") {
+                          track.stop();
+                        }
+                      });
+                    }
+
+                    setToggle(false);
+                  }}
+                >
+                  <AiFillCloseCircle size={30} />
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-5 d-flex   flex-column d-grid gap-3 mt-3 ">
             <div class="card " style={{ height: "100%" }}>
               <div class="card-body">
                 <div className="myCamDiv">
@@ -146,95 +208,41 @@ const ClassRoom = () => {
               </div>
             </div>
             <div class="card" style={{ height: "100%" }}>
-              <div class="card-body d-flex flex-column justify-content-between">
+              <div class="card-body d-flex flex-column justify-content-between gap-3">
                 <div className="messagesMap">
                   {messages &&
                     messages.map((element) => {
                       return (
                         <div className="chatView shadow p-2 mb-4">
-                          <p className="massageSender">
+                          <div className="SenderName">
                             {element.name.split("-")[0]}
-                            <br />
-                            <p className="massageContain">{element.message}</p>
-                            {Date}
-                          </p>
+                            <div className="MessageContain">
+                              {element.message}
+                            </div>
+                          </div>
                         </div>
                       );
                     })}
                 </div>
-                <div className="messageForm">
-                  <form onSubmit={message_handler}>
+                <div className="messageFormDiv">
+                  <form onSubmit={message_handler} className="MessageForm">
                     <input
                       value={message}
+                      className="textMessageForm"
                       type="text"
                       onChange={(e) => {
                         setMessage(e.target.value);
                       }}
                     />
 
-                    <button type="submit">send</button>
+                    <button type="submit" className="btnMessageForm">
+                      <AiOutlineArrowUp size={"30"} />
+                    </button>
                   </form>
                 </div>
               </div>
             </div>
           </div>
-          <div class="col-sm-7">
-            <div class="card" style={{ height: "100%" }}>
-              <div class="card-body">
-                {login.roleId === 3 && (
-                  <video ref={remoteVideo} className="myCam" />
-                )}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div>
-        <div>
-          <button
-            onClick={() => {
-              call(remotePeerId);
-              handler();
-            }}
-          >
-            call
-          </button>
-        </div>
-
-        <div>
-          {" "}
-          <button
-            onClick={() => {
-              if (login.roleId == 2) {
-                streamtrack.forEach(function (track) {
-                  if (track.readyState == "live") {
-                    track.stop();
-                  }
-                });
-                streamtrackcall.forEach(function (track) {
-                  if (track.readyState == "live") {
-                    track.stop();
-                  }
-                });
-                endcall.close();
-              } else if (login.roleId == 3) {
-                streamtrackcall.forEach(function (track) {
-                  if (track.readyState == "live") {
-                    track.stop();
-                  }
-                });
-                streamtrackcal2.forEach(function (track) {
-                  if (track.readyState == "live") {
-                    track.stop();
-                  }
-                });
-              }
-
-              setToggle(false);
-            }}
-          >
-            end
-          </button>
         </div>
       </div>
     </div>
