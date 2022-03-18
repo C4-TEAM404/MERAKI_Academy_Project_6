@@ -49,35 +49,35 @@ const Header = () => {
                 <Link to="/Course" alt="Course">
                   Courses
                 </Link>
-                {!login.userId && (
+                {!localStorage.getItem("userId") && (
                   <Link to="/login" alt="login">
                     login
                   </Link>
                 )}
 
-                {!login.userId && (
+                {!localStorage.getItem("userId") && (
                   <Link to="/SRegister" alt="Register">
                     Register
                   </Link>
                 )}
 
-                {login.roleId == 2 && (
+                {localStorage.getItem("roleId") == 2 && (
                   <Link to="/createcourse" alt="createcourse">
                     Create Course
                   </Link>
                 )}
 
-                {login.roleId == 2 && (
+                {localStorage.getItem("roleId") == 2 && (
                   <Link to="/Teacher_Page" alt="Teacher_Page">
                     MyPage
                   </Link>
                 )}
-                {login.roleId == 3 && (
+                {localStorage.getItem("roleId") == 3 && (
                   <Link to="/Student_Page" alt="Student_Page">
                     MyPage
                   </Link>
                 )}
-                {login.userId && (
+                {localStorage.getItem("userId") && (
                   <Link
                     to="/"
                     alt="Home"
