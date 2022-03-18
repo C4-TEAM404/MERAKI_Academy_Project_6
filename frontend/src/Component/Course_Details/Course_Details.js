@@ -35,6 +35,7 @@ const Course_Details = () => {
           "courseId"
         )}`
       );
+
       setTitle(res.data.results[0].Title);
       setDescription(res.data.results[0].Description);
       setPrice(res.data.results[0].Price);
@@ -48,14 +49,14 @@ const Course_Details = () => {
       setImage(res.data.results[0].image);
       setTeacherId(res.data.results[0].teacher_Id);
       const res1 = await axios.post(`http://localhost:5000/course/usercourse`, {
-        courseId: courseId || localStorage.getItem("courseId"),
+        courseId: localStorage.getItem("courseId"),
         userId: login.userId || localStorage.getItem("userId"),
         roleId: login.roleId || localStorage.getItem("roleId"),
       });
       console.log(res1);
       setShowroom(res1.data.result);
     } catch (err) {
-      console.log(err.response);
+      console.log(err.respone);
       throw new Error(err);
     }
   }, []);

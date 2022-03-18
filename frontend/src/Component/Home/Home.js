@@ -3,7 +3,8 @@ import React from "react";
 import Card from "react-bootstrap/Card";
 import CardGroup from "react-bootstrap/CardGroup";
 import { MDBBtn } from "mdb-react-ui-kit";
-import { AiFillLinkedin } from "react-icons/ai";
+import { BsLinkedin } from "react-icons/bs";
+import { BsGithub } from "react-icons/bs";
 import {
   MDBCard,
   MDBCardBody,
@@ -21,9 +22,6 @@ import "./Home.css";
 const Introduction = () => {
   return (
     <div className="introMainDiv">
-      <a href="https://www.facebook.com/" target="_blank">
-        <AiFillLinkedin />
-      </a>
       <div className="Part1">
         <div className="part1Div">
           <div className="Message1">
@@ -50,9 +48,8 @@ const Introduction = () => {
         <div className="page2Details">
           <div className="popular">Our Popular Courses</div>
           <div className="details">
-            Enim semper, gravida interdum nullam, pellentesque adipiscing
-            scelerisque vitae dui, magnis platea. Ac sagittis ridiculus Est ac
-            sollicitudin varius integer laoreet morbi porta
+            All courses you need to start from zero to build your full stack wep
+            application
           </div>
         </div>
         <div className="Popular_card">
@@ -197,9 +194,7 @@ const Introduction = () => {
         <div className="page4Details">
           <div className="popular">Our Instructor</div>
           <div className="details">
-            Enim semper, gravida interdum nullam, pellentesque adipiscing
-            scelerisque vitae dui, magnis platea. Ac sagittis ridiculus Est ac
-            sollicitudin varius integer laoreet morbi porta
+            Motivation, Analytical teacher who you want to select
           </div>
           <div className="Popular_card">
             <CardGroup className="CardGroupPage4">
@@ -269,29 +264,56 @@ const Introduction = () => {
               <CardGroup className="CardGroupPage4">
                 <Card className="shadow p-3 mb-5 bg-body rounded">
                   <Card.Body>
-                    <Card.Title>Omar Kataa</Card.Title>
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                    Dolore eaque fugit sint magni obcaecati ipsam quo accusamus
-                    veritatis pariatur earum?
+                    <Card.Title>
+                      {" "}
+                      <span>Omar Kataa</span>
+                      <br />
+                      <span>Full-Stack Web Developer</span>
+                    </Card.Title>
+                    <div className="linkdinDiv">
+                      <a
+                        href="https://www.linkedin.com/in/omar-kataa/"
+                        target="_blank"
+                      >
+                        <BsLinkedin size={40} style={{ fill: "darkblue" }} />
+                      </a>
+                      <a href="https://github.com/OmarKataa" target="_blank">
+                        <BsGithub size={40} style={{ fill: "black" }} />
+                      </a>
+                    </div>
                   </Card.Body>
                   <Card.Img
                     variant="top"
                     src="https://i.ibb.co/cYLDLfd/123.jpg"
                   />
-                  <Card.Body>
-                    <Card.Title>Omar Kataa</Card.Title>
-                  </Card.Body>
                 </Card>
                 <Card className="shadow p-3 mb-5 bg-body rounded">
+                  <Card.Body>
+                    <Card.Title>
+                      <span>Haitham Alulaimi</span>
+                      <br />
+                      <span>Full-Stack Web Developer</span>
+                    </Card.Title>
+                    <div className="linkdinDiv">
+                      <a
+                        href="https://www.linkedin.com/in/haitham-alulaimi/"
+                        target="_blank"
+                      >
+                        <BsLinkedin size={40} style={{ fill: "darkblue" }} />
+                      </a>
+                      <a
+                        href="https://github.com/haithamnawwaf"
+                        target="_blank"
+                      >
+                        <BsGithub size={40} style={{ fill: "black" }} />
+                      </a>
+                    </div>
+                  </Card.Body>
                   <Card.Img
                     style={({ width: "100%" }, { height: "150%" })}
                     variant="top"
                     src="https://i.ibb.co/SVT6Lz5/456.jpg"
                   />
-
-                  <Card.Body>
-                    <Card.Title>Haitham Alulaimi</Card.Title>
-                  </Card.Body>
                 </Card>
               </CardGroup>
             </div>

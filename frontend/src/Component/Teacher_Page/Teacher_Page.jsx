@@ -23,7 +23,7 @@ const Teacher_Page = () => {
       const res = await axios.post(
         "http://localhost:5000/teacher/teachercourse",
         {
-          id: login.userId,
+          id: localStorage.getItem("userId"),
         }
       );
       console.log(res);
@@ -39,7 +39,6 @@ const Teacher_Page = () => {
     pageNumbers.push(i);
   }
 
-
   return (
     <div>
       <div className="allCourses">
@@ -50,13 +49,14 @@ const Teacher_Page = () => {
                 className="cardCourse"
                 onClick={(e) => {
                   setCourseId(_.id);
+                  localStorage.setItem("courseId", _.id);
                   history("/coursedescryption");
                 }}
               >
                 <Card.Img
                   variant="top"
                   className="imagCardCourse"
-                  src="https://www.learnfly.com/img/post_img/1335475250_1_5ev1xmjs2-sj4ddejfdnqa.png"
+                  src={_.image}
                 />
                 <Card.Body>
                   <Card.Title>{_.Title}</Card.Title>
@@ -90,7 +90,6 @@ const Teacher_Page = () => {
       </div>
     </div>
   );
-
 };
 
 export default Teacher_Page;

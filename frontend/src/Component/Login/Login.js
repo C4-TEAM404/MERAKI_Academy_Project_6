@@ -73,6 +73,8 @@ const Login = () => {
         localStorage.setItem("isLoggedIn", result.isLoggedIn);
         localStorage.setItem("userId", result.userId);
         localStorage.setItem("roleId", result.roleId);
+        localStorage.setItem("firstName", result.firstName);
+        localStorage.setItem("lastName", result.lastName);
         localStorage.setItem("profileImage", result.profileImage);
       } else throw Error;
     } catch (error) {
