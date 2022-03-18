@@ -25,7 +25,6 @@ const Student_Page = () => {
           id: login.userId,
         }
       );
-      console.log(res);
       setAllCourses(res.data.result);
     } catch (err) {
       throw new Error(err.response);

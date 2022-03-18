@@ -39,9 +39,7 @@ const Header = () => {
                 <Link
                   to="#about"
                   alt="About"
-                  onClick={(event) =>
-                    (window.location.href = "http://localhost:3000/#About")
-                  }
+                  onClick={(event) => (window.location.href = "/#About")}
                 >
                   {" "}
                   About
