@@ -7,6 +7,9 @@ import { io } from "socket.io-client";
 import "./ClassRoom.css";
 import { MdVideoCall } from "react-icons/md";
 
+import { BsCameraVideoFill, BsCameraVideoOffFill } from "react-icons/bs";
+import { BiSend } from "react-icons/bi";
+
 import { AiOutlineArrowUp, AiFillCloseCircle } from "react-icons/ai";
 
 const peer = new Peer();
@@ -140,71 +143,69 @@ const ClassRoom = () => {
     <div className="classRoomMainDiv">
       <div className="VideoCallDiv">
         <div class="row" style={{ width: "100%", height: "100%" }}>
-          <div class="col-sm-7 mb-5">
-            <div class="card" style={{ height: "95%" }}>
+          <div class="col-sm-7 mb-2 mt-2  ">
+            <div class="card" style={{ height: "100%" }}>
               <div class="card-body">
                 {login.roleId === 3 && (
                   <video ref={remoteVideo} className="myCam" />
                 )}
               </div>
-            </div>
-            <div className="CallEndBtn">
-              <div>
-                <button
-                  className="callIcon"
-                  onClick={() => {
-                    call(remotePeerId);
-                    handler();
-                  }}
-                >
-                  <MdVideoCall size={35} />
-                </button>
-              </div>
+              <div className="CallEndBtn">
+                <div>
+                  <button
+                    className="callIcon"
+                    onClick={() => {
+                      call(remotePeerId);
+                      handler();
+                    }}
+                  >
+                    <BsCameraVideoFill size={35} />
+                  </button>
+                </div>
 
-              <div>
-                {" "}
-                <button
-                  className="closeIcon"
-                  onClick={() => {
-                    if (login.roleId == 2) {
-                      streamtrack.forEach(function (track) {
-                        if (track.readyState == "live") {
-                          track.stop();
-                        }
-                      });
-                      streamtrackcall.forEach(function (track) {
-                        if (track.readyState == "live") {
-                          track.stop();
-                        }
-                      });
-                      endcall.close();
-                    } else if (login.roleId == 3) {
-                      streamtrackcall.forEach(function (track) {
-                        if (track.readyState == "live") {
-                          track.stop();
-                        }
-                      });
-                      streamtrackcal2.forEach(function (track) {
-                        if (track.readyState == "live") {
-                          track.stop();
-                        }
-                      });
-                    }
+                <div>
+                  {" "}
+                  <button
+                    className="closeIcon"
+                    onClick={() => {
+                      if (login.roleId == 2) {
+                        streamtrack.forEach(function (track) {
+                          if (track.readyState == "live") {
+                            track.stop();
+                          }
+                        });
+                        streamtrackcall.forEach(function (track) {
+                          if (track.readyState == "live") {
+                            track.stop();
+                          }
+                        });
+                        endcall.close();
+                      } else if (login.roleId == 3) {
+                        streamtrackcall.forEach(function (track) {
+                          if (track.readyState == "live") {
+                            track.stop();
+                          }
+                        });
+                        streamtrackcal2.forEach(function (track) {
+                          if (track.readyState == "live") {
+                            track.stop();
+                          }
+                        });
+                      }
 
-                    setToggle(false);
-                  }}
-                >
-                  <AiFillCloseCircle size={30} />
-                </button>
+                      setToggle(false);
+                    }}
+                  >
+                    <BsCameraVideoOffFill size={30} />
+                  </button>
+                </div>
               </div>
             </div>
           </div>
-          <div class="col-sm-5 d-flex   flex-column d-grid gap-3 mt-3 ">
+          <div class="col-sm-5 d-flex   flex-column d-grid gap-3 mt-2 ">
             <div class="card " style={{ height: "100%" }}>
-              <div class="card-body">
-                <div className="myCamDiv">
-                  <video ref={mycam} className="myCam" />
-                </div>
+              <div class="card-body  p-0 m-0 $gray-100">
+                <video ref={mycam} className="myCam" />
               </div>
             </div>
             <div class="card" style={{ height: "100%" }}>
@@ -213,7 +214,7 @@ const ClassRoom = () => {
                   {messages &&
                     messages.map((element) => {
                       return (
-                        <div className="chatView shadow p-2 mb-4">
+                        <div className="chatView shadow p-2 mb-2">
                           <div className="SenderName">
                             {element.name.split("-")[0]}
                             <div className="MessageContain">
@@ -236,7 +237,7 @@ const ClassRoom = () => {
                     />
 
                     <button type="submit" className="btnMessageForm">
-                      <AiOutlineArrowUp size={"30"} />
+                      <BiSend size={"30"} />
                     </button>
                   </form>
                 </div>
