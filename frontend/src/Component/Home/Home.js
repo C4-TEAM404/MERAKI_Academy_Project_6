@@ -24,7 +24,7 @@ const Introduction = () => {
   const history = useNavigate();
   return (
     <div className="introMainDiv">
-      <div className="Part1">
+      <div className="Part1" id="home">
         <div className="part1Div">
           <div className="Message1">
             <div>

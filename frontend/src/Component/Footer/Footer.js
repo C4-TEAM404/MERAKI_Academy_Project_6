@@ -117,9 +117,7 @@ const Footer = () => {
               <div className="links" style={{ marginTop: "50px" }}>
                 <a
                   style={{ cursor: "pointer" }}
-                  onClick={() => {
-                    history("/");
-                  }}
+                  onClick={(event) => (window.location.href = "/#home")}
                   className="text-white "
                 >
                   HOME
