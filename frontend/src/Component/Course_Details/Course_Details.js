@@ -73,7 +73,7 @@ const Course_Details = () => {
               <div class="card-body b-0">
                 {/* <h5 class="card-title">Special title treatment</h5> */}
                 <div className="topPart">
-                  <p class="card-text"> Category -> {category}</p>
+                  <p class="card-text"> Category --> {category}</p>
 
                   <p className="titleCD">{title}</p>
                   <p class="descriptionCD">{description}</p>
