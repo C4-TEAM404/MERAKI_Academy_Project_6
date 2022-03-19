@@ -3,6 +3,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { UserContext } from "../../App";
+import Payment from "../Payment/Payment";
 
 //CSS File
 import "./Course_Details.css";
@@ -40,7 +41,7 @@ const Course_Details = () => {
       setDescription(res.data.results[0].Description);
       setPrice(res.data.results[0].Price);
       setLanguage(res.data.results[0].language);
-      setSchedual(res.data.results[0].Author);
+      setSchedual(res.data.results[0].Schedule);
       setStart(res.data.results[0].start);
       setAuthor(res.data.results[0].Author);
       setRequirements(res.data.results[0].Requirements);
@@ -69,29 +70,63 @@ const Course_Details = () => {
         <div class="row">
           <div class="col-sm-7">
             <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Special title treatment</h5>
-                <p class="card-text">
-                  With supporting text below as a natural lead-in to additional
-                  content.
-                </p>
-                <a href="#" class="btn btn-primary">
+              <div class="card-body b-0">
+                {/* <h5 class="card-title">Special title treatment</h5> */}
+                <div className="topPart">
+                  <p class="card-text"> Category -> {category}</p>
+
+                  <p className="titleCD">{title}</p>
+                  <p class="descriptionCD">{description}</p>
+
+                  {/* <a href="#" class="btn btn-primary">
                   Go somewhere
-                </a>
+                </a> */}
+                </div>
+                <div className="courseDetailsImage">
+                  <img
+                    src="https://www.arcskill.com/v2/static/images/courses/1600347150_-_JavaScript%20poster.jpg"
+                    className="imgcourseDetailsImage"
+                  />
+                </div>
+                <div className="bottomPart">
+                  <p class="card-text">
+                    Language : {language}       Schedual : {schedual}       
+                    Author :{author}        Start in : {start}
+                  </p>
+                  <p class="card-text"> Requirements : {requirements}</p>
+                </div>
               </div>
             </div>
           </div>
-          <div class="col-sm-5">
-            <div class="card">
+          <div class="col-sm-5 ">
+            <div class="card  ">
               <div class="card-body">
-                <h5 class="card-title">Special title treatment</h5>
-                <p class="card-text">
-                  With supporting text below as a natural lead-in to additional
-                  content.
-                </p>
-                <a href="#" class="btn btn-primary">
-                  Go somewhere
-                </a>
+                <div className="CrouseDeatailsVideo">
+                  <iframe
+                    className="VideoDetails"
+                    src={video}
+                    title="YouTube video"
+                    allowfullscreen
+                  ></iframe>
+                </div>
+                <br />
+                <div className="courseDetailsPrice">49.99$</div>
+                <br />
+
+                <div>
+                  <Payment
+                    Title={title}
+                    description={description}
+                    price={price}
+                  />
+                  <br />
+                </div>
+
+                {showroom.length !== 0 && (
+                  <a href="#" class="btn btn-primary">
+                    <Link to="/ClassRoom">Start Class</Link>
+                  </a>
+                )}
               </div>
             </div>
           </div>

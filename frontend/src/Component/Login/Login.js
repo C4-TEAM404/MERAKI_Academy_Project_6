@@ -123,7 +123,6 @@ const Login = () => {
                                 required
                                 value={password}
                                 onChange={passowrdHandler}
-                                minLength="6"
                               />
                               <label class="form-label" for="form3Example4c">
                                 Password
