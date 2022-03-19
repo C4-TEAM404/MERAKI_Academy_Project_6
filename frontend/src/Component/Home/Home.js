@@ -109,7 +109,7 @@ const Introduction = () => {
                 </Card.Text>
               </Card.Body>
               <Card.Footer>
-                <small className="text-muted">Last updated 3 hours ago</small>
+                <small className="text-muted">Last updated 1 hours ago</small>
               </Card.Footer>
             </Card>
             <Card className="shadow p-3 mb-5 bg-body rounded">
@@ -128,7 +128,7 @@ const Introduction = () => {
                 </Card.Text>
               </Card.Body>
               <Card.Footer>
-                <small className="text-muted">Last updated 3 days ago</small>
+                <small className="text-muted">Last updated 2 days ago</small>
               </Card.Footer>
             </Card>
           </CardGroup>

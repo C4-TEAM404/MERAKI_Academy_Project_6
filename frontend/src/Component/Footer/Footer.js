@@ -154,13 +154,13 @@ const Footer = () => {
                 </a>
               </div>
 
-              <div style={{ marginTop: "50px" }}>
+              {/* <div style={{ marginTop: "50px" }}>
                 <img
                   src="https://i.ibb.co/ZhmywL6/logo.png"
                   alt="HEX"
                   style={{ height: "50%", width: "10%" }}
                 />
-              </div>
+              </div> */}
               <MDBCol lg="3" md="6" className="mb-4 mb-md-0">
                 {/* <h5 className="text-uppercase">Links</h5>
 
@@ -304,8 +304,9 @@ const Footer = () => {
           className="text-center p-3"
           style={{ backgroundColor: "rgba(0, 0, 0, 0.2)" }}
         >
-          © 2021 Copyright:
+          © 2021 Copyright : 
           <a className="text-white" href="http://localhost:3000/home/">
+            {" "}
             HEX Company
           </a>
         </div>

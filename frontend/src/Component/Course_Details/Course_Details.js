@@ -96,14 +96,14 @@ const Course_Details = () => {
                 <div className="bottomPart">
                   <p class="card-text">
                     <MdLanguage size={25} style={{ color: "white" }} /> {" "}
-                    {language}                      
+                    {language}              
                     <BsAlarm size={20} style={{ color: "white" }} />
-                       {schedual}                     
+                       {schedual}             
                     <FaChalkboardTeacher
                       size={25}
                       style={{ color: "white" }}
                     />{" "}
-                      {author}                      
+                      {author}              
                     <BsFillCalendarEventFill
                       size={25}
                       style={{ color: "white" }}
@@ -143,7 +143,7 @@ const Course_Details = () => {
 
                 {showroom.length !== 0 && (
                   <a href="#" class="btn btn-primary">
-                    <Link to="/ClassRoom"  className="StartClass">
+                    <Link to="/ClassRoom" className="StartClass">
                       Start Class
                     </Link>
                   </a>
