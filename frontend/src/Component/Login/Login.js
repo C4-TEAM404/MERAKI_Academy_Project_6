@@ -141,7 +141,7 @@ const Login = () => {
                           </div>
                           <label class="form-label" for="form3Example1c">
                             Not Register Yet ?
-                            <a href="/TRegister">Click Here</a>
+                            <a href="/TRegister"> Click Here</a>
                           </label>
                         </form>
                       </div>

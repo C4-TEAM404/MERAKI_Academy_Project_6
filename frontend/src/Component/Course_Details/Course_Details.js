@@ -65,7 +65,40 @@ const Course_Details = () => {
 
   return (
     <div className="course_detail_mainDiv">
-      <div class="hero-banner bg-light py-5 shadow-sm m-5 bg-body rounded">
+      <div className="course_detail_main">
+        <div class="row">
+          <div class="col-sm-7">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Special title treatment</h5>
+                <p class="card-text">
+                  With supporting text below as a natural lead-in to additional
+                  content.
+                </p>
+                <a href="#" class="btn btn-primary">
+                  Go somewhere
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-5">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Special title treatment</h5>
+                <p class="card-text">
+                  With supporting text below as a natural lead-in to additional
+                  content.
+                </p>
+                <a href="#" class="btn btn-primary">
+                  Go somewhere
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* <div class="hero-banner bg-light py-5 shadow-sm m-5 bg-body rounded">
         <div class="container">
           <div class="row ">
             <div class="col-lg-5 offset-lg-1 order-lg-1">
@@ -96,7 +129,7 @@ const Course_Details = () => {
         </div>
       </div>
 
-      {showroom.length !== 0 && <Link to="/ClassRoom">video</Link>}
+      {showroom.length !== 0 && <Link to="/ClassRoom">video</Link>} */}
     </div>
   );
 };

@@ -4,7 +4,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* background-color: red; */
 }
 .allCourses {
   width: 100%;
@@ -19,9 +18,8 @@
   background-color: rgb(255, 255, 255);
 }
 .cardCourse {
-  transition: 0.5s;
+  transition: 0.2s;
   border-radius: 20px;
-  transform: 2s;
 }
 .imagCardCourse {
   border-top-left-radius: 20px 20px;
