@@ -49,7 +49,7 @@ const Header = () => {
                 </Link>
                 {!localStorage.getItem("userId") && (
                   <Link to="/login" alt="login">
-                    login
+                    Login
                   </Link>
                 )}
 

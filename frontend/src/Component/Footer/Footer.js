@@ -34,7 +34,7 @@ const Footer = () => {
               <div className="row d-flex justify-content-center">
                 <div className="col-auto">
                   <p className="pt-2">
-                    <strong>Type Your Comment Here</strong>
+                    <strong>Share Your Experience With Us</strong>
                   </p>
                 </div>
                 <div class="input-group mb-3">
@@ -51,7 +51,7 @@ const Footer = () => {
                     type="submit"
                     id="button-addon2"
                   >
-                    Button
+                    Submit
                   </button>
                 </div>
                 {/* <MDBCol md="5" start="12">
@@ -98,6 +98,21 @@ const Footer = () => {
           </section>
 
           <section className="">
+            {/* <MDBCol lg="3" md="6" className="mb-4 mb-md-0">
+
+
+              
+
+
+            </MDBCol> */}
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              <p style={{ maxWidth: "50%" }}>
+                Our vision is to build a world where all young people thrive by
+                realizing their full potential. Our mission is to ensure that
+                young people have equal opportunities in society by harnessing
+                the power of knowledge for employment and personal development.
+              </p>
+            </div>
             <MDBRow>
               <div className="links">
                 <a
@@ -127,7 +142,7 @@ const Footer = () => {
                   }}
                   className="text-white"
                 >
-                  Course
+                  COURSE
                 </a>
 
                 <a
