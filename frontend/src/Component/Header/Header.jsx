@@ -52,19 +52,16 @@ const Header = () => {
                     Login
                   </Link>
                 )}
-
                 {!localStorage.getItem("userId") && (
                   <Link to="/SRegister" alt="Register">
                     Register
                   </Link>
                 )}
-
                 {localStorage.getItem("roleId") == 2 && (
                   <Link to="/createcourse" alt="createcourse">
                     Create Course
                   </Link>
                 )}
-
                 {localStorage.getItem("roleId") == 2 && (
                   <Link to="/Teacher_Page" alt="Teacher_Page">
                     lectures
@@ -82,6 +79,7 @@ const Header = () => {
                     onClick={(event) => {
                       localStorage.clear();
                       setLogin({});
+                      history("/");
                     }}
                   >
                     {" "}
