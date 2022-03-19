@@ -292,22 +292,29 @@ const Introduction = () => {
                 <Card className="shadow p-3 mb-5 bg-body rounded">
                   <Card.Body>
                     <Card.Title>
-                      {" "}
-                      <span>Omar Kataa</span>
+                      <span>Omar Kata'a</span>
                       <br />
-                      <span>Full-Stack Web Developer</span>
+                      <span className="aboutGitLinkMainDiv">
+                        Full-Stack Web Developer
+                        <div className="aboutGitLink">
+                          <a
+                            href="https://www.linkedin.com/in/omar-kataa/"
+                            target="_blank"
+                          >
+                            <BsLinkedin
+                              size={40}
+                              style={{ fill: "darkblue" }}
+                            />
+                          </a>
+                          <a
+                            href="https://github.com/OmarKataa"
+                            target="_blank"
+                          >
+                            <BsGithub size={40} style={{ fill: "black" }} />
+                          </a>
+                        </div>
+                      </span>
                     </Card.Title>
-                    <div className="linkdinDiv">
-                      <a
-                        href="https://www.linkedin.com/in/omar-kataa/"
-                        target="_blank"
-                      >
-                        <BsLinkedin size={40} style={{ fill: "darkblue" }} />
-                      </a>
-                      <a href="https://github.com/OmarKataa" target="_blank">
-                        <BsGithub size={40} style={{ fill: "black" }} />
-                      </a>
-                    </div>
                   </Card.Body>
                   <Card.Img
                     variant="top"
@@ -319,22 +326,27 @@ const Introduction = () => {
                     <Card.Title>
                       <span>Haitham Alulaimi</span>
                       <br />
-                      <span>Full-Stack Web Developer</span>
+                      <span className="aboutGitLinkMainDiv">
+                        Full-Stack Web Developer
+                        <div className="aboutGitLink">
+                          <a
+                            href="https://www.linkedin.com/in/haitham-alulaimi/"
+                            target="_blank"
+                          >
+                            <BsLinkedin
+                              size={40}
+                              style={{ fill: "darkblue" }}
+                            />
+                          </a>
+                          <a
+                            href="https://github.com/haithamnawwaf"
+                            target="_blank"
+                          >
+                            <BsGithub size={40} style={{ fill: "black" }} />
+                          </a>
+                        </div>
+                      </span>
                     </Card.Title>
-                    <div className="linkdinDiv">
-                      <a
-                        href="https://www.linkedin.com/in/haitham-alulaimi/"
-                        target="_blank"
-                      >
-                        <BsLinkedin size={40} style={{ fill: "darkblue" }} />
-                      </a>
-                      <a
-                        href="https://github.com/haithamnawwaf"
-                        target="_blank"
-                      >
-                        <BsGithub size={40} style={{ fill: "black" }} />
-                      </a>
-                    </div>
                   </Card.Body>
                   <Card.Img
                     style={({ width: "100%" }, { height: "150%" })}

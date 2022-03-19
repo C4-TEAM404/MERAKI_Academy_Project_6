@@ -3,6 +3,12 @@ import React, { useState, useEffect, useContext } from "react";
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { UserContext } from "../../App";
+import Payment from "../Payment/Payment";
+
+import { FaChalkboardTeacher } from "react-icons/fa";
+import { BsFillCalendarEventFill } from "react-icons/bs";
+import { MdLanguage } from "react-icons/md";
+import { BsAlarm } from "react-icons/bs";
 
 //CSS File
 import "./Course_Details.css";
@@ -40,7 +46,7 @@ const Course_Details = () => {
       setDescription(res.data.results[0].Description);
       setPrice(res.data.results[0].Price);
       setLanguage(res.data.results[0].language);
-      setSchedual(res.data.results[0].Author);
+      setSchedual(res.data.results[0].Schedule);
       setStart(res.data.results[0].start);
       setAuthor(res.data.results[0].Author);
       setRequirements(res.data.results[0].Requirements);
@@ -65,7 +71,90 @@ const Course_Details = () => {
 
   return (
     <div className="course_detail_mainDiv">
-      <div class="hero-banner bg-light py-5 shadow-sm m-5 bg-body rounded">
+      <div className="course_detail_main">
+        <div class="row">
+          <div class="col-sm-7">
+            <div class="card">
+              <div class="card-body b-0">
+                {/* <h5 class="card-title">Special title treatment</h5> */}
+                <div className="topPart">
+                  <p class="card-text"> Category  >  {category}</p>
+
+                  <p className="titleCD">{title}</p>
+                  <p class="descriptionCD">{description}</p>
+
+                  {/* <a href="#" class="btn btn-primary">
+                  Go somewhere
+                </a> */}
+                </div>
+                <div className="courseDetailsImage">
+                  <img
+                    src="https://www.arcskill.com/v2/static/images/courses/1600347150_-_JavaScript%20poster.jpg"
+                    className="imgcourseDetailsImage"
+                  />
+                </div>
+                <div className="bottomPart">
+                  <p class="card-text">
+                    <MdLanguage size={25} style={{ color: "white" }} /> {" "}
+                    {language}                      
+                    <BsAlarm size={20} style={{ color: "white" }} />
+                       {schedual}                     
+                    <FaChalkboardTeacher
+                      size={25}
+                      style={{ color: "white" }}
+                    />{" "}
+                      {author}                      
+                    <BsFillCalendarEventFill
+                      size={25}
+                      style={{ color: "white" }}
+                    />{" "}
+                      
+                    {start}
+                  </p>
+                  <br />
+                  <p class="card-text"> Requirements : {requirements}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-5 ">
+            <div class="card  ">
+              <div class="card-body">
+                <div className="CrouseDeatailsVideo">
+                  <iframe
+                    className="VideoDetails"
+                    src={video}
+                    title="YouTube video"
+                    allowfullscreen
+                  ></iframe>
+                </div>
+                <br />
+                <div className="courseDetailsPrice">{price - 0.01}$</div>
+                <br />
+
+                <div>
+                  <Payment
+                    Title={title}
+                    description={description}
+                    price={price}
+                  />
+                  <br />
+                </div>
+
+                {showroom.length !== 0 && (
+                  <a href="#" class="btn btn-primary">
+                    <Link to="/ClassRoom"  className="StartClass">
+                      Start Class
+                    </Link>
+                  </a>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* <div class="hero-banner bg-light py-5 shadow-sm m-5 bg-body rounded">
         <div class="container">
           <div class="row ">
             <div class="col-lg-5 offset-lg-1 order-lg-1">
@@ -96,7 +185,7 @@ const Course_Details = () => {
         </div>
       </div>
 
-      {showroom.length !== 0 && <Link to="/ClassRoom">video</Link>}
+      {showroom.length !== 0 && <Link to="/ClassRoom">video</Link>} */}
     </div>
   );
 };

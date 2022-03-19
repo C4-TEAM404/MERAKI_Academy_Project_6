@@ -143,9 +143,12 @@ const ClassRoom = () => {
     <div className="classRoomMainDiv">
       <div className="VideoCallDiv">
         <div class="row" style={{ width: "100%", height: "100%" }}>
-          <div class="col-sm-7 mb-2 mt-2  ">
+          <div class="col-sm-8 mb-2 mt-2  ">
             <div class="card" style={{ height: "100%" }}>
-              <div class="card-body">
+
+
+              <div class="card-body p-0" style={{ height: "500px" }}>
+
                 {login.roleId === 2 ? (
                   <>
                     {console.log("inside")}
@@ -204,13 +207,13 @@ const ClassRoom = () => {
                       setToggle(false);
                     }}
                   >
-                    <BsCameraVideoOffFill size={30} />
+                    <BsCameraVideoOffFill size={35} />
                   </button>
                 </div>
               </div>
             </div>
           </div>
-          <div class="col-sm-5 d-flex   flex-column d-grid gap-3 mt-2 ">
+          <div class="col-sm-4 d-flex   flex-column d-grid gap-3 mt-2 ">
             {login.roleId == 3 ? (
               <div class="card " style={{ height: "100%" }}>
                 <div class="card-body  p-0 m-0 $gray-100">

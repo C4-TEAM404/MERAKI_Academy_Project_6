@@ -50,6 +50,20 @@
   gap: 1vw;
 }
 
+.aboutGitLinkMainDiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.aboutGitLink {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+}
+
 .btn-primary {
   display: flex;
   justify-content: center;
