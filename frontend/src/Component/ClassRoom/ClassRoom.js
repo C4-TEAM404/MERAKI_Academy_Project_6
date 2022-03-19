@@ -145,11 +145,10 @@ const ClassRoom = () => {
         <div class="row" style={{ width: "100%", height: "100%" }}>
           <div class="col-sm-7 mb-2 mt-2  ">
             <div class="card" style={{ height: "100%" }}>
-              <div class="card-body" style={{ height: "500px" }}>
+              <div class="card-body">
                 {login.roleId === 2 ? (
                   <>
                     {console.log("inside")}
-
                     <video ref={mycam} className="myCam" />
                   </>
                 ) : (
@@ -178,19 +177,13 @@ const ClassRoom = () => {
                     className="closeIcon"
                     onClick={() => {
                       if (login.roleId == 2) {
-                        if (Object.keys(streamtrack).length) {
-                          streamtrack.forEach(function (track) {
-                            if (track.readyState == "live") {
-                              track.stop();
-                            }
-                          });
-                        }
-                        console.log(streamtrackcall);
+                        streamtrack.forEach(function (track) {
+                          if (track.readyState == "live") {
+                            track.stop();
+                          }
+                        });
                         streamtrackcall.forEach(function (track) {
-                          if (
-                            track.readyState == "live" ||
-                            track.readyState == "ended"
-                          ) {
+                          if (track.readyState == "live") {
                             track.stop();
                           }
                         });
