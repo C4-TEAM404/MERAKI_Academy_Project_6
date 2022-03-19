@@ -32,6 +32,9 @@
   color: white;
   padding: 25px;
 }
+.StartClass:hover {
+  color: white;
+}
 .courseDetailsPrice {
   font-size: 30px;
 }

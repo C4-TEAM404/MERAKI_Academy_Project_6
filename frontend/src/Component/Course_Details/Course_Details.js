@@ -5,6 +5,11 @@ import axios from "axios";
 import { UserContext } from "../../App";
 import Payment from "../Payment/Payment";
 
+import { FaChalkboardTeacher } from "react-icons/fa";
+import { BsFillCalendarEventFill } from "react-icons/bs";
+import { MdLanguage } from "react-icons/md";
+import { BsAlarm } from "react-icons/bs";
+
 //CSS File
 import "./Course_Details.css";
 
@@ -73,7 +78,7 @@ const Course_Details = () => {
               <div class="card-body b-0">
                 {/* <h5 class="card-title">Special title treatment</h5> */}
                 <div className="topPart">
-                  <p class="card-text"> Category --> {category}</p>
+                  <p class="card-text"> Category  >  {category}</p>
 
                   <p className="titleCD">{title}</p>
                   <p class="descriptionCD">{description}</p>
@@ -90,9 +95,23 @@ const Course_Details = () => {
                 </div>
                 <div className="bottomPart">
                   <p class="card-text">
-                    Language : {language}       Schedual : {schedual}       
-                    Author :{author}        Start in : {start}
+                    <MdLanguage size={25} style={{ color: "white" }} /> {" "}
+                    {language}                      
+                    <BsAlarm size={20} style={{ color: "white" }} />
+                       {schedual}                     
+                    <FaChalkboardTeacher
+                      size={25}
+                      style={{ color: "white" }}
+                    />{" "}
+                      {author}                      
+                    <BsFillCalendarEventFill
+                      size={25}
+                      style={{ color: "white" }}
+                    />{" "}
+                      
+                    {start}
                   </p>
+                  <br />
                   <p class="card-text"> Requirements : {requirements}</p>
                 </div>
               </div>
@@ -110,7 +129,7 @@ const Course_Details = () => {
                   ></iframe>
                 </div>
                 <br />
-                <div className="courseDetailsPrice">49.99$</div>
+                <div className="courseDetailsPrice">{price - 0.01}$</div>
                 <br />
 
                 <div>
@@ -124,7 +143,9 @@ const Course_Details = () => {
 
                 {showroom.length !== 0 && (
                   <a href="#" class="btn btn-primary">
-                    <Link to="/ClassRoom">Start Class</Link>
+                    <Link to="/ClassRoom"  className="StartClass">
+                      Start Class
+                    </Link>
                   </a>
                 )}
               </div>
