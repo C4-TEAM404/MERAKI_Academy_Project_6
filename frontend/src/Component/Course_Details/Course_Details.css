@@ -24,8 +24,56 @@
   margin-top: 5vh;
   margin-bottom: 5vh;
 }
-
+.courseDetailsImage {
+  width: 100%;
+}
+.imgcourseDetailsImage {
+  width: 100%;
+}
+.titleCD {
+  font-size: 20px;
+  font-weight: bold;
+}
+.descriptionCD {
+  font-size: 12px;
+}
 .course_detail_main {
   width: 95%;
-  background-color: red;
+}
+.topPart {
+  background-color: rgb(55, 53, 53);
+  color: white;
+  padding: 25px;
+}
+.bottomPart {
+  background-color: rgb(55, 53, 53);
+  color: white;
+  padding: 25px;
+}
+.courseDetailsPrice {
+  font-size: 30px;
+}
+
+.CrouseDeatailsVideo {
+  background-color: green;
+  height: 50vh;
+}
+
+.VideoDetails {
+  width: 100%;
+  height: 100%;
+}
+
+.StripeCheckout {
+  width: 100%;
+  height: 50px;
+  background: #ec5c5c !important;
+}
+
+.StripeCheckout span {
+  background-color: #ec5c5c !important;
+  /* background: none !important; */
+  background-image: none !important;
+  border: none !important;
+  box-shadow: none !important;
 }
