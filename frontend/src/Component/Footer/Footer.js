@@ -114,7 +114,7 @@ const Footer = () => {
               </p>
             </div>
             <MDBRow>
-              <div className="links">
+              <div className="links" style={{ marginTop: "50px" }}>
                 <a
                   style={{ cursor: "pointer" }}
                   onClick={() => {
@@ -154,6 +154,14 @@ const Footer = () => {
                 >
                   LOGIN
                 </a>
+              </div>
+
+              <div style={{ marginTop: "50px" }}>
+                <img
+                  src="https://i.ibb.co/ZhmywL6/logo.png"
+                  alt="HEX"
+                  style={{ height: "50%", width: "10%" }}
+                />
               </div>
               <MDBCol lg="3" md="6" className="mb-4 mb-md-0">
                 {/* <h5 className="text-uppercase">Links</h5>
@@ -204,6 +212,7 @@ const Footer = () => {
                     </a>
                   </li>
                 </ul> */}
+                {/* <img src="https://i.ibb.co/ZhmywL6/logo.png" alt="HEX" style={} /> */}
               </MDBCol>
 
               {/* <MDBCol lg="3" md="6" className="mb-4 mb-md-0 text-left">
