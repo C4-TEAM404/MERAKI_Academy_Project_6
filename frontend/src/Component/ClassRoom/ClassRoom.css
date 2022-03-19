@@ -20,7 +20,7 @@
 }
 
 .myCam {
-  width: 50%;
+  width: 100%;
   height: 100%;
 }
 
@@ -114,4 +114,10 @@
   outline: none;
   background: none;
   color: green;
+}
+
+video {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
 }

@@ -2,6 +2,7 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
 import CardGroup from "react-bootstrap/CardGroup";
+import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import { MDBBtn } from "mdb-react-ui-kit";
 import { BsLinkedin } from "react-icons/bs";
 import { BsGithub } from "react-icons/bs";
@@ -20,6 +21,7 @@ import {
 import "./Home.css";
 
 const Introduction = () => {
+  const history = useNavigate();
   return (
     <div className="introMainDiv">
       <div className="Part1">
@@ -34,12 +36,30 @@ const Introduction = () => {
               mauris inceptos eget. Urna imperdiet.
             </div>
             <div className="part1Buttons">
-              <MDBBtn class="btn-primary" href="/login">
+              <button
+                type="button"
+                class="btn btn-primary"
+                onClick={() => {
+                  history("/login");
+                }}
+              >
                 LOGIN
-              </MDBBtn>
-              <MDBBtn class="btn-secondary " href="/SRegister">
+              </button>
+              {/* <MDBBtn class="btn-primary" href="/login">
+                LOGIN
+              </MDBBtn> */}
+              <button
+                type="button"
+                class="btn btn-secondary"
+                onClick={() => {
+                  history("/SRegister");
+                }}
+              >
                 TRY HEX
-              </MDBBtn>
+              </button>
+              {/* <MDBBtn class="btn-secondary " href="/SRegister">
+                TRY HEX
+              </MDBBtn> */}
             </div>
           </div>
         </div>
@@ -57,14 +77,16 @@ const Introduction = () => {
             <Card className="shadow p-3 mb-5 bg-body rounded">
               <Card.Img
                 variant="top"
-                src="https://focusvocationalschool.com/wp-content/uploads/2020/12/170427-637363828865101045-16x9-1.jpg"
+                src="https://prod-discovery.edx-cdn.org/media/course/image/c50943b5-3375-4d50-9f91-911930551603-5703bb2a02c8.small.png"
               />
               <Card.Body>
-                <Card.Title>Card title</Card.Title>
+                <Card.Title>
+                  JavaScript - The Complete Guide 2022 (Beginner + Advanced)
+                </Card.Title>
                 <Card.Text>
-                  This is a wider card with supporting text below as a natural
-                  lead-in to additional content. This content is a little bit
-                  longer.
+                  JavaScript lets you add interactive features to your Web
+                  sites, including dynamically updated content, controlled
+                  multimedia, animated images, and much more.
                 </Card.Text>
               </Card.Body>
               <Card.Footer>
@@ -74,35 +96,39 @@ const Introduction = () => {
             <Card className="shadow p-3 mb-5 bg-body rounded">
               <Card.Img
                 variant="top"
-                src="https://focusvocationalschool.com/wp-content/uploads/2020/12/170427-637363828865101045-16x9-1.jpg"
+                src="https://img-b.udemycdn.com/course/240x135/1362070_b9a1_2.jpg"
               />
               <Card.Body>
-                <Card.Title>Card title</Card.Title>
+                <Card.Title>
+                  React - The Complete Guide (incl Hooks, React Router, Redux)
+                </Card.Title>
                 <Card.Text>
-                  This is a wider card with supporting text below as a natural
-                  lead-in to additional content. This content is a little bit
-                  longer.
+                  This course is the most up-to-date, comprehensive and
+                  bestselling React course on HEX! It was completely updated and
+                  re-recorded from the ground up!
                 </Card.Text>
               </Card.Body>
               <Card.Footer>
-                <small className="text-muted">Last updated 3 mins ago</small>
+                <small className="text-muted">Last updated 3 hours ago</small>
               </Card.Footer>
             </Card>
             <Card className="shadow p-3 mb-5 bg-body rounded">
               <Card.Img
                 variant="top"
-                src="https://focusvocationalschool.com/wp-content/uploads/2020/12/170427-637363828865101045-16x9-1.jpg"
+                src="https://img-c.udemycdn.com/course/240x135/922484_52a1_8.jpg"
               />
               <Card.Body>
-                <Card.Title>Card title</Card.Title>
+                <Card.Title>
+                  The Complete Node.js Developer Course (3rd Edition)
+                </Card.Title>
                 <Card.Text>
-                  This is a wider card with supporting text below as a natural
-                  lead-in to additional content. This content is a little bit
-                  longer.
+                  The Complete Node.js Developer Course covers the fundamentals
+                  of Node before diving deep into great tools like Express,
+                  Mongoose, and MongoDB.
                 </Card.Text>
               </Card.Body>
               <Card.Footer>
-                <small className="text-muted">Last updated 3 mins ago</small>
+                <small className="text-muted">Last updated 3 days ago</small>
               </Card.Footer>
             </Card>
           </CardGroup>
@@ -121,9 +147,9 @@ const Introduction = () => {
                     Why Choose Us
                   </MDBCardTitle>
                   <MDBCardText>
-                    This is a wider card with supporting text below as a natural
-                    lead-in to additional content. This content is a little bit
-                    longer.
+                    Your HEX learning experience is grounded in cutting-edge
+                    cognitive science. With more than two dozen distinct
+                    learning features to help you achieve your goals.
                   </MDBCardText>
                   <MDBListGroupItem
                     className="border-0 g-10"
@@ -139,9 +165,9 @@ const Introduction = () => {
                       {" "}
                       Online Certification
                     </div>
-                    <div className="text-muted ">
+                    {/* <div className="text-muted ">
                       Performance Based Certificate
-                    </div>
+                    </div> */}
                   </MDBListGroupItem>
                   <MDBListGroupItem
                     className="border-0 gap-10 g-20"
@@ -156,9 +182,9 @@ const Introduction = () => {
                     <div className="font-weight-bold fs-4">
                       Best Education System
                     </div>
-                    <div className="text-muted">
+                    {/* <div className="text-muted">
                       Advance Education Management
-                    </div>
+                    </div> */}
                   </MDBListGroupItem>
                   <MDBListGroupItem
                     className="border-0"
@@ -173,14 +199,15 @@ const Introduction = () => {
                     <div className="font-weight-bold fs-4">
                       Learning Management
                     </div>
-                    <div className="text-muted">LMS Integration </div>
+                    {/* <div className="text-muted">LMS Integration </div> */}
                   </MDBListGroupItem>
                 </MDBCardBody>
               </MDBCol>
               <MDBCol md="6">
+                {/* <iframe width="853" height="480" src="https://www.youtube.com/embed/vlDzYIIOYmM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> */}
                 <div className="ratio ratio-1x1">
                   <iframe
-                    src="https://www.youtube.com/embed/vlDzYIIOYmM"
+                    src="https://www.youtube.com/embed/4I1kGIC41lg"
                     title="YouTube video"
                     allowfullscreen
                   ></iframe>
