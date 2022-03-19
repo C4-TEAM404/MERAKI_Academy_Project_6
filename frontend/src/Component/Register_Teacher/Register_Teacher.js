@@ -226,6 +226,7 @@ const Register_Teacher = () => {
                                 required
                                 onChange={password_handler}
                                 value={password}
+                                minLength="6"
                               />
                               <label class="form-label" for="form3Example4c">
                                 Password
@@ -280,7 +281,6 @@ const Register_Teacher = () => {
           </div>
         </section>
       </div>
-
     </div>
   );
 };

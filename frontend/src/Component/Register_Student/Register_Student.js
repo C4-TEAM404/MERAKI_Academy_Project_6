@@ -224,6 +224,7 @@ const Register_Student = () => {
                                 required
                                 onChange={password_handler}
                                 value={password}
+                                minLength="6"
                               />
                               <label class="form-label" for="form3Example4c">
                                 Password
