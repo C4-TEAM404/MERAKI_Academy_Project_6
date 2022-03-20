@@ -59,7 +59,7 @@ const Student_Page = () => {
                 <Card.Body>
                   <Card.Title>{_.Title}</Card.Title>
                   <Card.Text>{_.Author}</Card.Text>
-                  <Card.Text>Price : {_.Price} $</Card.Text>
+                  <Card.Text>Price : {_.Price - 0.01} $</Card.Text>
                   <Card.Text>Start In : {_.start}</Card.Text>
                 </Card.Body>
               </Card>
