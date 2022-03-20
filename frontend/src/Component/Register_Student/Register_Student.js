@@ -263,7 +263,14 @@ const Register_Student = () => {
                         </div>
                         <label class="form-label" for="form3Example1c">
                           Want To be A Teacher ?{" "}
-                          <a href="/TRegister">Click Here</a>
+                          <a
+                            style={{ cursor: "pointer" }}
+                            onClick={() => {
+                              history("/TRegister");
+                            }}
+                          >
+                            Click Here
+                          </a>
                         </label>
                         <img
                           src="https://i.ibb.co/WDkyQqt/Students.gif"

@@ -128,7 +128,8 @@ const Register_Teacher = () => {
         setPassword("");
         setProfileImage("");
 
-        const myTimeout = setTimeout(ChangeDir, 2000);
+        history("/login");
+        // const myTimeout = setTimeout(ChangeDir, 2000);
       } else throw Error;
     } catch (error) {
       if (!error.response.data.success) {
