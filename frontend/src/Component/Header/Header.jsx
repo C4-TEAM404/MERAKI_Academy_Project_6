@@ -64,7 +64,7 @@ const Header = () => {
                 )}
                 {localStorage.getItem("roleId") == 2 && (
                   <Link to="/Teacher_Page" alt="Teacher_Page">
-                    lectures
+                    Lectures
                   </Link>
                 )}
                 {localStorage.getItem("roleId") == 3 && (

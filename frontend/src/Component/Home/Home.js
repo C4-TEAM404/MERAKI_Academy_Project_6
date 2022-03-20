@@ -32,8 +32,7 @@ const Introduction = () => {
               <div className="Training">Training Organization</div>
             </div>
             <div className="Message2">
-              we proviet best education system for you amet mauris lobortis
-              mauris inceptos eget. Urna imperdiet.
+              Start learning from the world’s best institutions
             </div>
             <div className="part1Buttons">
               <button

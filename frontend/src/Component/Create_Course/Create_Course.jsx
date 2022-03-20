@@ -103,14 +103,14 @@ const Create_Course = () => {
         Category: category,
         Video: video,
         image,
-        teacher_Id: login.userId || 1,
+        teacher_Id: localStorage.getItem("userId"),
         start,
         roleId: 2,
         room_Id: null,
       });
 
       console.log(res);
-      history("/");
+      history("/Course");
     } catch (err) {
       throw new Error(err.respone);
     }
